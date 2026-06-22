@@ -9,19 +9,20 @@ It passed every standard test—including rigorous orthogonal label-noise and ca
 
 This repository is an open case study in why AI safety metrics must be audited against trivial baselines.
 
-## Repository Contents
+## Repository Structure
 
-### Core Metric
+### `metric_audit/`
+Contains the core measurement logic.
 - `sci_tracker.py`: Computes the effective rank of activation covariance (CEI) and gradient duals ($\text{FIM}_{norm}$) across network layers.
 
-### The 12-Test Validation Suite
-The scripts prefixed with `fim_` contain the sequence of tests we used to validate (and ultimately kill) the metric:
-- `fim_normalized.py` & `fim_acid_test.py`: The initial dual acid tests (label-noise and capacity).
-- `fim_cnn_test.py` & `fim_transformer_test.py`: Cross-architecture harness testing.
-- `fim_early_predictor.py`: **Test 11.** The decisive loss-baseline control test where the metric's independent signal collapsed.
-- `fim_init_test.py`: **Test 12.** The initialization probe proving the metric carries no signal when loss is structurally flat.
+### `experiments/`
+The 12-test validation suite that systematically validated, and then killed, the metric.
+- **`01_acid_tests/`**: The dual acid test on MLPs (label noise vs. capacity) and stability analysis.
+- **`02_architectures/`**: Cross-architecture tests to verify immunity to normalization artifacts (CNN+BatchNorm, Transformer+LayerNorm).
+- **`03_comparisons/`**: Baseline comparisons against Trace Norm, Sharpness (SAM), and Bootstrap Confidence Intervals.
+- **`04_falsification/`**: The decisive falsification tests. `fim_early_predictor.py` (Test 11) runs the loss-baseline partial correlation control. `fim_init_test.py` (Test 12) proves the metric is null at initialization.
 
-### Documentation
+### `docs/`
 - `FINDINGS.md`: The master ledger of all experiments, falsifications, and the final conclusion.
 - `RESULTS.md`: Raw numerical output, statistical correlations, and data tables for the 12 tests.
 - `theory.md`: The mathematical derivations for $\text{FIM}_{norm}$, moving from activation space to parameter space.
@@ -39,9 +40,7 @@ If your metric fails step 3 or 4, it is a proxy, not a novel signal.
 The tracker relies on standard `numpy` and `torch` (for the PyTorch wrappers). All tests log to console and export data/images (e.g., `*.csv`, `*.png`) to the local directory.
 
 ```bash
-# Example: Run the CNN tests
-python fim_cnn_test.py
-
-# Example: Run the decisive Test 11
+# Example: Run the decisive Test 11 falsification
+cd experiments/04_falsification
 python fim_early_predictor.py
 ```
