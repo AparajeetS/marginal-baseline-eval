@@ -21,6 +21,7 @@ Kaggle-scale experiment artifacts, and a public walkthrough notebook.
 
 - Package: [`mbe-eval`](https://pypi.org/project/mbe-eval/)
 - Public notebook: [Audit ML Training Metrics with MBE](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe)
+- Documentation map: [docs/README.md](docs/README.md)
 - Evidence ledger: [SUPPORTING_EVIDENCE.md](SUPPORTING_EVIDENCE.md)
 - Reproducibility notes: [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
 - Protocol freeze: [PROTOCOL_FREEZE.md](PROTOCOL_FREEZE.md)
@@ -30,6 +31,8 @@ Kaggle-scale experiment artifacts, and a public walkthrough notebook.
 - Next experiment protocol: [NEXT_EXPERIMENT_PROTOCOL.md](NEXT_EXPERIMENT_PROTOCOL.md)
 - Paper skeleton: [PAPER_SKELETON.md](PAPER_SKELETON.md)
 - Paper notes: [PAPER.md](PAPER.md) and [JMLR_STRATEGY.md](JMLR_STRATEGY.md)
+- Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Roadmap: [ROADMAP.md](ROADMAP.md)
 
 The latest confirmed evidence set contains **680 trained models**:
 
@@ -169,7 +172,9 @@ metric-audit-paper/
 +-- mbe_eval/                  # installable MBE package
 +-- examples/                  # small local examples
 +-- experiments/               # paper-scale and exploratory experiments
++-- figures/                   # generated no-compute evidence figures
 +-- kaggle/mbe_metric_audit/   # public Kaggle notebook source
++-- docs/                      # documentation index
 +-- SUPPORTING_EVIDENCE.md     # run-by-run evidence ledger
 +-- REPRODUCIBILITY.md         # reproduction commands and expected artifacts
 +-- PAPER.md                   # evolving paper direction
