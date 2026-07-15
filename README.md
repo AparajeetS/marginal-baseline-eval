@@ -36,8 +36,8 @@ and [compute plan](https://github.com/AparajeetS/marginal-baseline-eval/blob/mas
 
 The repository now includes an experimental prototype for testing whether
 selected E0-E2 checks from the candidate MBE 2.0 design transfer to AI
-benchmark audits. It accepts a candidate metric, an external target, declared
-baseline or capability-proxy columns, an environment, and a configuration-unit
+benchmark audits. It accepts a candidate metric, a named target, declared
+baseline or proxy columns, an environment, and a configuration-unit
 identifier, then produces a scoped claim card. E3 matched interventions and E4
 measurement-reliability checks are explicitly omitted.
 
@@ -96,6 +96,31 @@ passing it is not external validation. Stable `mbe-eval` v0.3.2 and the explorat
 680-row legacy ledger establish feasibility only; the ledger contains repeated
 configurations and a legacy text setup with label leakage. See the full
 [scope, input contract, conformance table, and claim limits](docs/BENCHMARK_AUDIT_PROTOTYPE.md).
+
+#### Leakage-Screened TruthfulQA v0 Pilot
+
+A protocol-frozen real-data pilot now tests a transparent ROUGE-1-style
+reference-difference score against TruthfulQA v0's released human truth
+judgments. Before computing the score, the cohort rules were amended in Git to
+collapse duplicate question-answer pairs, discard label conflicts, use the
+historically aligned v0 table, and exclude exact correct, incorrect, and
+metric-added no-comment references.
+
+The resulting main cohort has 7,920 unique answer pairs from 541 questions in
+15 categories. Under the frozen 1% practical thresholds, the score improved
+question-grouped held-out MSE by 12.33% and aggregate category-holdout MSE by
+11.01%; neither the length-derived deceptive control nor deterministic hash
+noise crossed a threshold. This supports only the scoped predictive claim under
+the declared tests. It does not validate MBE or TruthfulQA, reproduce the exact
+official T5 ROUGE implementation, control model capability, establish construct
+validity, or certify a benchmark or model.
+
+- [Protocol and pre-result amendment](experiments/08_truthfulqa_real_audit/PROTOCOL.md)
+- [Result with interpretation boundary](experiments/08_truthfulqa_real_audit/artifacts/RESULTS.md)
+- [Machine-readable claim card](experiments/08_truthfulqa_real_audit/artifacts/claim_card.json)
+- [Cohort exclusions and retained categories](experiments/08_truthfulqa_real_audit/artifacts/cohort_manifest.json)
+- [Human-informativeness baseline sensitivity](experiments/08_truthfulqa_real_audit/artifacts/INFORMATIVENESS_SENSITIVITY.md)
+- [Reproduction instructions](experiments/08_truthfulqa_real_audit/README.md)
 
 MBE does not claim that partial correlation or hyperparameter conditioning is
 new. The proposed contribution is their calibrated integration with a baseline

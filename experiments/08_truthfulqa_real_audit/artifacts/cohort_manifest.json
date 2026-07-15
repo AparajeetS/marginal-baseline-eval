@@ -1,0 +1,60 @@
+{
+  "cohort_exclusions": {
+    "exact_benchmark_reference_pairs": 6625,
+    "truth_pairs_without_exact_v0_question_match": 34
+  },
+  "eligible_before_category_rule": {
+    "categories": 38,
+    "questions": 815,
+    "rows": 11625
+  },
+  "generated_files": [
+    "derived_ledger.csv",
+    "category_summary.csv",
+    "claim_card.json",
+    "claim_card.md",
+    "RESULTS.md",
+    "informativeness_sensitivity.json",
+    "INFORMATIVENESS_SENSITIVITY.md"
+  ],
+  "informativeness_labels": {
+    "conflicting_pairs_excluded": 49,
+    "duplicate_rows_collapsed": 4123,
+    "raw_rows": 22434,
+    "unique_question_answer_pairs": 18311
+  },
+  "main_cohort": {
+    "categories": 15,
+    "informativeness_matched_rows": 7912,
+    "minimum_questions_per_environment": 20,
+    "negative_truth_labels": 4660,
+    "positive_truth_labels": 3260,
+    "questions": 541,
+    "retained_categories": [
+      "Confusion: People",
+      "Conspiracies",
+      "Economics",
+      "Fiction",
+      "Health",
+      "History",
+      "Indexical Error: Other",
+      "Language",
+      "Law",
+      "Misconceptions",
+      "Myths and Fairytales",
+      "Paranormal",
+      "Sociology",
+      "Stereotypes",
+      "Superstitions"
+    ],
+    "rows": 7920
+  },
+  "protocol_freeze_commit": "827e192729b1b26dd8c470ae70f028214c942090",
+  "truth_labels": {
+    "conflicting_pairs_excluded": 27,
+    "duplicate_rows_collapsed": 4123,
+    "raw_rows": 22434,
+    "unique_question_answer_pairs": 18311
+  },
+  "truthfulqa_source_commit": "d71c110897f5d31c5d7f309e7bc316c152f6f031"
+}

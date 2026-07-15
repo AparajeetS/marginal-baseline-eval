@@ -1,0 +1,349 @@
+{
+  "claim": {
+    "id": "truthfulqa-v0-reference-difference-pilot-v1",
+    "text": "Within the released TruthfulQA v0 human-labelled answer triples, after removing duplicated conflicts and exact benchmark-reference answers and grouping by question, a transparent ROUGE-1-style reference-difference score adds out-of-question predictive information for the original human binary truth judgments beyond the declared response and task proxies; the pilot separately tests whether that increment transports in aggregate across sufficiently represented question categories."
+  },
+  "control_results": {
+    "hash_noise_control": {
+      "evidence": {
+        "E0": {
+          "descriptive_classification": "weak-or-mixed",
+          "descriptive_partial_rank_correlation": -0.009674235823,
+          "n": 7920,
+          "name": "unconditional-association",
+          "raw_p_value": 0.451384469262,
+          "raw_rank_correlation": -0.008463616429,
+          "role": "descriptive-diagnostic",
+          "state": "unresolved"
+        },
+        "E1": {
+          "name": "incremental-utility-given-declared-baselines",
+          "result": {
+            "augmented_mse": 0.059431753593,
+            "baseline_mse": 0.059399144602,
+            "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count,category",
+            "delta_mse": -3.2608991e-05,
+            "delta_mse_ci_high": 1.1259375e-05,
+            "delta_mse_ci_low": -7.7149347e-05,
+            "group_col": "question_id",
+            "independence_units": 541,
+            "metric": "hash_noise_control",
+            "n": 7920,
+            "n_splits": 5,
+            "polynomial_degree": 2,
+            "relative_mse_improvement": -0.000548980811,
+            "residual_ci_high": 0.037966812119,
+            "residual_ci_low": -0.130196866844,
+            "residual_p": 0.34,
+            "residual_r": -0.040267328736,
+            "run_residual_r": -0.006624235801,
+            "target": "human_truth_label"
+          },
+          "state": "below-declared-threshold"
+        },
+        "E2": {
+          "name": "aggregate-leave-one-environment-out-transport",
+          "result": {
+            "audit_mode": "leave-one-environment-out",
+            "augmented_mse": 0.059463522911,
+            "baseline_mse": 0.059458892484,
+            "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count",
+            "delta_mse": -4.630427e-06,
+            "delta_mse_ci_high": 3.260479e-05,
+            "delta_mse_ci_low": -5.1673289e-05,
+            "environment_col": "category",
+            "environments": [
+              "Confusion: People",
+              "Conspiracies",
+              "Economics",
+              "Fiction",
+              "Health",
+              "History",
+              "Indexical Error: Other",
+              "Language",
+              "Law",
+              "Misconceptions",
+              "Myths and Fairytales",
+              "Paranormal",
+              "Sociology",
+              "Stereotypes",
+              "Superstitions"
+            ],
+            "experimental": true,
+            "group_col": "category",
+            "independence_units": 15,
+            "metric": "hash_noise_control",
+            "n": 7920,
+            "n_environments": 15,
+            "n_splits": 15,
+            "polynomial_degree": 2,
+            "relative_mse_improvement": -7.7876102e-05,
+            "residual_ci_high": 0.617196331049,
+            "residual_ci_low": -0.478729407686,
+            "residual_p": 0.75,
+            "residual_r": 0.092857142857,
+            "run_residual_r": -0.005688380857,
+            "target": "human_truth_label"
+          },
+          "state": "below-declared-threshold"
+        }
+      },
+      "kind": "negative"
+    },
+    "length_proxy_control": {
+      "evidence": {
+        "E0": {
+          "descriptive_classification": "weak-or-mixed",
+          "descriptive_partial_rank_correlation": -0.012665634082,
+          "n": 7920,
+          "name": "unconditional-association",
+          "raw_p_value": 1.71e-08,
+          "raw_rank_correlation": -0.063310422929,
+          "role": "descriptive-diagnostic",
+          "state": "unresolved"
+        },
+        "E1": {
+          "name": "incremental-utility-given-declared-baselines",
+          "result": {
+            "augmented_mse": 0.059470611085,
+            "baseline_mse": 0.059430312226,
+            "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count,category",
+            "delta_mse": -4.0298859e-05,
+            "delta_mse_ci_high": 1.833619e-06,
+            "delta_mse_ci_low": -8.1228383e-05,
+            "group_col": "question_id",
+            "independence_units": 541,
+            "metric": "length_proxy_control",
+            "n": 7920,
+            "n_splits": 5,
+            "polynomial_degree": 2,
+            "relative_mse_improvement": -0.000678085939,
+            "residual_ci_high": 0.023941976704,
+            "residual_ci_low": -0.143674619485,
+            "residual_p": 0.19,
+            "residual_r": -0.058794284801,
+            "run_residual_r": 0.014810837402,
+            "target": "human_truth_label"
+          },
+          "state": "below-declared-threshold"
+        },
+        "E2": {
+          "name": "aggregate-leave-one-environment-out-transport",
+          "result": {
+            "audit_mode": "leave-one-environment-out",
+            "augmented_mse": 0.059578579792,
+            "baseline_mse": 0.059458892484,
+            "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count",
+            "delta_mse": -0.000119687308,
+            "delta_mse_ci_high": -8.818562e-06,
+            "delta_mse_ci_low": -0.000255515205,
+            "environment_col": "category",
+            "environments": [
+              "Confusion: People",
+              "Conspiracies",
+              "Economics",
+              "Fiction",
+              "Health",
+              "History",
+              "Indexical Error: Other",
+              "Language",
+              "Law",
+              "Misconceptions",
+              "Myths and Fairytales",
+              "Paranormal",
+              "Sociology",
+              "Stereotypes",
+              "Superstitions"
+            ],
+            "experimental": true,
+            "group_col": "category",
+            "independence_units": 15,
+            "metric": "length_proxy_control",
+            "n": 7920,
+            "n_environments": 15,
+            "n_splits": 15,
+            "polynomial_degree": 2,
+            "relative_mse_improvement": -0.002012942109,
+            "residual_ci_high": 0.691478745384,
+            "residual_ci_low": -0.338588212939,
+            "residual_p": 0.5,
+            "residual_r": 0.207142857143,
+            "run_residual_r": 0.051678873381,
+            "target": "human_truth_label"
+          },
+          "state": "below-declared-threshold"
+        }
+      },
+      "kind": "deceptive"
+    }
+  },
+  "counts": {
+    "complete_rows": 7920,
+    "dropped_rows": 0,
+    "environments": 15,
+    "independence_units": 541,
+    "input_rows": 7920
+  },
+  "declarations": {
+    "bootstrap": 499,
+    "declared_baselines_or_proxies": [
+      "answer_length_tokens",
+      "question_length_tokens",
+      "refusal_or_uncertainty_flag",
+      "question_type",
+      "correct_reference_count",
+      "incorrect_reference_count"
+    ],
+    "environment": "category",
+    "independence_unit": "question_id",
+    "metric": "reference_overlap_diff",
+    "minimum_relative_mse_improvement": 0.01,
+    "minimum_transport_relative_mse_improvement": 0.01,
+    "n_splits": 5,
+    "permutations": 199,
+    "polynomial_degree": 2,
+    "ridge": 0.001,
+    "seed": 20260716,
+    "target": "human_truth_label"
+  },
+  "evidence": {
+    "E0": {
+      "descriptive_classification": "survives",
+      "descriptive_partial_rank_correlation": 0.329206841128,
+      "n": 7920,
+      "name": "unconditional-association",
+      "raw_p_value": 0.0,
+      "raw_rank_correlation": 0.338947892809,
+      "role": "descriptive-diagnostic",
+      "state": "unresolved"
+    },
+    "E1": {
+      "name": "incremental-utility-given-declared-baselines",
+      "result": {
+        "augmented_mse": 0.051774092831,
+        "baseline_mse": 0.059054884973,
+        "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count,category",
+        "delta_mse": 0.007280792142,
+        "delta_mse_ci_high": 0.008397630858,
+        "delta_mse_ci_low": 0.005919984616,
+        "group_col": "question_id",
+        "independence_units": 541,
+        "metric": "reference_overlap_diff",
+        "n": 7920,
+        "n_splits": 5,
+        "polynomial_degree": 2,
+        "relative_mse_improvement": 0.123288566995,
+        "residual_ci_high": 0.390094860823,
+        "residual_ci_low": 0.239259577383,
+        "residual_p": 0.005,
+        "residual_r": 0.319847608827,
+        "run_residual_r": 0.298485907827,
+        "target": "human_truth_label"
+      },
+      "state": "meets-declared-threshold"
+    },
+    "E2": {
+      "name": "aggregate-leave-one-environment-out-transport",
+      "result": {
+        "audit_mode": "leave-one-environment-out",
+        "augmented_mse": 0.052911679533,
+        "baseline_mse": 0.059458892484,
+        "controls": "answer_length_tokens,question_length_tokens,refusal_or_uncertainty_flag,question_type,correct_reference_count,incorrect_reference_count",
+        "delta_mse": 0.006547212951,
+        "delta_mse_ci_high": 0.008910720925,
+        "delta_mse_ci_low": 0.004494353136,
+        "environment_col": "category",
+        "environments": [
+          "Confusion: People",
+          "Conspiracies",
+          "Economics",
+          "Fiction",
+          "Health",
+          "History",
+          "Indexical Error: Other",
+          "Language",
+          "Law",
+          "Misconceptions",
+          "Myths and Fairytales",
+          "Paranormal",
+          "Sociology",
+          "Stereotypes",
+          "Superstitions"
+        ],
+        "experimental": true,
+        "group_col": "category",
+        "independence_units": 15,
+        "metric": "reference_overlap_diff",
+        "n": 7920,
+        "n_environments": 15,
+        "n_splits": 15,
+        "polynomial_degree": 2,
+        "relative_mse_improvement": 0.1101132678,
+        "residual_ci_high": 0.799204536206,
+        "residual_ci_low": -0.103172690117,
+        "residual_p": 0.105,
+        "residual_r": 0.432142857143,
+        "run_residual_r": 0.309932956593,
+        "target": "human_truth_label"
+      },
+      "state": "meets-declared-threshold"
+    },
+    "E3": {
+      "name": "matched-intervention-consistency",
+      "reason": "not-implemented",
+      "state": "unresolved"
+    },
+    "E4": {
+      "name": "measurement-reliability-and-cost",
+      "reason": "not-implemented",
+      "state": "unresolved"
+    }
+  },
+  "evidence_state": "supports-claim-under-declared-tests",
+  "independently_validated": false,
+  "interpretation": "The candidate crossed the predeclared E1 and aggregate E2 thresholds in these data while the supplied controls did not. This is conditional evidence, not certification or construct validity.",
+  "limitations": [
+    "The labels and answer pool are released TruthfulQA v0 data, not a fresh confirmatory holdout.",
+    "The same project produced the human judgments and reference framework, so the target is external to the automated score but not an independently constructed benchmark.",
+    "Model identity, family, size, prompt, and general capability are unavailable; this pilot neither controls them nor tests model-family transport.",
+    "The transparent lexical score follows the official reference-difference structure but is not the exact T5 ROUGE implementation or an official score.",
+    "Exact reference answers, duplicate conflicts, poorly represented categories, and unmatched questions were excluded by the frozen rules; the result applies only to the resulting cohort.",
+    "Categories are author-defined and unequal; aggregate E2 can hide individual-category failures, so category summaries are published separately.",
+    "Reference overlap can reward surface similarity and does not by itself establish truthfulness or construct validity.",
+    "Results are conditional on the named outcome, data, split, estimator, declared baselines, environments, and analysis settings.",
+    "Declared baselines and proxies do not exhaust latent capability, response style, task structure, or all possible confounding.",
+    "Empirical rank transforms and numeric scaling are fitted within each training fold; results remain conditional on the chosen folds and finite-sample transformations.",
+    "The E2 result is an environment-equal aggregate and can hide a failing individual environment.",
+    "E3 interventions and E4 measurement reliability/cost are not implemented.",
+    "Association and incremental prediction do not establish causality or construct validity and do not certify a benchmark or model."
+  ],
+  "method_status": "experimental",
+  "provenance": {
+    "files": {
+      "data/finetune_info.jsonl": {
+        "sha256": "5956ef2070055e3ae0020d510007f5b9eb841719c9e3320e38fd7e2ee340b69e"
+      },
+      "data/finetune_truth.jsonl": {
+        "sha256": "9fd94fc943a2dc08f1dc028d2b6f353ae85fae5169a536ae6489236db2f30b64"
+      },
+      "data/v0/TruthfulQA.csv": {
+        "sha256": "f4fcc4a841d4474c46a4719c295c6df5f12eef14c187fbb9637a29e70d9ece00"
+      },
+      "truthfulqa/metrics.py": {
+        "sha256": "0a4667429a13b2f75704af631ac001674a60c74c8e2955c8431d5b0faddb7b12"
+      }
+    },
+    "license": "Apache-2.0",
+    "protocol_file": "experiments/08_truthfulqa_real_audit/PROTOCOL.md",
+    "protocol_freeze_commit": "827e192729b1b26dd8c470ae70f028214c942090",
+    "source_commit": "d71c110897f5d31c5d7f309e7bc316c152f6f031",
+    "source_repository": "https://github.com/sylinrl/TruthfulQA"
+  },
+  "schema_version": "mbe-benchmark-claim-card/0.2",
+  "score_definition": {
+    "exact_official_t5_rouge_implementation": false,
+    "formula": "maximum unigram multiset-F1 against supplied correct references plus the official no-comment reference, minus maximum unigram multiset-F1 against supplied incorrect references",
+    "name": "reference_overlap_diff"
+  },
+  "synthetic_control_caveat": "Synthetic controls test implementation behavior under their chosen data-generating assumptions. Passing them does not validate MBE or its real-world benchmark use."
+}
