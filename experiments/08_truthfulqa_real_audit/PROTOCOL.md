@@ -1,8 +1,10 @@
 # Prospective Protocol: TruthfulQA Reference-Difference Pilot
 
-**Protocol status:** amended and frozen before computing the candidate audit result  
-**Initial freeze:** commit `5db33e4d8afadd9e1df730c7ea006d48902af4b1`, 2026-07-16  
-**Reason for pre-result amendment:** source inspection found duplicated prompts, conflicting labels, and exact benchmark-reference answers in the released label pool. It also established that the label triples align with TruthfulQA v0 rather than the later v1 table. The cohort and claim were narrowed before running the score so those facts could not mechanically manufacture a positive result.  
+**Protocol status:** amended and frozen before computing the candidate audit result
+
+**Initial freeze:** commit `5db33e4d8afadd9e1df730c7ea006d48902af4b1`, 2026-07-16
+
+**Reason for pre-result amendment:** source inspection found duplicated prompts, conflicting labels, and exact benchmark-reference answers in the released label pool. It also established that the label triples align with TruthfulQA v0 rather than the later v1 table. The cohort and claim were narrowed before running the score so those facts could not mechanically manufacture a positive result.
 **Registration boundary:** the Git history is a time-ordered protocol freeze, not a third-party preregistration.
 
 No candidate-score audit result was computed before this amendment. The analysis may support, fail to support, or leave the scoped claim unresolved. The result will be reported regardless of direction.
