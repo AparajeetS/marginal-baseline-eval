@@ -24,6 +24,7 @@ __all__ = [
     "classify_effect",
     "claim_card_json",
     "claim_card_markdown",
+    "compare_benchmark_claim_specs",
     "cross_fitted_audit",
     "leave_one_environment_out_audit",
     "make_claim_demo",
@@ -63,6 +64,10 @@ def __getattr__(name):
             "claim_card_json": claim_card_json,
             "claim_card_markdown": claim_card_markdown,
         }[name]
+    if name == "compare_benchmark_claim_specs":
+        from .contestation import compare_benchmark_claim_specs
+
+        return compare_benchmark_claim_specs
     if name == "cross_fitted_audit":
         from .crossfit import cross_fitted_audit
 

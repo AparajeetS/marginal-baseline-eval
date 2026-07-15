@@ -50,6 +50,38 @@ mbe-eval-claim --csv benchmark_results.csv \
   --output-prefix claim_card
 ```
 
+Claim cards report a **Predeclared test outcome** rather than a benchmark
+verdict. To make specification disagreement inspectable, run named alternatives
+against the same rows and keep the resulting contestation bundle:
+
+```python
+from mbe_eval import compare_benchmark_claim_specs
+
+bundle = compare_benchmark_claim_specs(
+    benchmark_results,
+    {
+        "declared": {"baselines": ["capability_proxy"]},
+        "expanded-baseline": {
+            "baselines": ["capability_proxy", "format_score"]
+        },
+    },
+    common={
+        "metric": "truthfulness_score",
+        "target": "external_criterion",
+        "environment": "benchmark_family",
+        "unit": "config_unit",
+        "min_relative_mse_improvement": 0.01,
+        "min_transport_relative_mse_improvement": 0.01,
+        "bootstrap": 200,
+    },
+)
+print(bundle["conclusion_changed"])
+```
+
+The bundle retains each complete claim card and identifies which named
+specifications change the overall or per-estimand evidence states. It does not
+select a preferred specification.
+
 Run the included deterministic deceptive-control self-check with:
 
 ```bash

@@ -99,6 +99,25 @@ deterministic four-environment fixture, a deliberately confounded score, a
 negative control, and JSON/Markdown claim cards. Its known-ground-truth result
 tests implementation behavior only.
 
+## Evidence States And Contestation
+
+Schema 0.2 labels the card's reviewer-facing result as a **Predeclared test
+outcome**. The overall evidence state is one of
+`supports-claim-under-declared-tests`,
+`does-not-support-claim-under-declared-tests`, or
+`unresolved-under-declared-tests`. E0-E4 use only
+`meets-declared-threshold`, `below-declared-threshold`, or `unresolved`.
+These labels bind every outcome to the exact tests and practical thresholds in
+the card instead of presenting a universal pass/fail judgment.
+
+Reviewers can use `compare_benchmark_claim_specs` to rerun the same rows under
+named alternatives, such as an expanded baseline set or a different
+prespecified environment. The returned contestation bundle retains every
+complete claim card and reports whether the overall or per-estimand states
+change relative to the first named specification. The comparison exposes
+specification sensitivity; it does not select a preferred specification, and
+an unchanged result does not cover alternatives that were not supplied.
+
 ## Deceptive Synthetic Control
 
 The included synthetic control is deliberately constructed so a candidate

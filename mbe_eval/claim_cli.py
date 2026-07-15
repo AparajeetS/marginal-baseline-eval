@@ -184,7 +184,7 @@ def main(argv: list[str] | None = None) -> int:
         source_version=args.source_version,
         output_prefix=args.output_prefix,
     )
-    print(f"Claim status: {card['claim_status']}")
+    print(f"Predeclared test outcome: {card['evidence_state']}")
     print(f"Wrote {Path(args.output_prefix).with_suffix('.json').resolve()}")
     print(f"Wrote {Path(args.output_prefix).with_suffix('.md').resolve()}")
     return 0

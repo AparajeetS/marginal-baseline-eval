@@ -4,7 +4,8 @@ import pandas as pd
 import pytest
 
 from mbe_eval.claim_card import (
-    CLAIM_STATUSES,
+    EVIDENCE_STATES,
+    ESTIMAND_STATES,
     audit_benchmark_claim,
     claim_card_json,
     claim_card_markdown,
@@ -38,7 +39,8 @@ def test_claim_card_separates_candidate_from_deceptive_and_negative_controls():
 
     assert card["method_status"] == "experimental"
     assert card["independently_validated"] is False
-    assert card["claim_status"] in CLAIM_STATUSES
+    assert card["evidence_state"] in EVIDENCE_STATES
+    assert "claim_status" not in card
     assert card["evidence"]["E0"]["raw_rank_correlation"] > 0.9
     assert card["evidence"]["E1"]["result"]["relative_mse_improvement"] > 0.8
     assert card["evidence"]["E2"]["result"]["relative_mse_improvement"] > 0.8
@@ -48,11 +50,14 @@ def test_claim_card_separates_candidate_from_deceptive_and_negative_controls():
         == "washout"
     )
     assert (
-        card["control_results"]["deceptive_score"]["evidence"]["E2"]["status"]
-        != "provisional-support"
+        card["control_results"]["deceptive_score"]["evidence"]["E2"]["state"]
+        != "meets-declared-threshold"
     )
-    assert card["evidence"]["E3"]["status"] == "not-implemented"
-    assert card["evidence"]["E4"]["status"] == "not-implemented"
+    assert card["evidence"]["E3"]["state"] == "unresolved"
+    assert card["evidence"]["E4"]["state"] == "unresolved"
+    assert {
+        card["evidence"][key]["state"] for key in ("E0", "E1", "E2", "E3", "E4")
+    } <= ESTIMAND_STATES
 
 
 def test_no_predeclared_thresholds_forces_inconclusive_status():
@@ -66,7 +71,7 @@ def test_no_predeclared_thresholds_forces_inconclusive_status():
         bootstrap=0,
     )
 
-    assert card["claim_status"] == "inconclusive"
+    assert card["evidence_state"] == "unresolved-under-declared-tests"
     assert "No positive practical thresholds" in card["interpretation"]
 
 
@@ -88,10 +93,12 @@ def test_claim_card_json_is_deterministic_and_has_no_nonstandard_nan():
     assert first == second
     assert "NaN" not in first
     assert "Infinity" not in first
-    assert parsed["schema_version"] == "mbe-benchmark-claim-card/0.1"
+    assert parsed["schema_version"] == "mbe-benchmark-claim-card/0.2"
+    assert "claim_status" not in parsed
     markdown = claim_card_markdown(card)
     assert "Not independently validated" in markdown
     assert "not certification" in markdown
+    assert "Predeclared test outcome" in markdown
 
 
 def test_claim_card_strictly_rejects_missing_columns_and_direct_target_leakage():

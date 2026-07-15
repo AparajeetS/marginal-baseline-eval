@@ -128,7 +128,7 @@ def main(argv: list[str] | None = None) -> int:
         bootstrap=args.bootstrap,
         seed=args.seed,
     )
-    print(f"Synthetic claim status: {card['claim_status']}")
+    print(f"Synthetic predeclared test outcome: {card['evidence_state']}")
     print(f"Wrote {Path(args.output_dir).resolve()}")
     return 0
 

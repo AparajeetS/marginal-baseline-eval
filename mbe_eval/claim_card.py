@@ -15,8 +15,20 @@ from .crossfit import cross_fitted_audit
 from .transport import leave_one_environment_out_audit
 
 
-SCHEMA_VERSION = "mbe-benchmark-claim-card/0.1"
-CLAIM_STATUSES = {"provisional-support", "not-supported", "inconclusive"}
+SCHEMA_VERSION = "mbe-benchmark-claim-card/0.2"
+EVIDENCE_STATES = {
+    "supports-claim-under-declared-tests",
+    "does-not-support-claim-under-declared-tests",
+    "unresolved-under-declared-tests",
+}
+ESTIMAND_STATES = {
+    "meets-declared-threshold",
+    "below-declared-threshold",
+    "unresolved",
+}
+
+# Deprecated Python-level alias. Claim-card output never emits ``claim_status``.
+CLAIM_STATUSES = EVIDENCE_STATES
 
 
 def _require_name(value: object, label: str) -> str:
@@ -72,21 +84,21 @@ def _looks_like_direct_target_leakage(
     return bool(np.allclose(predictor_values, target_values, rtol=0.0, atol=1e-12))
 
 
-def _effect_status(result: Mapping[str, object], threshold: float | None) -> str:
+def _estimand_state(result: Mapping[str, object], threshold: float | None) -> str:
     if threshold is None:
-        return "inconclusive"
+        return "unresolved"
     baseline_mse = _finite(result.get("baseline_mse"))
     relative = _finite(result.get("relative_mse_improvement"))
     ci_low = _finite(result.get("delta_mse_ci_low"))
     ci_high = _finite(result.get("delta_mse_ci_high"))
     if baseline_mse is None or baseline_mse <= 0 or relative is None:
-        return "inconclusive"
+        return "unresolved"
     absolute_threshold = threshold * baseline_mse
     if relative >= threshold and ci_low is not None and ci_low >= absolute_threshold:
-        return "provisional-support"
+        return "meets-declared-threshold"
     if ci_high is not None and ci_high < absolute_threshold:
-        return "not-supported"
-    return "inconclusive"
+        return "below-declared-threshold"
+    return "unresolved"
 
 
 def _audit_score(
@@ -141,12 +153,13 @@ def _audit_score(
         bootstrap=bootstrap,
         seed=seed + 10_003,
     )
-    e1_status = _effect_status(e1, min_relative_mse_improvement)
-    e2_status = _effect_status(e2, min_transport_relative_mse_improvement)
+    e1_state = _estimand_state(e1, min_relative_mse_improvement)
+    e2_state = _estimand_state(e2, min_transport_relative_mse_improvement)
     return {
         "E0": {
             "name": "unconditional-association",
-            "status": "diagnostic-only",
+            "state": "unresolved",
+            "role": "descriptive-diagnostic",
             "n": descriptive["n"],
             "raw_rank_correlation": descriptive["raw_r"],
             "raw_p_value": descriptive["raw_p"],
@@ -155,18 +168,18 @@ def _audit_score(
         },
         "E1": {
             "name": "incremental-utility-given-declared-baselines",
-            "status": e1_status,
+            "state": e1_state,
             "result": e1,
         },
         "E2": {
             "name": "aggregate-leave-one-environment-out-transport",
-            "status": e2_status,
+            "state": e2_state,
             "result": e2,
         },
     }
 
 
-def _overall_status(
+def _overall_evidence_state(
     evidence: Mapping[str, object],
     controls: Mapping[str, object],
     *,
@@ -174,43 +187,49 @@ def _overall_status(
 ) -> tuple[str, str]:
     if not thresholds_declared:
         return (
-            "inconclusive",
+            "unresolved-under-declared-tests",
             "No positive practical thresholds were declared before analysis, so the "
             "prototype does not issue a support judgment.",
         )
 
-    e1_status = evidence["E1"]["status"]  # type: ignore[index]
-    e2_status = evidence["E2"]["status"]  # type: ignore[index]
+    e1_state = evidence["E1"]["state"]  # type: ignore[index]
+    e2_state = evidence["E2"]["state"]  # type: ignore[index]
     control_support = []
     for name, control in controls.items():
         control_evidence = control["evidence"]  # type: ignore[index]
         if (
-            control_evidence["E1"]["status"] == "provisional-support"
-            or control_evidence["E2"]["status"] == "provisional-support"
+            control_evidence["E1"]["state"] == "meets-declared-threshold"
+            or control_evidence["E2"]["state"] == "meets-declared-threshold"
         ):
             control_support.append(name)
 
     if control_support:
         return (
-            "inconclusive",
+            "unresolved-under-declared-tests",
             "A declared deceptive or negative control also crossed a support "
             "threshold, so the implementation self-check did not clear.",
         )
-    if e1_status == "provisional-support" and e2_status == "provisional-support":
+    if (
+        e1_state == "meets-declared-threshold"
+        and e2_state == "meets-declared-threshold"
+    ):
         return (
-            "provisional-support",
+            "supports-claim-under-declared-tests",
             "The candidate crossed the predeclared E1 and aggregate E2 thresholds "
             "in these data while the supplied controls did not. This is conditional "
             "evidence, not certification or construct validity.",
         )
-    if e1_status == "not-supported" or e2_status == "not-supported":
+    if (
+        e1_state == "below-declared-threshold"
+        or e2_state == "below-declared-threshold"
+    ):
         return (
-            "not-supported",
+            "does-not-support-claim-under-declared-tests",
             "At least one required estimand did not reach its predeclared practical "
             "threshold in these data.",
         )
     return (
-        "inconclusive",
+        "unresolved-under-declared-tests",
         "The intervals do not resolve the candidate against every predeclared "
         "threshold and transport requirement.",
     )
@@ -361,18 +380,18 @@ def audit_benchmark_claim(
         }
 
     thresholds_declared = min_increment is not None and min_transport is not None
-    claim_status, interpretation = _overall_status(
+    evidence_state, interpretation = _overall_evidence_state(
         evidence, control_results, thresholds_declared=thresholds_declared
     )
-    if claim_status not in CLAIM_STATUSES:
-        raise RuntimeError("internal error: unsupported claim status")
+    if evidence_state not in EVIDENCE_STATES:
+        raise RuntimeError("internal error: unsupported evidence state")
 
     return _json_safe(
         {
             "schema_version": SCHEMA_VERSION,
             "method_status": "experimental",
             "independently_validated": False,
-            "claim_status": claim_status,
+            "evidence_state": evidence_state,
             "interpretation": interpretation,
             "claim": {"id": claim_id, "text": claim_text.strip()},
             "declarations": {
@@ -401,11 +420,13 @@ def audit_benchmark_claim(
                 **evidence,
                 "E3": {
                     "name": "matched-intervention-consistency",
-                    "status": "not-implemented",
+                    "state": "unresolved",
+                    "reason": "not-implemented",
                 },
                 "E4": {
                     "name": "measurement-reliability-and-cost",
-                    "status": "not-implemented",
+                    "state": "unresolved",
+                    "reason": "not-implemented",
                 },
             },
             "control_results": control_results,
@@ -414,8 +435,9 @@ def audit_benchmark_claim(
                 "declared baselines, environments, and analysis settings.",
                 "Declared capability proxies do not exhaust latent model capability or "
                 "all possible confounding.",
-                "The current cross-fitting code rank-transforms the full analysis sample "
-                "before folds; this prototype is not a deployment-honest estimator.",
+                "Empirical rank transforms and numeric scaling are fitted within each "
+                "training fold; results remain conditional on the chosen folds and "
+                "finite-sample transformations.",
                 "The E2 result is an environment-equal aggregate and can hide a failing "
                 "individual environment.",
                 "E3 interventions and E4 measurement reliability/cost are not implemented.",
@@ -473,7 +495,7 @@ def claim_card_markdown(card: Mapping[str, object]) -> str:
         "> Experimental research prototype. Not independently validated. This card is "
         "a scoped diagnostic, not certification.",
         "",
-        f"**Claim status:** `{card['claim_status']}`",
+        f"**Predeclared test outcome:** `{card['evidence_state']}`",
         "",
         f"**Interpretation:** {card['interpretation']}",
         "",
@@ -493,26 +515,26 @@ def claim_card_markdown(card: Mapping[str, object]) -> str:
         "",
         "## Estimand Results",
         "",
-        "| ID | Check | Status | Main quantity |",
+        "| ID | Check | Predeclared test outcome | Main quantity |",
         "|---|---|---|---:|",
         "| E0 | Unconditional association | {status} | rho {rho} |".format(
-            status=evidence["E0"]["status"],
+            status=evidence["E0"]["state"],
             rho=_format_number(evidence["E0"]["raw_rank_correlation"]),
         ),
         "| E1 | Increment beyond declared baselines | {status} | relative MSE {value} |".format(
-            status=evidence["E1"]["status"],
+            status=evidence["E1"]["state"],
             value=_format_number(
                 evidence["E1"]["result"]["relative_mse_improvement"]
             ),
         ),
         "| E2 | Aggregate environment holdout | {status} | relative MSE {value} |".format(
-            status=evidence["E2"]["status"],
+            status=evidence["E2"]["state"],
             value=_format_number(
                 evidence["E2"]["result"]["relative_mse_improvement"]
             ),
         ),
-        f"| E3 | Matched interventions | {evidence['E3']['status']} | n/a |",
-        f"| E4 | Reliability and cost | {evidence['E4']['status']} | n/a |",
+        f"| E3 | Matched interventions | {evidence['E3']['state']} | n/a |",
+        f"| E4 | Reliability and cost | {evidence['E4']['state']} | n/a |",
     ]
 
     controls = card.get("control_results", {})
@@ -530,8 +552,8 @@ def claim_card_markdown(card: Mapping[str, object]) -> str:
             control_evidence = control["evidence"]
             lines.append(
                 f"| `{name}` | {control['kind']} | "
-                f"{control_evidence['E1']['status']} | "
-                f"{control_evidence['E2']['status']} |"
+                f"{control_evidence['E1']['state']} | "
+                f"{control_evidence['E2']['state']} |"
             )
 
     lines.extend(["", "## Limitations", ""])
@@ -571,6 +593,8 @@ def write_claim_card(
 
 __all__ = [
     "CLAIM_STATUSES",
+    "EVIDENCE_STATES",
+    "ESTIMAND_STATES",
     "SCHEMA_VERSION",
     "audit_benchmark_claim",
     "claim_card_json",
