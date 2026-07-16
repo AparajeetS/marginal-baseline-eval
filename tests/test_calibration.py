@@ -4,6 +4,7 @@ import pytest
 
 from mbe_eval import (
     classify_increment_evidence,
+    classify_predictive_increment,
     cross_fitted_audit,
     make_calibration_ledger,
     repeated_cross_fitted_audit,
@@ -211,6 +212,13 @@ def test_refit_bootstrap_rebuilds_grouped_audit() -> None:
     )
     assert result["refit_bootstrap_successful"] == 20
     assert result["refit_delta_mse_ci_low"] < result["refit_delta_mse_ci_high"]
+    assert result["refit_predictive_classification"] == "increment-supported"
+
+
+def test_predictive_increment_classification_uses_refit_lower_bound() -> None:
+    assert classify_predictive_increment(0.001) == "increment-supported"
+    assert classify_predictive_increment(0.0) == "no-supported-increment"
+    assert classify_predictive_increment(float("nan")) == "insufficient-inference"
 
 
 def test_permutation_blocks_must_be_constant_within_group() -> None:

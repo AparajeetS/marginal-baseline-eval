@@ -61,6 +61,27 @@ The broader comparator, power, and refit-aware inference checks live in
 claim ledger, preregistration draft, and external-review packet live in
 `experiments/11_credibility_freeze/`.
 
+Regenerate the full inference stress matrix with:
+
+```bash
+python experiments/10_method_comparison/run_inference_stress.py \
+  --output-dir experiments/10_method_comparison/out
+```
+
+This is CPU-only but takes several minutes because every bootstrap draw refits
+the nuisance models.
+
+Regenerate manuscript tables with `python paper/build_tables.py`.
+
+An eligible external reviewer can execute the frozen audit with:
+
+```bash
+python experiments/12_independent_replication/run_replication_audit.py \
+  --reviewer "Full Name" \
+  --conflict-statement "No prior contribution; no protected outcomes seen" \
+  --output-dir external_replication_report
+```
+
 ## Reaudit A Published Metric Study
 
 Published studies are ingested through frozen JSON manifests:

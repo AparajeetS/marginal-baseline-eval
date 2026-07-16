@@ -11,10 +11,11 @@ rank dependence is a separate diagnostic and cannot establish increment alone.
 
 ## Primary Decision
 
-`increment-supported` requires both BH-adjusted residual evidence at 0.05 and a
-refit-aware 95% Delta-MSE interval above zero. Results must agree across the
-eligible additive degree-6 and degree-6 pairwise-interaction ridge nuisance
-families. Disagreement produces abstention.
+`increment-supported` requires a full-refit 95% Delta-MSE interval above zero
+for both the eligible additive degree-6 and degree-6 pairwise-interaction ridge
+nuisance families. Disagreement produces abstention. Residual permutation is a
+secondary diagnostic because clustered-null calibration remains mildly
+anti-conservative.
 
 ## Development And Holdout
 
@@ -29,8 +30,8 @@ must be dated, justified, and applied without inspecting protected outcomes.
 ## Uncertainty
 
 Primary uncertainty resamples configuration groups, rebuilds grouped folds,
-and refits all nuisance models. Within-task permutation is used for primary
-task analyses; pooled sensitivity, if shown, permutes within task blocks.
+and refits all nuisance models. Within-task residual permutation is reported as
+a diagnostic; pooled sensitivity, if shown, permutes within task blocks.
 
 ## Comparators
 

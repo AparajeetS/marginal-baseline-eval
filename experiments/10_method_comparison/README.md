@@ -29,3 +29,12 @@ python experiments/10_method_comparison/run_refit_inference_calibration.py \
   --repetitions 20 --refit-draws 39 --permutations 99 \
   --block-repetitions 100 --output-dir experiments/10_method_comparison/out
 ```
+
+The broader stress matrix separates the primary full-refit predictive interval
+from the residual-permutation diagnostic across sample sizes, nuisance families,
+and four dependence structures:
+
+```bash
+python experiments/10_method_comparison/run_inference_stress.py \
+  --output-dir experiments/10_method_comparison/out
+```

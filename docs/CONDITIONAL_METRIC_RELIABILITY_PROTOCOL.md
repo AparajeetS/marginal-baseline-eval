@@ -2,6 +2,10 @@
 
 Status: frozen research-direction amendment, 2026-07-16.
 
+The primary statistical estimand and decision rule are specified in
+[`STATISTICAL_ESTIMAND_AND_INFERENCE.md`](STATISTICAL_ESTIMAND_AND_INFERENCE.md).
+Residual permutation is diagnostic rather than a primary gate.
+
 This document narrows and extends the MBE 2.0 program before full PGDL metric
 extraction. It supersedes any language that treats a metric as universally
 good, bad, surviving, or washed out without naming its target and environment.
@@ -124,6 +128,9 @@ Comparators are frozen as:
 
 Hyperparameters and abstention thresholds are selected inside the outer
 training fold. Holdout task families cannot tune any component.
+
+The prospective execution contract is frozen in
+[`PROSPECTIVE_SELECTION_PROTOCOL.md`](PROSPECTIVE_SELECTION_PROTOCOL.md).
 
 ## Sample-Size Boundary
 

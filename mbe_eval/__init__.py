@@ -10,6 +10,7 @@ from .core import (
 from .reporting import audit_report_markdown, summarize_audit, write_markdown_report
 from .crossfit import (
     classify_increment_evidence,
+    classify_predictive_increment,
     cross_fitted_audit,
     refit_bootstrap_audit,
     repeated_cross_fitted_audit,
@@ -39,6 +40,7 @@ __all__ = [
     "classify_effect",
     "cross_fitted_audit",
     "classify_increment_evidence",
+    "classify_predictive_increment",
     "repeated_cross_fitted_audit",
     "refit_bootstrap_audit",
     "make_demo_runs",

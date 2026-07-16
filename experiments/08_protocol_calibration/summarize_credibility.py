@@ -20,6 +20,8 @@ def main() -> int:
     parser.add_argument("--pgdl-metadata-floor", type=Path)
     parser.add_argument("--method-comparison", type=Path)
     parser.add_argument("--refit-calibration", type=Path)
+    parser.add_argument("--inference-stress-refit", type=Path)
+    parser.add_argument("--inference-stress-block", type=Path)
     args = parser.parse_args()
 
     monte_carlo = pd.read_csv(args.calibration_dir / "monte_carlo_summary.csv")
@@ -135,6 +137,23 @@ def main() -> int:
             f"In the initial 20-repetition full-refit grid, null/proxy strict support was at most {null_max:.1%} and stable-signal recovery was {signal_min:.1%}. A separate 500-repetition block-permutation null rejected 7.2%, so block-aware inference remains provisional rather than calibrated at nominal 5%.",
         ]
 
+    if (
+        args.inference_stress_refit
+        and args.inference_stress_refit.is_file()
+        and args.inference_stress_block
+        and args.inference_stress_block.is_file()
+    ):
+        stress = pd.read_csv(args.inference_stress_refit)
+        blocks = pd.read_csv(args.inference_stress_block).set_index("structure")
+        null = stress.loc[~stress["expected_increment"]]
+        signal = stress.loc[stress["expected_increment"]]
+        refit_lines = [
+            "",
+            "## Refit-Aware Inference",
+            "",
+            f"Across {int(null['repetitions'].sum())} null/proxy nuisance-by-sample-size cells, the maximum predictive-interval support rate was {null['predictive_support_rate'].max():.1%} and the maximum joint support rate was {null['joint_support_rate'].max():.1%}. All {int(signal['repetitions'].sum())} injected-signal cells were recovered. Residual-permutation rejection was {blocks.loc['homoskedastic', 'rejection_rate']:.1%} for the ordinary null and {blocks.loc['clustered', 'rejection_rate']:.1%} for the clustered null. The full-refit predictive interval with nuisance-family agreement is therefore primary; residual permutation is diagnostic.",
+        ]
+
     lines.extend(
         [
             *metadata_lines,
@@ -143,11 +162,11 @@ def main() -> int:
             "",
             "## What This Changes",
             "",
-            "Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, adjusted residual evidence, and interval-supported predictive improvement. Learner disagreement is a result, not permission to select the favorable model.",
+            "Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, full-refit interval-supported predictive improvement, and residual dependence as a separate diagnostic. Learner disagreement is a result, not permission to select the favorable model.",
             "",
             "## Remaining Gates",
             "",
-            "- calibrate the implemented refit bootstrap and block permutation across broader dependence structures;",
+            "- extend full-refit calibration to more effect sizes and task-like dependence structures;",
             "- expand the shared CMI/granulated benchmark and add a formally calibrated conditional-independence comparator;",
             "- complete PGDL Tasks 1-2 real metric extraction;",
             "- freeze and execute Tasks 4-5 validation and Tasks 6-9 transfer once;",

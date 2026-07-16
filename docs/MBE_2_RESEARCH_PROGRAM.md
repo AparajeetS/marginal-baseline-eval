@@ -176,10 +176,15 @@ test.
 ### Primary outcomes
 
 - change in leave-block-out concordance or pairwise ranking accuracy;
-- change in cross-validated predictive loss;
-- cross-fitted residual dependence with a permutation-calibrated p-value;
+- change in cross-validated predictive loss with a full-refit configuration
+  bootstrap interval and agreement across frozen nuisance families;
+- cross-fitted residual dependence with a permutation p-value, reported as a
+  secondary diagnostic rather than a primary decision gate;
 - paired sign error under controlled interventions;
 - 95% block-bootstrap confidence intervals.
+
+The exact learner-relative estimand, assumptions, and primary decision rule are
+defined in `STATISTICAL_ESTIMAND_AND_INFERENCE.md`.
 
 ### Multiplicity
 

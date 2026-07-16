@@ -29,7 +29,8 @@ transport gates.
 |---|---|---|---|
 | Legacy evidence quarantine | Passed | invalid causal-LM evidence and repeated configurations are labeled exploratory | keep public claims synchronized |
 | One-shot synthetic profiles | Passed | six frozen scenarios recover their declared qualitative profiles | one seed is not inferential evidence |
-| Repeated Monte Carlo calibration | Conditional pass | the strict joint rule was run for 100 repetitions across sample size, nuisance complexity, heteroskedastic, and clustered scenarios | add refit-aware uncertainty and block-aware inference |
+| Repeated Monte Carlo calibration | Conditional pass | the strict joint rule was run for 100 repetitions across sample size, nuisance complexity, heteroskedastic, and clustered scenarios | extend to more task-like designs and effect sizes |
+| Full-refit inference stress | Conditional pass | across 320 null/proxy cells there was one predictive-interval false support and zero joint supports; all 80 signal cells were recovered | external implementation and broader effect-size/coverage grid |
 | Real-design semi-synthetic calibration | Conditional pass | PGDL Tasks 1-2 preserve real sample sizes and hyperparameter geometry; the interaction ridge held null/proxy decisions to 0-2% | test additional frozen real-design signals and independent implementations |
 | Cross-fit leakage isolation | Fixed and tested | rank transforms are now fitted within each training fold; configurations never split across folds | external review and regression tests |
 | Published statistic reproduction | Partial pass | Dziugaite et al. source environments and ranking reproduced exactly; its MBE reaudit was regenerated after the fold-rank fix | add more studies with genuine run-level artifacts |
@@ -119,9 +120,12 @@ regenerated under that stricter rule.
 ### Nuisance-model uncertainty
 
 The package now includes a refit bootstrap that resamples independent groups,
-rebuilds fold assignments, and refits every nuisance model. It still requires
-repeated known-truth calibration before becoming the primary interval; the
-faster existing interval conditions on fitted out-of-fold nuisance models.
+rebuilds fold assignments, and refits every nuisance model. In the current
+two-sample-size stress matrix, its predictive interval made one false support
+across 320 null/proxy cells and recovered all 80 injected-signal cells. It is
+the primary interval for the protected protocol, subject to nuisance-family
+agreement and continued scoped reporting; this finite matrix is not a universal
+coverage guarantee.
 
 Operational Delta MSE is relative to a fitted baseline learner. A metric can
 improve a weak learner by compressing information already present in baseline
@@ -133,10 +137,11 @@ keep those interpretations separate.
 
 Permuting residuals is exact only under appropriate exchangeability. Task,
 configuration, and heteroskedastic structures can violate that assumption.
-The current calibration includes heteroskedastic and clustered nulls, and the
-implementation now supports within-block residual permutation. Primary
-inference still needs calibration of that block-aware path and broader
-dependence structures.
+The current calibration includes ordinary, heteroskedastic, unequal-block, and
+clustered nulls. Rejection rates were 5.0%, 4.8%, 5.8%, and 7.0%, respectively,
+over 500 repetitions per structure. Because the clustered-null Wilson interval
+was approximately 5.1-9.6%, residual permutation is retained as a diagnostic,
+not a primary increment gate.
 
 ### Control-set semantics
 

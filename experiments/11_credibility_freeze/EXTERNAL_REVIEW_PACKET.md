@@ -8,12 +8,15 @@ Agreement is not the deliverable; a public discrepancy report is.
 1. Does the baseline ladder answer a scientifically meaningful estimand?
 2. Can any target component leak into controls, metrics, folds, or selection?
 3. Are configuration groups the correct independent units?
-4. Is the permutation scheme exchangeable under each reported scope?
+4. Is residual permutation described only as a diagnostic where clustered
+   exchangeability is uncertain?
 5. Does the refit bootstrap capture the material nuisance and split uncertainty?
 6. Are CMI, granulated Kendall, robust sign error, and MBE described without
    collapsing their different questions?
 7. Can a known proxy pass every eligible nuisance learner?
 8. Is any blocked claim stated affirmatively elsewhere in the repository?
+9. Does the paper distinguish learner-relative predictive utility from universal
+   conditional information?
 
 ## Reviewer Deliverables
 

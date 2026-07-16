@@ -11,6 +11,8 @@ its conclusions are suspected to be wrong.
 | 3 | Predicting Generalization in Deep Learning competition / PGDL corpus | Independent public environments and a benchmark-oriented evaluation design | 550-model metadata intake complete; checkpoint metric extraction frozen |
 | 4 | Jiang et al. (2019), *Predicting the Generalization Gap in Deep Networks with Margin Distributions* | Influential metric claim with a concrete intended direction | Run-level artifact availability required |
 | 5 | Kim et al. (2023), *Fantastic Robustness Measures* | Independent robust-generalization target and public model hub | Official repo inspected; paper metric ledger and analysis code unavailable |
+| 6 | Teng et al. (2023), *Finding Generalization Measures by Contrasting Signal and Noise* | Strong published REF Complexity correlations and official aggregation code | Official commit inspected; run logs are empty placeholders; author data request prepared |
+| 7 | Schuerholt et al. (2022), *Model Zoos* | 50,360 public models across eight datasets with checkpoints and metadata | Promising independent corpus; requires a separate metric-extraction intake rather than published-score reproduction |
 
 ## Acceptance Criteria
 

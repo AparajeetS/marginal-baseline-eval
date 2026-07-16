@@ -215,6 +215,19 @@ def classify_increment_evidence(
     return "no-supported-increment"
 
 
+def classify_predictive_increment(
+    delta_mse_ci_low: float,
+    *,
+    minimum_delta_mse: float = 0.0,
+) -> str:
+    """Classify learner-relative increment from a full-refit lower interval."""
+    if not np.isfinite(delta_mse_ci_low):
+        return "insufficient-inference"
+    if delta_mse_ci_low > minimum_delta_mse:
+        return "increment-supported"
+    return "no-supported-increment"
+
+
 def cross_fitted_audit(
     df: pd.DataFrame,
     metric: str,
@@ -608,6 +621,9 @@ def refit_bootstrap_audit(
             "refit_residual_ci_high": float(residual_ci[1]),
             "refit_delta_mse_ci_low": float(delta_ci[0]),
             "refit_delta_mse_ci_high": float(delta_ci[1]),
+            "refit_predictive_classification": classify_predictive_increment(
+                float(delta_ci[0])
+            ),
             "refit_increment_classification": classify_increment_evidence(
                 float(base["residual_p"]), float(delta_ci[0])
             ),
@@ -618,6 +634,7 @@ def refit_bootstrap_audit(
 
 __all__ = [
     "classify_increment_evidence",
+    "classify_predictive_increment",
     "cross_fitted_audit",
     "refit_bootstrap_audit",
     "repeated_cross_fitted_audit",

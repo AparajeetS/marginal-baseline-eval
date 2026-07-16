@@ -30,15 +30,15 @@ Across 50 balanced-factorial repetitions, corrected interaction MBE supported kn
 
 ## Refit-Aware Inference
 
-In the initial 20-repetition full-refit grid, null/proxy strict support was at most 0.0% and stable-signal recovery was 100.0%. A separate 500-repetition block-permutation null rejected 7.2%, so block-aware inference remains provisional rather than calibrated at nominal 5%.
+Across 320 null/proxy nuisance-by-sample-size cells, the maximum predictive-interval support rate was 5.0% and the maximum joint support rate was 0.0%. All 80 injected-signal cells were recovered. Residual-permutation rejection was 5.0% for the ordinary null and 7.0% for the clustered null. The full-refit predictive interval with nuisance-family agreement is therefore primary; residual permutation is diagnostic.
 
 ## What This Changes
 
-Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, adjusted residual evidence, and interval-supported predictive improvement. Learner disagreement is a result, not permission to select the favorable model.
+Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, full-refit interval-supported predictive improvement, and residual dependence as a separate diagnostic. Learner disagreement is a result, not permission to select the favorable model.
 
 ## Remaining Gates
 
-- calibrate the implemented refit bootstrap and block permutation across broader dependence structures;
+- extend full-refit calibration to more effect sizes and task-like dependence structures;
 - expand the shared CMI/granulated benchmark and add a formally calibrated conditional-independence comparator;
 - complete PGDL Tasks 1-2 real metric extraction;
 - freeze and execute Tasks 4-5 validation and Tasks 6-9 transfer once;

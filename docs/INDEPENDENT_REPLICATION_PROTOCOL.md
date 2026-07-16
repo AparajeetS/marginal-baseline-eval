@@ -39,6 +39,11 @@ The replicator receives:
 The primary team does not provide expected headline values before the
 replicator commits their report.
 
+The executable audit entrypoint is
+`experiments/12_independent_replication/run_replication_audit.py`. It records
+the reviewer, conflict statement, commit, frozen-hash verification, test output,
+dirty paths, discrepancies, and conclusion in machine-readable form.
+
 ## Required Checks
 
 - clean-environment installation and CLI smoke test;

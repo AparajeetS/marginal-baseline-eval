@@ -59,6 +59,40 @@
       ]
     },
     {
+      "id": "refit_inference_stress_matrix",
+      "status": "supported",
+      "scope": "In the frozen two-sample-size stress matrix, joint support was zero across null/proxy cells and complete across injected-signal cells; predictive-only false support was at most 5% in any cell.",
+      "checks": [
+        {
+          "type": "csv_max",
+          "path": "experiments/10_method_comparison/out/inference_stress_refit_summary.csv",
+          "filters": {"expected_increment": false},
+          "column": "joint_support_rate",
+          "value": 0.0
+        },
+        {
+          "type": "csv_max",
+          "path": "experiments/10_method_comparison/out/inference_stress_refit_summary.csv",
+          "filters": {"expected_increment": false},
+          "column": "predictive_support_rate",
+          "value": 0.05
+        },
+        {
+          "type": "csv_min",
+          "path": "experiments/10_method_comparison/out/inference_stress_refit_summary.csv",
+          "filters": {"expected_increment": true},
+          "column": "joint_support_rate",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "id": "clustered_residual_permutation_nominal",
+      "status": "provisional",
+      "scope": "Residual permutation controls nominal 5% error under clustered dependence.",
+      "reason": "The current clustered null rejected 7.0% of 500 repetitions, with a Wilson 95% interval of approximately 5.1-9.6%; residual permutation is diagnostic only."
+    },
+    {
       "id": "mbe_nominal_error_realistic_structures",
       "status": "blocked",
       "scope": "MBE controls nominal error over the full realistic dependence class.",
@@ -80,7 +114,7 @@
       "id": "second_published_study_reproduced",
       "status": "blocked",
       "scope": "A second independent published metric study has been exactly reproduced and reaudited.",
-      "reason": "The Jiang and Fantastic Robustness Measures intakes do not expose the required run-level metric ledgers."
+      "reason": "The Jiang, Fantastic Robustness Measures, and REF Complexity intakes do not expose the required run-level metric ledgers."
     },
     {
       "id": "causal_metric_effect",

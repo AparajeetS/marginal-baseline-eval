@@ -52,6 +52,11 @@ and a 95% Delta-MSE interval entirely above zero. Reports retain the residual
 test rate separately so nuisance misspecification remains visible even when the
 joint decision abstains.
 
+This joint classifier is retained as a historical calibration and secondary
+diagnostic. The protected MBE 2.0 primary rule is the full-refit predictive
+interval with agreement across frozen nuisance families; see
+`docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md`.
+
 `out/MONTE_CARLO_CALIBRATION.md` shows that low-degree nuisance adjustment can
 be badly anti-conservative for proxy cases. It is retained as a documented
 failure and sensitivity condition, not an acceptable primary default.

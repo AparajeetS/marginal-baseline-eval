@@ -8,10 +8,18 @@
     "mbe_eval/reaudit.py",
     "experiments/10_method_comparison/run_factorial_benchmark.py",
     "experiments/10_method_comparison/run_refit_inference_calibration.py",
+    "experiments/10_method_comparison/run_inference_stress.py",
     "experiments/09_published_metric_reaudit/studies/pgdl2020/metric_plan.json",
     "experiments/09_published_metric_reaudit/studies/pgdl2020/pilot_selection.csv",
     "experiments/11_credibility_freeze/claim_ledger.json",
     "experiments/11_credibility_freeze/PREREGISTRATION.md",
+    "experiments/11_credibility_freeze/EXTERNAL_REVIEW_PACKET.md",
+    "experiments/12_independent_replication/run_replication_audit.py",
+    "paper/build_tables.py",
+    "paper/JMLR_MANUSCRIPT_SKELETON.md",
+    "docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md",
+    "docs/METRIC_TAXONOMY_AND_ABLATIONS.md",
+    "docs/PROSPECTIVE_SELECTION_PROTOCOL.md",
     "docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md",
     "docs/MBE_CREDIBILITY_LEDGER.md"
   ]
