@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-07-16T14:56:32.474253+00:00",
-  "base_commit": "5817dc47f3259f7eeb04a37266cb6ed392f57a70",
+  "created_utc": "2026-07-16T16:16:20.819094+00:00",
+  "base_commit": "36a34799a1ee8bbcfdc8853d9c63c2fde7b1a67f",
   "freeze_name": "mbe-pgdl-development-protocol-v1",
   "protected_tasks": [
     "task4",
@@ -14,8 +14,8 @@
   "files": [
     {
       "path": "mbe_eval/crossfit.py",
-      "bytes": 23474,
-      "sha256": "ec4c002643c9cef79a1ce8378ebca361475b9d076ee3d53c458f0b9bb04ab1b4"
+      "bytes": 24038,
+      "sha256": "0e5fd947fac022e941199e69a867474f22caa353607be51912f69bc49c04776b"
     },
     {
       "path": "mbe_eval/comparators.py",
@@ -43,6 +43,11 @@
       "sha256": "daa5a7765b2c9bf6a68e738051f1b19d727c2193a79a0556d0f4a6497bbb330e"
     },
     {
+      "path": "experiments/10_method_comparison/run_inference_stress.py",
+      "bytes": 10372,
+      "sha256": "3d4edc5a0c29cb4b0c8d73f0e158056b5921bce2c733c4db71e7c764dd9694be"
+    },
+    {
       "path": "experiments/09_published_metric_reaudit/studies/pgdl2020/metric_plan.json",
       "bytes": 4564,
       "sha256": "9727c440718a8d7e2c50783e69827f5f8d64a45e1b46fc582ff15fa2b663c1e9"
@@ -54,23 +59,58 @@
     },
     {
       "path": "experiments/11_credibility_freeze/claim_ledger.json",
-      "bytes": 3628,
-      "sha256": "da42c8c16239e984ed9786372a359f46f3844bbab9af0336f8d0c50d4e3008f7"
+      "bytes": 5118,
+      "sha256": "c8456bd650c4278ab610ca69c825ad86a050f2f1ca47a77fdfc02ee840c67b81"
     },
     {
       "path": "experiments/11_credibility_freeze/PREREGISTRATION.md",
-      "bytes": 2094,
-      "sha256": "acda8bce61b364b7c20f09e5e707443046e81460df6aa5cc9677332bbe5c584a"
+      "bytes": 2147,
+      "sha256": "26310125d388feba8b7118a453571891b2b59044959261bee8e2b784a4965f80"
+    },
+    {
+      "path": "experiments/11_credibility_freeze/EXTERNAL_REVIEW_PACKET.md",
+      "bytes": 1328,
+      "sha256": "85f8b4f7b09d75c7b3a300573fe2e6e48d774d40377ef9ccc570e1ddde9c3c0f"
+    },
+    {
+      "path": "experiments/12_independent_replication/run_replication_audit.py",
+      "bytes": 3870,
+      "sha256": "160fc0d61a5e36cf5e8c26f581d35ff94b26c8efc3902cee37c79e5d6afe79e7"
+    },
+    {
+      "path": "paper/build_tables.py",
+      "bytes": 1942,
+      "sha256": "313651c82d38fa2af81ba820726c3d9c3421bcd9d3882e4c2d9f925e7a611f6e"
+    },
+    {
+      "path": "paper/JMLR_MANUSCRIPT_SKELETON.md",
+      "bytes": 3442,
+      "sha256": "e08325a41e4e84c29fb746b23a43a2a0d7bb96bf476d9dddad57ab5c5869f0d2"
+    },
+    {
+      "path": "docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md",
+      "bytes": 3763,
+      "sha256": "c57d3425c6ec16c06c419e72e616a2330ab81cdad214d746f0378fa05dd24c7c"
+    },
+    {
+      "path": "docs/METRIC_TAXONOMY_AND_ABLATIONS.md",
+      "bytes": 3488,
+      "sha256": "00da4087e5388d69a8e563967055c78f28262f62229d835a37d859af027bee89"
+    },
+    {
+      "path": "docs/PROSPECTIVE_SELECTION_PROTOCOL.md",
+      "bytes": 2098,
+      "sha256": "4cb12c4943b61f632749bc5508c3b11043717f5d00e6d9a7c1f8e44eb78a862c"
     },
     {
       "path": "docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md",
-      "bytes": 7790,
-      "sha256": "e85c22cb4aed60b2ba50f565081884aa06abfbc6d7e5f1809eedf032c127aa6b"
+      "bytes": 8127,
+      "sha256": "7797fed674b341ccbb3df5ff93d30e49ea546d675517fdefaabdcd4075d4b69b"
     },
     {
       "path": "docs/MBE_CREDIBILITY_LEDGER.md",
-      "bytes": 10827,
-      "sha256": "3aef634093121331eafb646740d4f53b6fb50aeab37b97a6e3a7d6729389dc5a"
+      "bytes": 11358,
+      "sha256": "59906df393cd62d4b3d46892c851a4459d0de6ea572f712929b1ba4f6c714f7a"
     }
   ]
 }
