@@ -27,6 +27,35 @@ mbe-eval-demo --bootstrap 200
 
 This writes `mbe_demo_report.md` and does not require GPU compute.
 
+## Calibrate The Audit On Known Cases
+
+Run the frozen synthetic calibration suite without GPU compute:
+
+```bash
+python experiments/08_protocol_calibration/run_calibration.py
+```
+
+This generates null, proxy, nonlinear-confounding, genuine-increment,
+Simpson-pooling, and post-treatment-control cases. The command exits nonzero if
+the declared audit profiles are not recovered.
+
+## Reaudit A Published Metric Study
+
+Published studies are ingested through frozen JSON manifests:
+
+```bash
+python experiments/09_published_metric_reaudit/run_reaudit.py \
+  path/to/study_manifest.json \
+  --output-prefix path/to/results/study_reaudit
+```
+
+See `experiments/09_published_metric_reaudit/study_manifest.example.json` for
+the schema. The runner fails on missing declared controls or duplicate row IDs.
+
+The PGDL external-checkpoint intake and frozen pilot are documented in
+`experiments/09_published_metric_reaudit/studies/pgdl2020/README.md`. HDF5
+checkpoint extraction requires the optional `h5py` package but no GPU.
+
 ## Regenerate MBE Tables From Saved CSVs
 
 The legacy pilot summaries are generated from four committed Kaggle CSV

@@ -10,6 +10,11 @@ machine-learning training metrics still predict held-out performance after
 controlling for ordinary baselines such as learning rate, weight decay,
 optimizer, architecture, task, and training-state measurements.
 
+The active research direction treats reliability as conditional on the target,
+baseline information, and environment. MBE is being developed into a public
+reliability atlas and an abstaining selector that recommends metrics only when
+task-specific or calibrated transfer evidence supports them.
+
 The project started from a concrete failure mode: a proposed metric can look
 promising under raw pooled correlation while actually tracking easier baselines,
 training loss, architecture mix, or other design variables. MBE makes that
@@ -42,6 +47,9 @@ novelty claim must pass the public-corpus comparison gate or be narrowed.
 - Package: [`mbe-eval`](https://pypi.org/project/mbe-eval/)
 - Public notebook: [Audit ML Training Metrics with MBE](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe)
 - Documentation map: [docs/README.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/README.md)
+- Conditional reliability protocol: [atlas, selector, and abstention design](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md)
+- Metric audit service: [open-core product boundary](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/METRIC_RELIABILITY_AUDIT_SERVICE.md)
+- Credibility ledger: [passed, failed, fixed, and blocked evidence gates](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md)
 - Evidence ledger: [SUPPORTING_EVIDENCE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/SUPPORTING_EVIDENCE.md)
 - Reproducibility notes: [REPRODUCIBILITY.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/REPRODUCIBILITY.md)
 - Legacy v1 protocol: [PROTOCOL_FREEZE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PROTOCOL_FREEZE.md)
@@ -220,15 +228,16 @@ marginal-baseline-eval/
 
 ## Research Claim
 
-The claim is not that any one metric is universally bad. The claim is narrower
-and more useful:
+The claim is not that any one metric is universally good or bad. The active
+claim is narrower and more useful:
 
-> Raw pooled correlation is insufficient for validating ML training metrics.
-> MBE audits whether a metric retains signal beyond ordinary training baselines
-> and experimental design variables.
+> Metric reliability is conditional on a declared target, baseline information
+> set, and environment. MBE audits that scope and tests whether it supports a
+> useful recommendation or an honest abstention.
 
-This is a methodological hypothesis under active validation, not a claim that
-the current pilot establishes universal metric failure or causal effects.
+This is a methodological hypothesis under active validation. The current PGDL
+pilot checks implementation behavior; it does not establish a general metric
+router, universal metric failure, or causal effects.
 
 ## Citation
 

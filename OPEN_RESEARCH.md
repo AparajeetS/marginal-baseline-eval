@@ -21,6 +21,11 @@ the available analyses, and propose competing designs.
 | Compute budget | [`docs/COMPUTE_AND_COST_PLAN.md`](docs/COMPUTE_AND_COST_PLAN.md) | Minimum and recommended estimates |
 | Grant execution plan | [`GRANT_EXECUTION_PLAN.md`](GRANT_EXECUTION_PLAN.md) | Exact run matrix, holdout, budget ceilings, and deliverables |
 | Independent replication | [`docs/INDEPENDENT_REPLICATION_PROTOCOL.md`](docs/INDEPENDENT_REPLICATION_PROTOCOL.md) | Conflict, execution, acceptance, and reporting rules |
+| Synthetic calibration | [`experiments/08_protocol_calibration/`](experiments/08_protocol_calibration/) | Known-ground-truth MBE 2.0 protocol checks |
+| Published metric reaudit | [`experiments/09_published_metric_reaudit/`](experiments/09_published_metric_reaudit/) | Strict manifest schema and retrospective audit runner |
+| Conditional reliability protocol | [`docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md`](docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md) | Frozen atlas, selector, and abstention evaluation |
+| Audit service boundary | [`docs/METRIC_RELIABILITY_AUDIT_SERVICE.md`](docs/METRIC_RELIABILITY_AUDIT_SERVICE.md) | Open-core and private-audit product model |
+| Credibility ledger | [`docs/MBE_CREDIBILITY_LEDGER.md`](docs/MBE_CREDIBILITY_LEDGER.md) | Adversarial validation gates, failures, and blocked claims |
 | Citation metadata | [`CITATION.cff`](CITATION.cff) | Machine-readable citation |
 
 ## What Works Without New Compute

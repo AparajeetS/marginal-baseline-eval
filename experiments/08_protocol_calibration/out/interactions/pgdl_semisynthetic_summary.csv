@@ -1,0 +1,10 @@
+scope,case_name,expected_signal,polynomial_degree,nuisance_model,n,repetitions,joint_decision_rate,joint_decision_ci_low,joint_decision_ci_high,sign_correct_rate,median_residual_r,median_delta_mse
+balanced_pool,opposite_sign_task_specialists,heterogeneous,6,polynomial_ridge_interactions,108,100,0.04,0.01566330399154762,0.0983707143588792,1.0,-0.016997224141886216,0.05920211881655147
+task1,injected_increment,True,6,polynomial_ridge_interactions,96,100,1.0,0.9630065017930143,1.0,1.0,0.8176885512750949,0.030704509567384214
+task1,real_design_proxy,False,6,polynomial_ridge_interactions,96,100,0.02,0.00550196755016235,0.07001179072854388,1.0,0.26152333152468804,-0.0023133148064178755
+task1,real_structure_null,False,6,polynomial_ridge_interactions,96,100,0.0,3.469446951953614e-18,0.03699349820698568,1.0,0.023840206185567012,-0.0014189160195363917
+task1,task_specialist,True,6,polynomial_ridge_interactions,96,100,1.0,0.9630065017930143,1.0,1.0,0.9050800325556159,0.07485984002214466
+task2,injected_increment,True,6,polynomial_ridge_interactions,54,100,0.94,0.8752318455410406,0.9722138760368118,1.0,0.7700781398894605,0.029021107550909656
+task2,real_design_proxy,False,6,polynomial_ridge_interactions,54,100,0.02,0.00550196755016235,0.07001179072854388,1.0,0.29502572898799306,-0.002052819121943295
+task2,real_structure_null,False,6,polynomial_ridge_interactions,54,100,0.01,0.0017674320641406505,0.054486196178705315,1.0,-0.010367829235753762,-0.0017536639282225972
+task2,task_specialist,True,6,polynomial_ridge_interactions,54,100,1.0,0.9630065017930143,1.0,1.0,-0.9022679626453209,0.07265873480237944

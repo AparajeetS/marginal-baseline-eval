@@ -1,6 +1,7 @@
 # MBE 2.0 Research Program
 
-Status: design specification for the next research phase.
+Status: active design specification, amended 2026-07-16 by the
+[`Conditional Metric Reliability Protocol`](CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md).
 
 This document supersedes the v1 protocol for all future experiments. The v1
 results remain useful as pilot evidence and as examples of evaluation failure,
@@ -8,7 +9,7 @@ but they are not submission-grade evidence.
 
 ## Working Title
 
-> Beyond Correlation: Stress-Testing ML Metrics Across Baselines, Targets, and Environments
+> Which Metric Should You Trust Here? Conditional Reliability Across ML Tasks
 
 ## Research Objective
 
@@ -22,21 +23,27 @@ The central claim is not that a particular metric is universally invalid. It is:
 > deployment environment, and intervention family. Raw pooled correlation alone
 > does not establish incremental utility or transportability.
 
-Marginal Baseline Evaluation (MBE 2.0) will be a benchmark and audit framework
-for making those dependencies explicit.
+Marginal Baseline Evaluation (MBE 2.0) is the audit engine for making those
+dependencies explicit. The program now tests whether those audits can support
+a reliability atlas and an abstaining, task-conditional metric selector. A
+selector is a gated contribution, not an assumed success.
 
 ## Contribution Hierarchy
 
 ### Primary contribution
 
-A unified empirical protocol that separates five questions commonly collapsed
-into one correlation coefficient:
+A unified empirical protocol and conditional reliability representation that
+separate five questions commonly collapsed into one correlation coefficient:
 
 1. unconditional predictive association;
 2. incremental predictive utility beyond available baselines;
 3. transport to unseen environments;
 4. consistency under controlled interventions;
 5. measurement reliability and operational cost.
+
+The primary scientific object is a metric-target-environment reliability
+profile, not a global metric leaderboard. Metrics aimed at different targets
+are not ranked against one another until a common decision estimand is declared.
 
 ### Novelty boundary
 
@@ -66,6 +73,14 @@ A calibrated benchmark of published metric families, proxy controls, and
 deliberately deceptive metrics across public model corpora and new factorial
 experiments.
 
+### Gated systems contribution
+
+An abstaining selector that recommends a metric or Pareto set for a declared
+task, target, baseline information set, and measurement budget. It becomes a
+primary contribution only if leave-one-task-family-out evaluation improves
+decision regret over frozen global and raw-correlation selectors. Eight PGDL
+tasks alone cannot support a broad learned-router claim.
+
 ### Motivating case study
 
 FIM effective rank, previously called `FIM_norm`, is retained as a good-faith
@@ -89,6 +104,10 @@ MBE 2.0 will not claim:
 - that a metric is useless whenever it is redundant with available metadata;
 - that pooled image and language accuracy values are directly comparable;
 - that a large number of scalar columns is equivalent to broad metric coverage.
+- that metrics addressing different targets admit a universal ranking;
+- that a new task can receive a validated recommendation without target-task
+  evidence or calibrated transport evidence;
+- that model-level sample size substitutes for independent task families.
 
 ## Evaluation Estimands
 
@@ -303,6 +322,28 @@ provide independent environments and reduce new training cost.
 Primary question: do metric rankings and verdicts change across E0-E3, and do
 the deceptive controls expose weaknesses in existing evaluation procedures?
 
+Outputs include a target-specific reliability atlas. PGDL Tasks 1-2 are
+development, Tasks 4-5 are validation, and Tasks 6-9 are protected transfer
+holdout. The selector protocol, features, and abstention rule must be frozen
+before protected metric outputs are inspected.
+
+### WP2b: Conditional selector calibration
+
+Construct the selector from reliability profiles rather than raw pooled metric
+rankings. Evaluate it with nested leave-one-task-family-out validation against
+the comparators and decision outcomes frozen in
+`CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md`.
+
+This work package has two reporting modes:
+
+- with fewer than 12 task families, report a feasibility study and atlas only;
+- with at least 12 task families, report selector regret and abstention as a
+  pilot, reserving broad claims for preferably 20 or more families.
+
+Failure to outperform the globally best metric redirects the contribution to
+the audit protocol and atlas; it does not justify post-hoc selector tuning on
+the external holdout.
+
 ### WP3: Corrected image factorial
 
 Minimum design:
@@ -384,6 +425,10 @@ The main paper proceeds if all of the following hold:
 5. Conclusions survive configuration/seed block uncertainty.
 6. Metric-family findings are not driven by one implementation or missingness
    pattern.
+7. Any automated-selection claim improves held-out task-family regret over the
+   globally best metric and pooled raw-correlation selection.
+8. Abstention quality is reported as coverage-risk or coverage-regret rather
+   than a hand-picked confidence threshold.
 
 The paper is redirected to a narrower venue if the method does not outperform
 or clarify prior evaluation protocols. Negative metric results alone are not a
@@ -391,13 +436,13 @@ sufficient JMLR contribution.
 
 ## Intended Paper Structure
 
-1. Metric claims conflate distinct prediction questions.
-2. Related evaluation frameworks and their estimands.
-3. MBE 2.0: baseline ladders, cross-fitting, and transport audits.
+1. Metric utility is conditional on target, baseline, and environment.
+2. Related evaluation and algorithm-selection frameworks.
+3. MBE 2.0 and the conditional reliability profile.
 4. Synthetic calibration and deceptive metrics.
-5. Public-corpus retrospective benchmark.
-6. Corrected image and text factorial experiments.
-7. Locked external holdout.
+5. Public-corpus reliability atlas.
+6. Conditional selection and calibrated abstention.
+7. Corrected image/text task families and locked external holdout.
 8. FIM effective-rank self-falsification case study.
-9. Measurement cost, reliability, and missingness.
+9. Measurement cost, reliability, missingness, and operational use.
 10. Limitations, non-causal scope, and reporting recommendations.

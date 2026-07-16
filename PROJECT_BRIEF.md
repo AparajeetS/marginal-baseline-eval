@@ -20,6 +20,11 @@ MBE 2.0 asks five distinct questions:
 4. Does it respond correctly under interventions with known direction?
 5. Is it reliable and inexpensive enough to measure consistently?
 
+The revised endpoint is not a universal metric ranking. MBE produces a
+target- and environment-specific reliability profile, a public reliability
+atlas, and, if held-out task-family tests support it, an abstaining selector
+that recommends which metrics are defensible for a particular use case.
+
 ## Current State
 
 The software is usable today. Researchers can install `mbe-eval`, run a
@@ -39,6 +44,11 @@ cross-fitted nonlinear baselines, separate targets, environment transport,
 intervention tests, uncertainty, practical significance, and explicit positive
 and negative controls.
 
+The conditional selector is not yet a validated general router. PGDL provides
+eight tasks for an atlas and feasibility study; broad automated-selection
+claims require more independent task families and leave-one-family-out
+validation.
+
 It does not claim priority for conditioning or partial correlation by
 themselves. The proposed contribution is a calibrated, auditable combination
 of five estimands, a baseline information ladder, deceptive controls,
@@ -54,6 +64,8 @@ methods before the main compute block is released.
 - Public notebook: https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe
 - Open research inventory: [`OPEN_RESEARCH.md`](OPEN_RESEARCH.md)
 - Technical program: [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md)
+- Conditional reliability protocol: [`docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md`](docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md)
+- Audit service model: [`docs/METRIC_RELIABILITY_AUDIT_SERVICE.md`](docs/METRIC_RELIABILITY_AUDIT_SERVICE.md)
 - Evidence ledger: [`SUPPORTING_EVIDENCE.md`](SUPPORTING_EVIDENCE.md)
 - Reproduction guide: [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md)
 - Governance: [`GOVERNANCE.md`](GOVERNANCE.md)
@@ -94,6 +106,11 @@ benchmark designers, and small labs. Its value is not declaring metrics
 universally good or bad. It is making the evidentiary standard explicit and
 reproducible: what a metric predicts, beyond which baseline, in which
 environment, under which intervention, and with what uncertainty and cost.
+
+The same open protocol can support private metric-reliability audits. Paid
+value would come from secure execution, customer-specific calibration,
+integration, monitoring, and support; the core method, public benchmark, and
+scientific failures remain open.
 
 If active maintenance stopped, the MIT-licensed implementation, package source,
 protocols, artifact formats, and reproduction instructions would remain

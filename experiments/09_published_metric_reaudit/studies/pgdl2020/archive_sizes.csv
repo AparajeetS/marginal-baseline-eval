@@ -1,0 +1,9 @@
+phase,task,archive_url,archive_etag,checkpoint_members,checkpoint_compressed_bytes,checkpoint_uncompressed_bytes,dataset_compressed_bytes
+phase_one,task4,https://storage.googleapis.com/gresearch/pgdl/phase_one_data.zip,"""c73b5040403264a3993aaf174d9f28c4""",192,1242981519,1356629560,287293798
+phase_one,task5,https://storage.googleapis.com/gresearch/pgdl/phase_one_data.zip,"""c73b5040403264a3993aaf174d9f28c4""",128,825882757,904344344,287293798
+phase_two,task6,https://storage.googleapis.com/gresearch/pgdl/phase_two_data.zip,"""282e02d46dd68bf571ceb347328d2b1d""",192,2820091011,3069381648,91354257
+phase_two,task7,https://storage.googleapis.com/gresearch/pgdl/phase_two_data.zip,"""282e02d46dd68bf571ceb347328d2b1d""",96,1792451285,1949318688,81657213
+phase_two,task8,https://storage.googleapis.com/gresearch/pgdl/phase_two_data.zip,"""282e02d46dd68bf571ceb347328d2b1d""",128,3369516312,3694193152,46758198
+phase_two,task9,https://storage.googleapis.com/gresearch/pgdl/phase_two_data.zip,"""282e02d46dd68bf571ceb347328d2b1d""",64,1144617595,1245287544,268158804
+public,task1_v4,https://storage.googleapis.com/gresearch/pgdl/public_data.zip,"""6a05d0b267f0ff22055ecc55b005f391""",192,6249452736,6817151808,268191879
+public,task2_v1,https://storage.googleapis.com/gresearch/pgdl/public_data.zip,"""6a05d0b267f0ff22055ecc55b005f391""",108,2509878774,2733043928,403732856

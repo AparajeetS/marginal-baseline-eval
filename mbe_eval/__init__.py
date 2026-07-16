@@ -8,6 +8,20 @@ from .core import (
     spearman_corr,
 )
 from .reporting import audit_report_markdown, summarize_audit, write_markdown_report
+from .crossfit import (
+    classify_increment_evidence,
+    cross_fitted_audit,
+    repeated_cross_fitted_audit,
+)
+from .calibration import make_calibration_ledger, run_calibration, run_monte_carlo_calibration
+from .reaudit import run_manifest_reaudit, run_published_reaudit, validate_study_manifest
+from .robust_sign_error import robust_sign_error_environments, robust_sign_error_summary
+from .checkpoint_metrics import summarize_checkpoint_pair
+from .selection import (
+    coverage_regret_curve,
+    leave_one_task_out_global_choice,
+    score_recommendations,
+)
 
 __version__ = "0.3.2"
 
@@ -20,12 +34,27 @@ __all__ = [
     "audit_metric",
     "audit_metrics",
     "classify_effect",
+    "cross_fitted_audit",
+    "classify_increment_evidence",
+    "repeated_cross_fitted_audit",
     "make_demo_runs",
+    "make_calibration_ledger",
     "partial_rank_corr",
     "run_demo",
+    "run_calibration",
+    "run_monte_carlo_calibration",
+    "run_manifest_reaudit",
+    "run_published_reaudit",
+    "robust_sign_error_environments",
+    "robust_sign_error_summary",
     "summarize_audit",
     "spearman_corr",
+    "summarize_checkpoint_pair",
+    "coverage_regret_curve",
+    "leave_one_task_out_global_choice",
+    "score_recommendations",
     "simulate_mbe_evaluation",
+    "validate_study_manifest",
     "write_markdown_report",
 ]
 

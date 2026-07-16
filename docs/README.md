@@ -14,6 +14,11 @@ Use this page as the map for the research repository.
 - [README](../README.md): install, package usage, and current result snapshot.
 - [Figures](../FIGURES.md): visual summary of current evidence.
 - [Supporting evidence](../SUPPORTING_EVIDENCE.md): run-by-run result ledger.
+- [Synthetic protocol calibration](../experiments/08_protocol_calibration/README.md): known-ground-truth audit cases.
+- [Published metric reaudit](../experiments/09_published_metric_reaudit/README.md): manifest-driven retrospective framework.
+- [Conditional metric reliability protocol](CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md): frozen atlas, selector, and abstention design.
+- [Metric reliability audit service](METRIC_RELIABILITY_AUDIT_SERVICE.md): product hypothesis, deliverables, and research boundaries.
+- [MBE credibility ledger](MBE_CREDIBILITY_LEDGER.md): passed, failed, fixed, and still-blocked validation gates.
 
 ## Legacy MBE 1.0 Material
 

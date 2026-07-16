@@ -56,6 +56,8 @@ setup(
     ],
     extras_require={
         "torch": ["torch>=2.0", "torchvision>=0.15"],
+        "checkpoint": ["h5py>=3.10"],
+        "flexible": ["scikit-learn>=1.3"],
         "plot": ["matplotlib>=3.7", "seaborn>=0.12"],
         "examples": ["torch>=2.0", "torchvision>=0.15", "scikit-learn>=1.3"],
         "dev": ["pytest>=7", "build>=1.0", "twine>=4"],

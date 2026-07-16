@@ -16,6 +16,10 @@ The project is ready for JMLR submission only when:
 - all headline claims replicate under configuration/seed block uncertainty;
 - one external environment remains locked until the method and paper claims are
   frozen;
+- the reliability atlas keeps generalization, robustness, calibration, final
+  performance, and optimization targets separate;
+- any selector claim is evaluated by leave-one-task-family-out regret and
+  calibrated abstention against frozen simple baselines;
 - the text model and data splits are valid and leakage-tested;
 - raw ledgers, hashes, metric cards, code, and one-command table regeneration
   are public;
@@ -29,7 +33,8 @@ The project is ready for JMLR submission only when:
 | M0 | v1 evidence quarantine and corrected claim ledger | CPU | historical claims corrected |
 | M1 | frozen MBE 2.0 specification and metric cards | CPU | estimands and controls approved |
 | M2 | calibrated statistical implementation | CPU | synthetic null/proxy tests pass |
-| M3 | public-corpus retrospective benchmark | 60-100 GPU-h | novelty over prior methods demonstrated |
+| M3 | public-corpus reliability atlas | 60-100 GPU-h | conditionality and novelty demonstrated |
+| M3b | selector feasibility and abstention calibration | CPU | held-out-family baselines beaten or claim narrowed |
 | M4 | end-to-end pilot and runtime calibration | 15-25 GPU-h | no leakage, IDs or pipeline failures |
 | M5 | corrected image factorial | 70-120 GPU-h | block-level replication succeeds |
 | M6 | corrected causal text factorial | 70-120 GPU-h | text findings valid and stable |
@@ -86,6 +91,8 @@ Tasks:
    variance estimates are available.
 8. Specify missingness, failure, and exclusion rules.
 9. Write the external preregistration template.
+10. Freeze the conditional reliability profile, selector comparators, decision
+    metrics, evidence levels, and abstention semantics.
 
 Gate M1:
 
@@ -93,6 +100,8 @@ Gate M1:
 - no baseline variable is included or excluded using an unverified causal DAG;
 - seed is a block/random factor, never an ordered covariate;
 - metric definitions and provenance pass independent code review.
+- no metric is assigned a global verdict without a target and environment;
+- selector evaluation follows `CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md`.
 
 ## M2: Implement And Calibrate MBE 2.0
 
@@ -128,7 +137,7 @@ Gate M2:
 
 No main GPU sweep is permitted before Gate M2 passes.
 
-## M3: Public-Corpus Retrospective Benchmark
+## M3: Public-Corpus Reliability Atlas
 
 Estimated effort: 7-14 days plus 60-100 GPU-hours for metric extraction.
 
@@ -137,10 +146,13 @@ Tasks:
 1. Acquire and hash at least one suitable public model corpus.
 2. Reconstruct its environments, targets, and hyperparameter records.
 3. Reproduce published baseline evaluation scores where possible.
-4. Run E0-E4 comparisons and deceptive controls.
+4. Run E0-E4 comparisons and deceptive controls separately by target and
+   environment.
 5. Reserve at least one corpus or environment as an untouched external holdout
    if licensing and artifact coverage allow.
 6. Document unavailable checkpoints or unsupported metrics.
+7. Produce the task-by-metric reliability atlas with uncertainty, sign
+   stability, transport, coverage, and measurement cost.
 
 Gate M3:
 
@@ -150,8 +162,39 @@ Gate M3:
 - missingness does not determine the metric-family ranking;
 - the paper's novelty statement can be written without claiming priority for
   hyperparameter conditioning itself.
+- apparent global rankings are decomposed into target- and environment-specific
+  profiles rather than promoted as universal verdicts.
 
 If Gate M3 fails, reassess JMLR before purchasing the main compute block.
+
+## M3b: Conditional Selector Feasibility
+
+Estimated effort: 5-10 CPU-focused days after the atlas is frozen.
+
+Tasks:
+
+1. Implement a transparent reliability-rule baseline before any learned
+   selector.
+2. Implement nested leave-one-task-family-out evaluation.
+3. Compare against the globally best metric, pooled raw correlation,
+   within-task raw correlation where permitted, baseline-only prediction,
+   regularized stacking, and the task-specific oracle upper bound.
+4. Report selection regret, top-k utility recovery, sign error, interval
+   calibration, and coverage-regret curves.
+5. Test whether adding architecture or dataset identity merely memorizes task
+   families.
+6. Separate L1 transport recommendations from L2 target-calibrated
+   recommendations in every output.
+
+Gate M3b:
+
+- all selector tuning occurs inside the outer training-task folds;
+- protected tasks do not set thresholds, features, or metric eligibility;
+- abstention reduces regret at reduced coverage rather than merely suppressing
+  unfavorable examples;
+- a selector is promoted to a primary claim only if it improves held-out-family
+  regret over the globally best and pooled-correlation selectors;
+- with fewer than 12 task families, results are labeled feasibility evidence.
 
 ## M4: End-To-End Pilot
 
@@ -211,6 +254,9 @@ Gate M5:
 - at least one metric-family result replicates across both image datasets;
 - conclusions are stable under the preregistered nuisance-model sensitivity;
 - both final performance and generalization-gap targets are reported.
+- each dataset/architecture subgroup retains an explicit environment ID so it
+  can contribute to grouped transport analysis without being miscounted as a
+  fully independent task family.
 
 ## M6: Corrected Causal Text Factorial
 
@@ -235,6 +281,8 @@ Gate M6:
 - metric batch-size sensitivity is quantified;
 - at least one result is stable across model sizes;
 - no claim depends on pooling image accuracy with text accuracy.
+- the text environment tests cross-modality abstention rather than assuming an
+  image-trained recommendation should transfer.
 
 ## M7: Locked External Holdout
 
@@ -247,6 +295,8 @@ Before unblinding:
 3. Publish a timestamped preregistration and artifact manifest.
 4. Verify that no result from the environment has been inspected during
    method development.
+5. Freeze the selector, utility definition, comparators, and abstention
+   threshold using development/validation task families only.
 
 After unblinding:
 
@@ -260,6 +310,7 @@ Gate M7:
   accurately report the failure;
 - no post-hoc threshold, metric-list, or exclusion change affects the primary
   table.
+- recommendation evidence levels and abstentions remain correct after transfer.
 
 ## M8: Final Analysis And Artifact Release
 
@@ -270,6 +321,7 @@ Tasks:
 - finalize block-bootstrap and permutation results;
 - run all ablations and nuisance-model sensitivity checks;
 - generate metric-family and environment-level figures;
+- generate the reliability atlas and selector coverage-regret figures;
 - produce runtime, memory, coverage, and reliability tables;
 - package raw ledgers, hashes, split manifests, and metric cards;
 - release an MBE 2.0 package candidate;
@@ -308,6 +360,9 @@ Adversarial review questions:
 - Is the external holdout genuinely untouched?
 - Do results survive environment and configuration weighting?
 - Is the method practically useful relative to its complexity?
+- Does the selector outperform a globally fixed metric, or is the atlas the
+  actual contribution?
+- Is the effective sample size counted in task families rather than models?
 
 Gate M9:
 

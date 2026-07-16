@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "frozen_on": "2026-07-15",
+  "benchmark": "Predicting Generalization in Deep Learning",
+  "primary_target": "generalization_gap_accuracy",
+  "secondary_targets": [
+    "test_error",
+    "test_loss",
+    "generalization_gap_loss"
+  ],
+  "splits": {
+    "development": ["task1", "task2"],
+    "validation": ["task4", "task5"],
+    "protected_holdout": ["task6", "task7", "task8", "task9"]
+  },
+  "primary_metrics": [
+    "parameter_count",
+    "parameter_l2",
+    "distance_from_initialization_l2",
+    "relative_distance_from_initialization",
+    "update_to_weight_ratio",
+    "log_spectral_product_sq",
+    "spectral_sum_sq",
+    "log_frobenius_product_sq",
+    "frobenius_sum_sq",
+    "path_norm",
+    "inverse_margin",
+    "prediction_entropy",
+    "gradient_norm",
+    "empirical_fisher_trace",
+    "fim_norm",
+    "sharpness_random_perturbation"
+  ],
+  "exploratory_metrics": ["cei_r"],
+  "baseline_ladder": [
+    "B0_task_only",
+    "B1_task_specific_hyperparameters",
+    "B2_hyperparameters_plus_train_loss",
+    "B3_hyperparameters_plus_training_state"
+  ],
+  "task_controls": {
+    "task1": ["hp.convwidth", "hp.dropout_p", "hp.num_conv_blocks", "hp.num_dense_layers", "hp.weight_decay", "hp.bs"],
+    "task2": ["hp.depth", "hp.dropout_p", "hp.weight_decay", "hp.bs"],
+    "task4": ["hp.nparams", "hp.depth", "hp.wd", "hp.reverse", "hp.lr", "hp.bs"],
+    "task5": ["hp.nparams", "hp.depth", "hp.wd", "hp.reverse", "hp.lr", "hp.bs"],
+    "task6": ["hp.weight_decay", "hp.bs", "hp.conv", "hp.depth", "hp.dropout_p", "hp.lr"],
+    "task7": ["hp.depth", "hp.dropout_p", "hp.weight_decay", "hp.bs", "hp.dense"],
+    "task8": ["hp.convwidth", "hp.dropout_p", "hp.num_conv_blocks", "hp.lr", "hp.bs"],
+    "task9": ["hp.conv", "hp.depth", "hp.dropout_p", "hp.weight_decay", "hp.bs"]
+  },
+  "inference": {
+    "crossfit_folds": 5,
+    "crossfit_repeats": 10,
+    "permutations": 999,
+    "bootstrap_replicates": 1000,
+    "increment_support_rule": "BH-adjusted residual q <= 0.05 and the lower 95% Delta-MSE interval exceeds the frozen practical threshold.",
+    "nuisance_sensitivity": {
+      "polynomial_ridge_degrees": [4, 6],
+      "interaction_capable": "polynomial_ridge_interactions_degree_6",
+      "degree_2_status": "diagnostic failure control; excluded from primary inference after known-ground-truth calibration",
+      "extra_trees_status": "frozen tested configuration failed known-ground-truth proxy calibration; preserved as a failure control and excluded from primary inference",
+      "disagreement_rule": "Report every eligible learner. Do not select a learner using real metric favorability."
+    },
+    "multiplicity": "Benjamini-Hochberg within task and baseline level",
+    "report": [
+      "raw_association",
+      "crossfit_residual_association",
+      "delta_mse",
+      "relative_mse_improvement",
+      "confidence_intervals",
+      "task_stability",
+      "source_style_pairwise_ranking"
+    ]
+  },
+  "holdout_rule": "Freeze metric implementations, nuisance controls, thresholds, and development/validation report before computing or inspecting metric outputs for tasks 6-9.",
+  "amendments": [
+    {
+      "date": "2026-07-16",
+      "reason": "Known-ground-truth Monte Carlo calibration exposed false increments under degree-2 nuisance misspecification and a full-data rank-transform leak.",
+      "changes": "Rank transforms are fit inside training folds; degree 2 and the tested Extra Trees configuration are retained only as failure diagnostics; additive degree 4/6 and degree-6 pairwise-interaction ridge enter frozen sensitivity reporting; increment support requires both adjusted residual evidence and interval-supported predictive improvement.",
+      "timing": "Frozen before full Tasks 1-2 checkpoint metric extraction and before all Tasks 4-9 checkpoint metric outputs."
+    }
+  ],
+  "weight_metric_definitions": {
+    "kernel_matrix_rule": "Flatten all kernel input axes and retain the final output axis.",
+    "spectral_estimator": "Exact singular-value decomposition; squared layer norms are summed or summed in log space.",
+    "frobenius_aggregation": "Squared layer norms are summed or summed in log space.",
+    "bias_policy": "Biases are included in whole-model parameter and update norms but excluded from layer product/sum measures."
+  },
+  "notes": "CEI-R is exploratory and cannot determine MBE thresholds or the primary narrative. Product measures are represented in log space to prevent overflow; this naming clarification was frozen before pilot metric outputs were computed."
+}

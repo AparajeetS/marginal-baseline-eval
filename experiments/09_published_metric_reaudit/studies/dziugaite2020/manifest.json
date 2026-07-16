@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "study_id": "dziugaite-et-al-2020-robust-generalization-v1",
+  "title": "In Search of Robust Measures of Generalization",
+  "citation_url": "https://arxiv.org/abs/2010.11924",
+  "artifact_url": "https://github.com/nitarshan/robust-generalization-measures",
+  "data_path": "../../data/dziugaite2020/nin.cifar10_svhn_reaudit.csv",
+  "row_id": "run_id",
+  "target": "gen.gap",
+  "metrics": [
+    "complexity.dist_spec_init",
+    "complexity.dist_spec_init_fft",
+    "complexity.fro_dist",
+    "complexity.fro_over_spec",
+    "complexity.fro_over_spec_fft",
+    "complexity.inverse_margin",
+    "complexity.log_prod_of_fro",
+    "complexity.log_prod_of_fro_over_margin",
+    "complexity.log_prod_of_spec",
+    "complexity.log_prod_of_spec_fft",
+    "complexity.log_prod_of_spec_over_margin",
+    "complexity.log_prod_of_spec_over_margin_fft",
+    "complexity.log_spec_init_main",
+    "complexity.log_spec_init_main_fft",
+    "complexity.log_spec_orig_main",
+    "complexity.log_spec_orig_main_fft",
+    "complexity.log_sum_of_fro",
+    "complexity.log_sum_of_fro_over_margin",
+    "complexity.log_sum_of_spec",
+    "complexity.log_sum_of_spec_fft",
+    "complexity.log_sum_of_spec_over_margin",
+    "complexity.log_sum_of_spec_over_margin_fft",
+    "complexity.pacbayes_flatness",
+    "complexity.pacbayes_init",
+    "complexity.pacbayes_mag_flatness",
+    "complexity.pacbayes_mag_init",
+    "complexity.pacbayes_mag_orig",
+    "complexity.pacbayes_orig",
+    "complexity.param_norm",
+    "complexity.params",
+    "complexity.path_norm",
+    "complexity.path_norm_over_margin"
+  ],
+  "baseline_ladder": [
+    {
+      "level": "B1_design",
+      "controls": [
+        "hp.dataset",
+        "hp.lr",
+        "hp.model_depth",
+        "hp.model_width",
+        "hp.train_dataset_size"
+      ],
+      "polynomial_degree": 4,
+      "nuisance_model": "polynomial_ridge"
+    },
+    {
+      "level": "B2_training_state",
+      "controls": [
+        "hp.dataset",
+        "hp.lr",
+        "hp.model_depth",
+        "hp.model_width",
+        "hp.train_dataset_size",
+        "cross_entropy",
+        "gen.train_acc",
+        "epoch"
+      ],
+      "polynomial_degree": 4,
+      "nuisance_model": "polynomial_ridge"
+    }
+  ],
+  "group_column": "config_id",
+  "environment_columns": ["hp.dataset"],
+  "notes": "Run-level complementary audit. Grouped folds keep all repeats of one upstream hyperparameter configuration together. B2 is a declared training-state sensitivity analysis; train accuracy is constitutive of the generalization-gap target and must not be interpreted as a causal adjustment."
+}

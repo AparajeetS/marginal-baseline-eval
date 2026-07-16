@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "study_id": "author-year-short-title-v1",
+  "title": "Published study title",
+  "citation_url": "https://example.org/primary-paper-page",
+  "artifact_url": "https://example.org/official-artifacts",
+  "data_path": "data/study_runs.csv",
+  "row_id": "run_id",
+  "target": "generalization_gap",
+  "metrics": [
+    {
+      "column": "candidate_metric",
+      "display_name": "Candidate metric",
+      "expected_direction": "positive",
+      "implementation_provenance": "official author artifact"
+    }
+  ],
+  "baseline_ladder": [
+    {
+      "level": "B1_design",
+      "controls": ["dataset", "architecture", "parameter_count", "learning_rate"],
+      "polynomial_degree": 4,
+      "nuisance_model": "polynomial_ridge"
+    },
+    {
+      "level": "B2_training_state",
+      "controls": ["dataset", "architecture", "parameter_count", "learning_rate", "train_loss"],
+      "polynomial_degree": 4,
+      "nuisance_model": "polynomial_ridge"
+    }
+  ],
+  "group_column": "config_id",
+  "environment_columns": ["dataset", "architecture"],
+  "notes": "Replace every placeholder before freezing the manifest."
+}

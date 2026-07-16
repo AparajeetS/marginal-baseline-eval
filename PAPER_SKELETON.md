@@ -2,275 +2,325 @@
 
 Working title:
 
-> Marginal Baseline Evaluation: Auditing Training Metrics Beyond Raw Correlation
+> Which Metric Should You Trust Here? Conditional Reliability Across ML Tasks
 
-This is a drafting scaffold, not final prose. Each section lists the claim, the
-evidence currently available, and the remaining gap.
+Status: revised scaffold, 2026-07-16. This is not final prose. The selector is
+a gated contribution and must be removed from the headline if it does not beat
+the frozen baselines on held-out task families.
 
 ## Abstract
 
-Core message:
+Problem:
 
-> Training metrics are often validated by raw pooled correlation with held-out
-> performance. We propose Marginal Baseline Evaluation (MBE), an audit protocol
-> that tests whether a metric retains signal after controlling for ordinary
-> baselines and design variables. In current Kaggle-scale experiments across
-> 680 image and language-model runs, MBE preserves several stable predictors
-> while exposing washout, inversion, and task-dependence in others. FIM_norm,
-> our motivating case study, passes conventional validation but becomes
-> task- and pooling-sensitive under MBE.
+Machine-learning metrics are commonly compared as if predictive value were an
+intrinsic property. In practice, a metric may target generalization,
+robustness, calibration, optimization, or final performance, and its apparent
+utility can change with the task, available baseline information, and
+evaluation environment.
 
-Evidence to cite:
+Proposed contribution:
 
-- `SUPPORTING_EVIDENCE.md`
-- `experiments/07_jmlr_scale/no_compute_outputs/NO_COMPUTE_UNCERTAINTY.md`
+Marginal Baseline Evaluation (MBE) estimates a conditional reliability profile
+for a metric-target-environment tuple. The profile separates unconditional
+association, incremental predictive utility, transport, intervention
+consistency, repeatability, and measurement cost. We use these profiles to
+construct a metric reliability atlas and test an abstaining selector that
+recommends metrics only when its evidence is calibrated for the requested task.
 
-Remaining gap:
+Evidence required for the final abstract:
 
-- locked holdout replication with frozen protocol.
+- synthetic null, proxy, confounding, and transport calibration;
+- exact reproduction and reaudit of published metric evaluations;
+- PGDL development, validation, and protected-task results;
+- corrected image/text task families;
+- leave-one-task-family-out selection regret and coverage-regret;
+- one locked external holdout.
+
+No numerical selector claim enters the abstract before the protected analysis.
 
 ## 1. Introduction
 
-Claim:
+Central claim:
 
-Raw pooled correlation is insufficient for validating ML training metrics.
+> Metric utility is conditional on what is being predicted, what information
+> is already available, and where the metric will be used.
 
 Motivation:
 
-- A metric can look predictive because it tracks learning rate, architecture,
-  validation loss, weak baselines, or task mix.
-- Reviewers need a method that asks whether the metric adds marginal signal.
+- metrics aimed at different targets are often discussed on one informal
+  good-to-bad axis;
+- pooled correlation can reward task identity, architecture, hyperparameters,
+  or training state;
+- conditioning can reveal redundancy without proving that the measured
+  quantity is meaningless;
+- a metric useful in one task may weaken or reverse in another;
+- users need scoped recommendations and honest abstention, not another
+  universal leaderboard.
 
-Narrative hook:
+Contributions, in priority order:
 
-- FIM_norm looked promising under conventional tests.
-- MBE later exposed that its conclusion changes across image-only, text-only,
-  and pooled image+text settings.
-
-Key figure:
-
-- FIM_norm across image/text/full pools:
-  - image default: `-0.662 -> -0.218`, survives;
-  - text default: `-0.291 -> +0.014`, washout;
-  - full default: `+0.225 -> -0.203`, reverse-inversion;
-  - full strict: `+0.225 -> -0.300`, reverse-inversion.
+1. MBE as an estimand-explicit audit protocol;
+2. a target- and environment-specific metric reliability atlas;
+3. a gated conditional selector with calibrated abstention;
+4. FIM effective rank as a good-faith self-falsification case study;
+5. open metric cards, ledgers, protocols, and reproduction software.
 
 ## 2. Related Work
 
-Groups to cover:
+Required groups:
 
-- generalization prediction metrics;
-- sharpness and PAC-Bayes-adjacent measures;
-- Fisher/gradient/geometry metrics;
-- calibration and confidence metrics;
-- conditional evaluation, partial correlation, and confounding controls;
-- benchmark/reproducibility critiques of metric papers.
+- generalization-measure evaluation and PGDL;
+- conditional mutual information and granulated rank evaluation;
+- robust environment sign error and worst-case comparisons;
+- algorithm selection, meta-learning, and learning to rank;
+- selective prediction, abstention, and uncertainty calibration;
+- multi-objective and cost-aware model selection;
+- sharpness, PAC-Bayes, Fisher, gradient, margin, representation, calibration,
+  and robustness metric families.
 
-Positioning:
+Novelty boundary:
 
-MBE is not a new scalar metric. It is an evaluation protocol for auditing
-candidate metrics.
+MBE does not claim that conditioning, cross-fitting, algorithm selection, or
+abstention is individually new. The contribution must be the calibrated
+combination of explicit estimands, baseline ladders, environment transport,
+deceptive controls, reliability profiles, and selection evaluation.
 
-## 3. Method: Marginal Baseline Evaluation
+## 3. Problem Definition
 
 Define:
 
-- run ledger: one trained model per row;
-- candidate metrics;
-- held-out target;
-- control variables;
-- raw Spearman correlation;
-- partial rank correlation after residualizing ranks against controls.
+- target or estimand `y`;
+- candidate metric `m`;
+- baseline information set `B`;
+- environment `e`;
+- decision-time measurement cost `c(m)`;
+- metric eligibility and expected direction for each target;
+- task family as the outer unit of transport.
 
-Default controls:
+Targets remain separate:
 
-```text
-lr, wd, dropout, optimizer, arch, task, seed
-```
+- generalization gap;
+- final held-out performance;
+- robustness under a declared shift;
+- calibration under a proper score;
+- optimization or early-training prediction.
 
-Strict controls:
+The project does not define an intrinsic scalar quality for a metric.
 
-```text
-lr, wd, dropout, optimizer, arch, task, seed, val_loss
-```
+## 4. MBE Reliability Profiles
 
-Classification thresholds:
+### 4.1 Baseline ladder
 
-```text
-effect_threshold = 0.20
-washout_threshold = 0.10
-```
+- B0: task base rate;
+- B1: pre-training design metadata;
+- B2: training-state information;
+- B3: independent validation information.
 
-Classes:
+### 4.2 Estimands
 
-- survives;
-- washout;
-- sign-inversion;
-- reverse-inversion;
-- hidden-after-control;
-- weak-or-mixed.
+- E0: unconditional association;
+- E1: incremental out-of-sample utility;
+- E2: transport to held-out environments;
+- E3: matched-intervention consistency;
+- E4: repeatability and operational cost.
 
-Evidence to cite:
+### 4.3 Estimation
 
-- `PROTOCOL_FREEZE.md`
+- grouped cross-fitting;
+- nonlinear nuisance adjustment;
+- paired predictive-loss and ranking deltas;
+- within-environment permutation;
+- configuration/task-family bootstrap;
+- multiplicity control within target and baseline level;
+- missingness and measurement-cost reporting.
 
-## 4. Motivating Case Study: FIM_norm
+Output is a reliability vector with uncertainty, not `good` or `bad`.
 
-Claim:
+## 5. Conditional Metric Selection
 
-FIM_norm is useful because it was not obviously bad. It passed ordinary metric
-validation before failing stronger audits.
+### 5.1 Evidence levels
 
-Current positive evidence:
+- L0: no defensible evidence, abstain;
+- L1: calibrated transfer evidence from related task families;
+- L2: target-task historical evidence;
+- L3: target-task evidence plus independent replication.
 
-- MLP dual acid test:
-  - label noise: `rho=-0.770`;
-  - data capacity: `rho=-0.937`.
-- CNN + BatchNorm:
-  - noise: `rho=-0.956`;
-  - n_train: `rho=-0.837`.
-- Transformer + LayerNorm:
-  - n_train: `rho=-0.951`;
-  - noise: correct sign, not significant.
-- Bootstrap checks often exclude zero.
+### 5.2 Selector
 
-Current MBE evidence:
+The selector receives a declared target, environment metadata, baseline level,
+eligible metrics, reliability profiles, and optional cost constraints. It
+returns one metric, a Pareto set, or abstention with a reason.
 
-- MLP grids:
-  - FIM_norm `-0.815 -> +0.033`;
-  - FIM_norm `-0.803 -> +0.056`.
-- 680-model pool:
-  - full default `+0.225 -> -0.203`;
-  - full strict `+0.225 -> -0.300`.
+Start with a transparent reliability rule. Learned routing is secondary and
+must demonstrate that it is not memorizing dataset or architecture identity.
 
-Interpretation:
+### 5.3 Evaluation
 
-FIM_norm tracks a real training-state property, but the independent value of
-that property is context-sensitive.
+Use nested leave-one-task-family-out validation. Report:
 
-## 5. Experimental Evidence
+- selection regret against the task-specific oracle upper bound;
+- top-k utility recovery;
+- sign error;
+- predictive-interval calibration;
+- coverage-risk and coverage-regret under abstention;
+- metric cost at a fixed regret target.
 
-Current confirmed pool:
+Frozen comparisons:
 
-- 480 CIFAR-10 image models;
-- 200 character-transformer language models;
-- 40+ candidate metrics.
+- globally best metric;
+- pooled raw-correlation selector;
+- within-task raw correlation where target history is available;
+- baseline-only prediction;
+- regularized stacking of all eligible metrics;
+- selector without abstention;
+- selector with abstention.
 
-Primary tables:
+## 6. Protocol Calibration
 
-- full 680 default;
-- full 680 strict + `val_loss`;
-- image-only default/strict;
-- text-only default/strict;
-- metric-family summary.
+Use synthetic cases with known answers:
 
-No-compute uncertainty:
+- null metric;
+- hyperparameter proxy;
+- genuine incremental signal;
+- nonlinear confounding;
+- Simpson reversal;
+- post-treatment or suppressor control;
+- environment-specific signal;
+- transportable signal;
+- misleading selector confidence and required abstention.
 
-- bootstrap resamples: 200;
-- unit: row/model run;
-- target: `final_acc`.
+Compare MBE with raw rank association, linear partial rank correlation,
+conditional mutual information, granulated Kendall measures, and robust sign
+error. Explain which estimand each method answers rather than declaring one
+universal winner.
 
-Headline CI examples:
+Current artifact:
 
-| Run | Metric | Raw rho, 95% CI | MBE partial rho, 95% CI | Class |
-|---|---|---:|---:|---|
-| full 680 default | FIM_norm | `+0.225 [+0.136, +0.314]` | `-0.203 [-0.267, -0.117]` | reverse-inversion |
-| full 680 strict | FIM_norm | `+0.225 [+0.138, +0.296]` | `-0.300 [-0.389, -0.217]` | reverse-inversion |
-| full 680 default | random_metric | `-0.035 [-0.112, +0.033]` | `-0.062 [-0.131, +0.018]` | weak-or-mixed |
-| full 680 strict | confidence_mean | `+0.833 [+0.807, +0.850]` | `+0.536 [+0.464, +0.586]` | survives |
+- `experiments/08_protocol_calibration/out/CALIBRATION_REPORT.md`.
 
-Default-threshold class counts:
+## 7. Published-Study Reaudit
 
-| Run | Survives | Washout | Reverse inv. | Hidden | Weak/mixed |
-|---|---:|---:|---:|---:|---:|
-| image 480 default | 21 | 3 | 0 | 1 | 16 |
-| image 480 strict | 29 | 1 | 0 | 4 | 4 |
-| text 200 default | 15 | 12 | 1 | 1 | 10 |
-| text 200 strict | 15 | 7 | 1 | 0 | 15 |
-| full 680 default | 19 | 7 | 1 | 2 | 12 |
-| full 680 strict | 26 | 4 | 1 | 3 | 6 |
+### 7.1 Dziugaite et al.
 
-Interpretation:
+Reproduce the source statistic over all 9,242 directed environments and its
+published environment counts. Compare source robust sign error with MBE
+incremental utility.
 
-MBE is selective. It preserves many metrics while flagging fragile ones.
+Interpretation boundary:
 
-## 6. Metric-Family Findings
+Worst-case sign robustness and average incremental prediction are distinct
+properties. Disagreement is not evidence that one calculation is wrong.
 
-Use `METRIC_TAXONOMY.md`.
+### 7.2 Artifact availability
 
-Likely findings:
+Document unavailable run-level data, including the Jiang et al. intake, without
+reconstructing pseudo-runs from rounded paper tables or treating unavailable
+artifacts as negative scientific results.
 
-- task-proximal and confidence/calibration metrics are generally stable;
-- Fisher/gradient magnitude metrics often survive;
-- feature geometry, weight norms, and distance/update proxies are fragile;
-- sharpness metrics are mixed and sensitive to control set;
-- FIM_norm is task- and pooling-sensitive.
+## 8. Public Reliability Atlas
 
-Figure:
+Primary public corpus: PGDL, 550 models across eight tasks.
 
-- family-by-class heatmap.
+- Tasks 1-2: development;
+- Tasks 4-5: validation;
+- Tasks 6-9: protected transfer holdout.
 
-## 7. Ablations And Sensitivity
+Primary target: accuracy generalization gap. Secondary targets remain separate.
 
-No-compute sensitivity already done:
+Required outputs:
 
-- thresholds:
-  - `effect_threshold in {0.15, 0.20, 0.25}`;
-  - `washout_threshold in {0.05, 0.10, 0.15}`.
+- task-by-metric reliability profiles;
+- baseline-ladder ablation;
+- sign and rank stability;
+- transport and missingness;
+- runtime and memory;
+- source-style pairwise comparisons;
+- uncertainty and multiplicity correction.
 
-Remaining:
+The frozen 48-model pilot is implementation QA only. Its correlations may not
+define thresholds or headline results.
 
-- control-set ablations:
-  - no controls;
-  - hyperparameters only;
-  - hyperparameters + architecture/task;
-  - strict + validation loss.
+## 9. New Task Families
 
-## 8. Limitations
+Add corrected image and causal-text environments, then robustness and
+calibration targets where resources permit. Dataset/architecture subgroups are
+correlated environments, not automatically independent task families.
 
-Must say plainly:
+Broad routing claims require at least 12 task families for a pilot and
+preferably 20 or more for the primary analysis. Cross-modality transfer should
+often produce abstention; it is not assumed to work.
 
-- Current large evidence is not yet a locked holdout replication.
-- Bootstrap is row-level, not block-level.
-- Current tasks are CIFAR-10 and character-level LM only.
-- Some metric implementations are approximate and metric-batch based.
-- MBE detects conditional association, not causality.
+## 10. Motivating Case Study: FIM Effective Rank
 
-## 9. Reproducibility
+Tell the self-falsification story precisely:
 
-Point to:
+1. FIM effective rank passed ordinary metric checks;
+2. MBE exposed dependence on task, pooling, and baseline choice;
+3. the result motivated conditional reliability rather than a universal metric
+   verdict;
+4. the same audit is applied to established metrics without privileging the
+   proposed measure.
 
-- `REPRODUCIBILITY.md`;
-- `experiments/07_jmlr_scale/ARTIFACTS.md`;
-- `experiments/07_jmlr_scale/no_compute_uncertainty.py`;
-- `experiments/07_jmlr_scale/no_compute_outputs/`.
+CEI-R remains exploratory and cannot set audit thresholds or selector design.
 
-Package:
+## 11. Results And Decision Gates
 
-```bash
-pip install mbe-eval
-mbe-eval-demo --bootstrap 200
-```
+The selector is a primary result only if it:
 
-CSV audit:
+- beats the globally best metric and pooled-correlation selector on held-out
+  task-family regret;
+- provides reasonably calibrated utility intervals;
+- reduces regret as it abstains more;
+- survives simple-feature and task-identity ablations;
+- transfers to the locked holdout without threshold changes.
 
-```bash
-mbe-eval-audit --csv runs.csv --metrics fim_norm,val_loss --target final_acc --controls lr,wd,arch,seed
-```
+Otherwise, report the negative selector result and retain MBE plus the atlas as
+the contribution.
 
-## 10. Conclusion
+## 12. Limitations
 
-Conclusion claim:
+State plainly:
 
-MBE turns metric validation from "does this correlate with performance?" into
-"does this metric retain signal beyond ordinary baselines?" The current
-evidence shows that this distinction matters: several metrics survive, several
-wash out, and FIM_norm changes conclusion depending on task and pooling.
+- conditional prediction is not causality;
+- task families, not model rows, determine transport sample size;
+- reliability depends on the declared metric implementation and measurement
+  protocol;
+- a recommendation requires historical outcomes or validated transfer;
+- robustness and calibration claims require their own targets;
+- the atlas cannot cover every architecture, dataset, or deployment shift;
+- a paid audit cannot certify safety or future performance.
 
-## Immediate Writing Tasks
+## 13. Reproducibility And Governance
 
-1. Turn Section 3 into polished method prose.
-2. Create one FIM_norm figure from the current tables.
-3. Create one metric-family heatmap.
-4. Write the limitations section early to keep the paper honest.
-5. Draft a locked-replication subsection before running any new compute.
+Release:
+
+- raw ledgers and hashes where licensing permits;
+- metric cards and implementation provenance;
+- frozen split and environment manifests;
+- selector configurations and abstention rules;
+- one-command table regeneration;
+- package, notebook, and archival snapshot;
+- all deviations and negative results.
+
+Commercial services must not receive access to protected research holdouts or
+change public benchmark thresholds. Private customer data remain outside the
+public research evidence unless separately consented, de-identified, and
+preregistered.
+
+## 14. Conclusion
+
+The desired conclusion is not that metrics lie. It is that metric evidence has
+a scope. MBE makes that scope measurable, the atlas makes it inspectable, and
+the selector tests whether scoped evidence can improve real metric choices
+without pretending uncertainty has disappeared.
+
+## Immediate Tasks
+
+1. Finish PGDL data-dependent metric implementations on the frozen pilot.
+2. Freeze every metric card and development analysis command.
+3. Run all Tasks 1-2 development checkpoints.
+4. Implement selector baselines and abstention calibration without protected
+   task outputs.
+5. Run Tasks 4-5 validation once.
+6. Expand independent task-family coverage before broad selector claims.
+7. Timestamp the final protocol before Tasks 6-9 metric extraction.
