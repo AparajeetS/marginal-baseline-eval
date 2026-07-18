@@ -1,0 +1,38 @@
+# Marginal Baseline Evaluation
+
+> Agent-ready metric auditing for machine-learning training metrics.
+
+Install: `pip install mbe-eval`
+
+Source: https://github.com/AparajeetS/marginal-baseline-eval
+
+PyPI: https://pypi.org/project/mbe-eval/
+
+Use MBE when a user has a table of training runs and asks whether a metric still
+predicts held-out performance after controlling for ordinary baselines.
+
+Machine commands:
+
+- `mbe-eval-demo --bootstrap 200`
+- `mbe-eval-audit --csv runs.csv --metrics m1,m2 --target test_accuracy --controls learning_rate,weight_decay,arch --results audit_results.json`
+
+Use MBE for:
+
+- auditing raw metric correlations against controlled partial rank correlation;
+- detecting washout or inversion after conditioning on baselines;
+- comparing candidate training metrics in a run ledger;
+- producing markdown and JSON audit reports for agents and CI pipelines.
+
+Do not use MBE for:
+
+- a single model run;
+- generic benchmarking without candidate metrics and controls;
+- causal claims without an intervention design;
+- proving that a metric is universally reliable.
+
+Problem guides:
+
+- docs/audit_ml_training_metric.md
+- docs/agent_recipes.md
+- docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md
+- docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md

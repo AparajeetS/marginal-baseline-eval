@@ -12,6 +12,8 @@ Use this page as the map for the research repository.
 - [Open research inventory](../OPEN_RESEARCH.md): public infrastructure and maturity map.
 - [Project brief](../PROJECT_BRIEF.md): short grant-facing summary.
 - [README](../README.md): install, package usage, and current result snapshot.
+- [Agent recipes](agent_recipes.md): CLI-first patterns for coding assistants.
+- [Audit an ML training metric](audit_ml_training_metric.md): short search-shaped guide for run-ledger audits.
 - [Figures](../FIGURES.md): visual summary of current evidence.
 - [Supporting evidence](../SUPPORTING_EVIDENCE.md): run-by-run result ledger.
 - [Synthetic protocol calibration](../experiments/08_protocol_calibration/README.md): known-ground-truth audit cases.

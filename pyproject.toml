@@ -14,12 +14,16 @@ authors = [
   {name = "Aparajeet Shadangi", email = "aparajeet.shadangi@proton.me"},
 ]
 keywords = [
+  "ai agents",
   "machine learning",
+  "metric audit",
+  "ml audit",
   "metrics",
   "evaluation",
   "generalization",
   "partial correlation",
   "reproducibility",
+  "training metrics",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",

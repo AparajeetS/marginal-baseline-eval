@@ -1,0 +1,13 @@
+run_id,task,arch,learning_rate,weight_decay,fim_norm,val_loss_ep20,test_accuracy
+img_001,image,cnn,0.001,0.0001,0.42,0.81,0.76
+img_002,image,cnn,0.001,0.0005,0.39,0.86,0.73
+img_003,image,resnet,0.0003,0.0001,0.64,0.62,0.84
+img_004,image,resnet,0.0003,0.0005,0.61,0.66,0.82
+img_005,image,vit,0.0001,0.0001,0.58,0.69,0.81
+img_006,image,vit,0.0001,0.0005,0.55,0.72,0.79
+txt_001,text,small_transformer,0.001,0.0001,0.35,1.18,0.61
+txt_002,text,small_transformer,0.001,0.0005,0.34,1.21,0.60
+txt_003,text,medium_transformer,0.0003,0.0001,0.47,1.01,0.68
+txt_004,text,medium_transformer,0.0003,0.0005,0.45,1.05,0.66
+txt_005,text,medium_transformer,0.0001,0.0001,0.44,1.03,0.67
+txt_006,text,small_transformer,0.0001,0.0005,0.31,1.26,0.58
