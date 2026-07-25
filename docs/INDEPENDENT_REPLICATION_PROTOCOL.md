@@ -1,6 +1,6 @@
 # Independent Replication Protocol
 
-Status: grant execution specification. The external replicator is not yet
+Status: active research protocol. The external replicator is not yet
 selected. Their identity, conflicts, and scope will be published before the
 protected holdout is opened.
 
@@ -66,14 +66,9 @@ Replication is successful only when:
   or differences are fully explained and corrected;
 - the replicator signs and publishes a report regardless of direction.
 
-## Proposed $5,000 Allocation
+## Reporting Boundary
 
-| Item | Ceiling |
-|---|---:|
-| External replicator honorarium | $3,500 |
-| Independent compute and storage | $1,000 |
-| Public report, discrepancy resolution, and archival release | $500 |
-
-Payments compensate execution and reporting, not a positive result. The final
-recipient, invoices, deviations, and unused balance will be included in the
-public spend ledger.
+The replicator reports methods, discrepancies, unresolved failures, and the
+final conclusion regardless of direction. Any logistical arrangement must not
+condition compensation, authorship, or publication rights on a positive
+result.

@@ -2,7 +2,7 @@
 
 > **Legacy MBE 1.0 protocol.** This document is preserved to explain the
 > existing pilot artifacts. It is superseded by
-> [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md) and must
+> [`docs/MBE_2_RESEARCH_PROGRAM.md`](../MBE_2_RESEARCH_PROGRAM.md) and must
 > not be used to launch future compute.
 
 Status: historical draft freeze for the current evidence set.
