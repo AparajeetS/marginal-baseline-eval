@@ -70,4 +70,3 @@ Maintenance and decision practices are described in [GOVERNANCE.md](GOVERNANCE.m
   [open a GitHub issue](https://github.com/AparajeetS/marginal-baseline-eval/issues).
 - Security-sensitive issue: follow [SECURITY.md](SECURITY.md).
 - Contribution or replication: follow [CONTRIBUTING.md](CONTRIBUTING.md).
-*** End of File

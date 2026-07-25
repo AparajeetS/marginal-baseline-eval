@@ -101,4 +101,3 @@ families take priority over prestige-scale training.
 
 Compute is a gated experimental input. When a preceding scientific gate fails,
 the next workload pauses until the claim or design is revised.
-*** End of File

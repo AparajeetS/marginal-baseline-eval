@@ -299,4 +299,3 @@ Pause the affected work package when:
   resolution;
 - the protected holdout cannot remain protected;
 - a selector cannot beat simple frozen comparators.
-*** End of File

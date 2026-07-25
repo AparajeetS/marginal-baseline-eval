@@ -105,4 +105,3 @@ The active sequence is maintained in [the roadmap](../ROADMAP.md). The immediate
 work is to close remaining inference calibration, expand the public-corpus
 reaudit, run corrected image and causal-text pilots, freeze a protected
 environment, and arrange independent replication.
-*** End of File

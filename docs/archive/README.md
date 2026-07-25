@@ -10,4 +10,3 @@ They do not define the active MBE 2.0 protocol. Start with:
 - [MBE 2.0 research program](../MBE_2_RESEARCH_PROGRAM.md);
 - [roadmap](../../ROADMAP.md);
 - [credibility ledger](../MBE_CREDIBILITY_LEDGER.md).
-*** End of File
