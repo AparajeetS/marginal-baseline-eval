@@ -1,6 +1,7 @@
 # Starting Baseline Freeze
 
-**Freeze date:** 11 August 2026  
+**Freeze date:** 11 August 2026
+
 **Purpose:** establish the reproducible starting point for continued work on
 the Cosmos Benchmark Audit Toolkit before new analysis is added
 
@@ -97,4 +98,3 @@ hardening, calibration expansion, and second-benchmark selection.
 - The second benchmark has not passed its dataset-selection gate.
 
 These gaps are work items, not details to be hidden by the passing baseline.
-

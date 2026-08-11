@@ -1,7 +1,9 @@
 # Cosmos Benchmark Audit Toolkit
 
-**Status:** active pre-funding work while the Cosmos application is under review  
-**Last updated:** 11 August 2026  
+**Status:** active pre-funding work while the Cosmos application is under review
+
+**Last updated:** 11 August 2026
+
 **Working branch:** `agent/benchmark-audit-prototype`
 
 This is the landing area for the project proposed to the Cosmos Institute: a
@@ -97,4 +99,3 @@ independent reproduction. It is not the full MBE 2.0 research program, the
 larger training-metric validation matrix, or a benchmark certification
 service. Those longer-horizon directions remain separate so that progress on
 this proposal can be judged against what was actually promised.
-

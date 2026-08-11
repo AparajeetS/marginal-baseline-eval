@@ -104,4 +104,3 @@ def test_inspection_stops_when_a_required_file_is_missing(tmp_path: Path) -> Non
 
     with pytest.raises(FileNotFoundError, match="missing required source files"):
         inspector.inspect_source(tmp_path, "abc123")
-

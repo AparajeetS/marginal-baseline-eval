@@ -1,7 +1,9 @@
 # Candidate Selection Record: Anthropic Sycophancy Evaluations
 
-**Inspection date:** 11 August 2026  
-**Decision:** unresolved, additional data design required  
+**Inspection date:** 11 August 2026
+
+**Decision:** unresolved, additional data design required
+
 **Candidate result computed:** no
 
 ## Dataset and source

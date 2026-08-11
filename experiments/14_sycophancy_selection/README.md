@@ -34,4 +34,3 @@ whether the result is only an internal diagnostic or is linked to an external
 target.
 
 See [SELECTION_RECORD.md](SELECTION_RECORD.md) for the current gate decision.
-
