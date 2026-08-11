@@ -5,10 +5,10 @@
 [![Python](https://img.shields.io/pypi/pyversions/mbe-eval.svg)](https://pypi.org/project/mbe-eval/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/LICENSE)
 
-> **Reviewing the Cosmos proposal?** Start with
-> [A Benchmark Is a Claim, Not Just a Score](COSMOS_REVIEWER_GUIDE.md), a
-> three-minute guide to the working prototype, real-data evidence, claim limits,
-> and the next 90 days.
+> **Reviewing the Cosmos proposal?** Start at the
+> [Cosmos Benchmark Audit Toolkit landing page](cosmos/README.md). It links the
+> short reviewer guide, working prototype, real-data pilot, current progress,
+> evidence limits, and exact 90-day plan.
 
 **Marginal Baseline Evaluation (MBE)** is an audit protocol for testing whether
 machine-learning training metrics still predict held-out performance after

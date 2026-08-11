@@ -151,6 +151,13 @@ The **$6,500 Cosmos request is deliberately scoped**. It is not a request to
 treat MBE as established, and it is separate from the longer-horizon full MBE
 2.0 validation program documented elsewhere in this repository.
 
+The exact research questions, evidence gates, 90-day schedule, deliverables,
+failure policy, and proposed use of funds are defined in the
+[Cosmos 90-Day Research and Execution Plan](COSMOS_90_DAY_EXECUTION_PLAN.md).
+Current work is tracked separately in the
+[Cosmos project landing area](cosmos/README.md), including a dated baseline
+freeze and a public deliverable checklist.
+
 Over a focused 90-day build, the grant would turn the current prototype and
 single real-data pilot into a stronger public benchmark-audit instrument:
 

@@ -1,0 +1,89 @@
+{
+  "candidate_result_computed": false,
+  "data_gap": "The release contains prompts and behavior-matching answer labels, but no model responses, token probabilities, model metadata, or external per-example outcome target.",
+  "files": [
+    {
+      "exact_duplicate_prompts": 0,
+      "extracted_source_units": 32,
+      "generated_variants_per_source_unit": {
+        "maximum": 312,
+        "median": 312.0,
+        "minimum": 312
+      },
+      "matching_answer_counts": {
+        " (A)": 4992,
+        " (B)": 4992
+      },
+      "matching_not_matching_collisions": 0,
+      "not_matching_field_types": {
+        "string": 9984
+      },
+      "path": "sycophancy/sycophancy_on_nlp_survey.jsonl",
+      "rows": 9984,
+      "sha256": "678d6a1b3785d46a2e6db38b185dffcf3f37491dcee5ae049c7eb87199c924cf",
+      "unique_full_prompts": 9984,
+      "user_affiliation_counts": {}
+    },
+    {
+      "exact_duplicate_prompts": 0,
+      "extracted_source_units": 109,
+      "generated_variants_per_source_unit": {
+        "maximum": 231,
+        "median": 66,
+        "minimum": 66
+      },
+      "matching_answer_counts": {
+        " (A)": 3597,
+        " (B)": 3597,
+        " (C)": 1584,
+        " (D)": 660,
+        " (E)": 330,
+        " (F)": 66,
+        " (G)": 33
+      },
+      "matching_not_matching_collisions": 0,
+      "not_matching_field_types": {
+        "list": 9867
+      },
+      "path": "sycophancy/sycophancy_on_philpapers2020.jsonl",
+      "rows": 9867,
+      "sha256": "c68ae0faeebad68ec3d8537a16bac112c7393fed629c0bcf18789affc8c3f1de",
+      "unique_full_prompts": 9867,
+      "user_affiliation_counts": {}
+    },
+    {
+      "exact_duplicate_prompts": 0,
+      "extracted_source_units": 15,
+      "generated_variants_per_source_unit": {
+        "maximum": 1200,
+        "median": 600,
+        "minimum": 600
+      },
+      "matching_answer_counts": {
+        " (A)": 5100,
+        " (B)": 5100
+      },
+      "matching_not_matching_collisions": 0,
+      "not_matching_field_types": {
+        "string": 10200
+      },
+      "path": "sycophancy/sycophancy_on_political_typology_quiz.jsonl",
+      "rows": 10200,
+      "sha256": "7c992ee673b43cc69cd7e40b720a1e8322c1df6de654f876c1359c380b663e07",
+      "unique_full_prompts": 10200,
+      "user_affiliation_counts": {
+        "conservative": 5100,
+        "liberal": 5100
+      }
+    }
+  ],
+  "independence_warning": "Rows are generated biography variants. They must not be treated as independent source questions in inference or random row-level splits.",
+  "inspection_scope": "released sycophancy prompt and label files only",
+  "source": "https://github.com/anthropics/evals",
+  "source_commit": "84fcc677e52e1902d696c32cd1a6b663e70d3993",
+  "totals": {
+    "extracted_source_units": 156,
+    "rows": 30051,
+    "unique_full_prompts": 30051
+  }
+}

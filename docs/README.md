@@ -4,7 +4,7 @@ Use this page as the map for the research repository.
 
 ## Start Here
 
-- [Cosmos reviewer guide](../COSMOS_REVIEWER_GUIDE.md): three-minute path through the benchmark-audit idea, real-data pilot, limits, and proposed next step.
+- [Cosmos project landing area](../cosmos/README.md): current progress, baseline freeze, deliverable checklist, reviewer guide, and exact execution plan for the Benchmark Audit Toolkit.
 - [Experimental benchmark audit specification](BENCHMARK_AUDIT_PROTOTYPE.md): implemented checks, input contract, evidence states, and prohibited claims.
 - [TruthfulQA pilot protocol](../experiments/08_truthfulqa_real_audit/PROTOCOL.md): frozen source, cohort, variables, thresholds, and permitted interpretation.
 - [TruthfulQA pilot result](../experiments/08_truthfulqa_real_audit/artifacts/RESULTS.md): concise result with its interpretation boundary.
