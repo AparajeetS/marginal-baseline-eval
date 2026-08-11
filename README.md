@@ -5,6 +5,15 @@
 [![Python](https://img.shields.io/pypi/pyversions/mbe-eval.svg)](https://pypi.org/project/mbe-eval/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/LICENSE)
 
+> [!IMPORTANT]
+> **Looking for the Cosmos Benchmark Audit Toolkit?** The focused benchmark
+> audit project lives on its own branch so reviewers do not have to navigate
+> the broader MBE research program. Start with the
+> [Cosmos project landing page](https://github.com/AparajeetS/marginal-baseline-eval/blob/agent/benchmark-audit-prototype/cosmos/README.md)
+> for the reviewer guide, working prototype, reproducibility baseline,
+> TruthfulQA pilot, current dataset-selection work, and public checklist. You
+> can also [browse the complete benchmark-audit branch](https://github.com/AparajeetS/marginal-baseline-eval/tree/agent/benchmark-audit-prototype).
+
 **Audit an ML training metric before trusting it.**
 
 Marginal Baseline Evaluation (MBE) tests whether a candidate metric adds useful
