@@ -22,6 +22,7 @@ def main() -> int:
     parser.add_argument("--refit-calibration", type=Path)
     parser.add_argument("--inference-stress-refit", type=Path)
     parser.add_argument("--inference-stress-block", type=Path)
+    parser.add_argument("--complexity-ablation", type=Path)
     args = parser.parse_args()
 
     monte_carlo = pd.read_csv(args.calibration_dir / "monte_carlo_summary.csv")
@@ -147,11 +148,46 @@ def main() -> int:
         blocks = pd.read_csv(args.inference_stress_block).set_index("structure")
         null = stress.loc[~stress["expected_increment"]]
         signal = stress.loc[stress["expected_increment"]]
+        signal_repetitions = int(signal["repetitions"].sum())
+        predictive_recovered = int(
+            round(
+                (
+                    signal["predictive_support_rate"]
+                    * signal["repetitions"]
+                ).sum()
+            )
+        )
+        joint_recovered = int(
+            round(
+                (
+                    signal["joint_support_rate"]
+                    * signal["repetitions"]
+                ).sum()
+            )
+        )
         refit_lines = [
             "",
             "## Refit-Aware Inference",
             "",
-            f"Across {int(null['repetitions'].sum())} null/proxy nuisance-by-sample-size cells, the maximum predictive-interval support rate was {null['predictive_support_rate'].max():.1%} and the maximum joint support rate was {null['joint_support_rate'].max():.1%}. All {int(signal['repetitions'].sum())} injected-signal cells were recovered. Residual-permutation rejection was {blocks.loc['homoskedastic', 'rejection_rate']:.1%} for the ordinary null and {blocks.loc['clustered', 'rejection_rate']:.1%} for the clustered null. The full-refit predictive interval with nuisance-family agreement is therefore primary; residual permutation is diagnostic.",
+            f"Across {int(null['repetitions'].sum())} null/proxy rows, the maximum cell-level predictive-interval support rate was {null['predictive_support_rate'].max():.1%} and the maximum joint support rate was {null['joint_support_rate'].max():.1%}. Predictive support recovered {predictive_recovered}/{signal_repetitions} injected-signal rows and joint support recovered {joint_recovered}/{signal_repetitions}. Residual-permutation rejection was {blocks.loc['homoskedastic', 'rejection_rate']:.2%} for the ordinary null and {blocks.loc['clustered', 'rejection_rate']:.2%} for the clustered null. The full-refit predictive interval is the primary uncertainty path for prospectively calibrated nuisance families; residual permutation is diagnostic.",
+        ]
+
+    complexity_lines = []
+    if args.complexity_ablation and args.complexity_ablation.is_file():
+        complexity = pd.read_csv(args.complexity_ablation)
+        low_degree = complexity.loc[complexity["degree"].le(3)]
+        degree_six = complexity.loc[complexity["degree"].eq(6)]
+        interaction_large = complexity.loc[
+            complexity["nuisance_model"].eq(
+                "polynomial_ridge_interactions"
+            ),
+            "observed_predictive_beta_0_5_rate",
+        ]
+        complexity_lines = [
+            "",
+            "## Nuisance-Complexity And Power",
+            "",
+            f"Across degrees 1-3, at least one generic null/proxy cell reached {low_degree['generic_max_null_proxy_joint_rate'].max():.1%} false support. Degree 6 reduced the worst generic rates to {degree_six['generic_max_null_proxy_joint_rate'].min():.1%}-{degree_six['generic_max_null_proxy_joint_rate'].max():.1%}, but interaction-family power at beta=0.5 was only {interaction_large.min():.1%}-{interaction_large.max():.1%} in the 36-configuration observed design. The original mandatory consensus is therefore underpowered in that geometry and cannot support substantive null conclusions.",
         ]
 
     lines.extend(
@@ -159,10 +195,11 @@ def main() -> int:
             *metadata_lines,
             *comparison_lines,
             *refit_lines,
+            *complexity_lines,
             "",
             "## What This Changes",
             "",
-            "Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, full-refit interval-supported predictive improvement, and residual dependence as a separate diagnostic. Learner disagreement is a result, not permission to select the favorable model.",
+            "Low-degree polynomial fits, the tested Extra Trees configuration, anti-conservative residual permutation, and the underpowered universal consensus are documented failure controls. Future real-metric reporting must calibrate nuisance-family eligibility before protected outcomes, use repeated cross-fitting and full-refit interval-supported predictive improvement, and keep residual dependence separate. Learner disagreement is a result, not permission to select the favorable model.",
             "",
             "## Remaining Gates",
             "",

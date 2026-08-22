@@ -27,7 +27,7 @@ independent-replication milestone as complete.
 
 ## Replication Package
 
-The replicator receives:
+The replicator receives only after the estimator and opening rule are frozen:
 
 1. a signed repository tag and container digest;
 2. the preregistered estimands, metric cards, baseline ladder, and thresholds;
@@ -66,14 +66,12 @@ Replication is successful only when:
   or differences are fully explained and corrected;
 - the replicator signs and publishes a report regardless of direction.
 
-## Proposed $5,000 Allocation
+## Current Boundary
 
-| Item | Ceiling |
-|---|---:|
-| External replicator honorarium | $3,500 |
-| Independent compute and storage | $1,000 |
-| Public report, discrepancy resolution, and archival release | $500 |
-
-Payments compensate execution and reporting, not a positive result. The final
-recipient, invoices, deviations, and unused balance will be included in the
-public spend ledger.
+The known-truth and PGDL-calibration handoff is prepared as
+`experiments/12_independent_replication/replication_packet_v2.json` with a
+one-command validator. It contains no protected association and expects the
+current sealed decision. It has not yet been run or signed by an independent
+executor. The final protected-holdout packet remains blocked until a future
+estimator passes its opening gate. A failed or null replication remains a valid
+deliverable and must be retained in the public discrepancy log.

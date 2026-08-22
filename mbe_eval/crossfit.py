@@ -31,7 +31,7 @@ def _extra_trees_predict(
         n_estimators=128,
         min_samples_leaf=5,
         max_features=1.0,
-        random_state=seed,
+        random_state=int(seed) % (2**32),
         n_jobs=1,
     )
     model.fit(x_train, y_train)

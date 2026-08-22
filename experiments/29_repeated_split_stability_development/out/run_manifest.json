@@ -1,0 +1,62 @@
+{
+  "protocol_id": "mbe3-repeated-split-stability-development-v1",
+  "smoke": false,
+  "planned_rows": 10080,
+  "observed_rows": 10080,
+  "repetitions": 20,
+  "wild_draws": 999,
+  "candidates": [
+    {
+      "candidate_id": "d2_r01_repeat3_a05",
+      "degree": 2,
+      "ridge": 0.1,
+      "repeats": 3,
+      "alpha": 0.05,
+      "complexity_rank": 1
+    },
+    {
+      "candidate_id": "d2_r01_repeat3_a01",
+      "degree": 2,
+      "ridge": 0.1,
+      "repeats": 3,
+      "alpha": 0.01,
+      "complexity_rank": 2
+    },
+    {
+      "candidate_id": "d2_r01_repeat5_a05",
+      "degree": 2,
+      "ridge": 0.1,
+      "repeats": 5,
+      "alpha": 0.05,
+      "complexity_rank": 3
+    },
+    {
+      "candidate_id": "d4_r01_repeat3_a05",
+      "degree": 4,
+      "ridge": 0.1,
+      "repeats": 3,
+      "alpha": 0.05,
+      "complexity_rank": 4
+    },
+    {
+      "candidate_id": "d4_r01_repeat3_a01",
+      "degree": 4,
+      "ridge": 0.1,
+      "repeats": 3,
+      "alpha": 0.01,
+      "complexity_rank": 5
+    },
+    {
+      "candidate_id": "d4_r01_repeat5_a05",
+      "degree": 4,
+      "ridge": 0.1,
+      "repeats": 5,
+      "alpha": 0.05,
+      "complexity_rank": 6
+    }
+  ],
+  "estimator_sha256": "eb0f787c044fa4f607a9b26abb0f788d34427bb40a7a47e406d306ed23e7f4d3",
+  "runner_sha256": "fed5b3c86d7065543c56a15bba623e371f4c561a164a1bfef7270ccc5bc8462e",
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false
+}

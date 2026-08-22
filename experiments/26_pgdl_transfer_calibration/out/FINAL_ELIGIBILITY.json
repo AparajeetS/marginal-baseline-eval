@@ -1,0 +1,32 @@
+{
+  "protocol_id": "mbe3-pgdl-transfer-calibration-v1",
+  "global_pass": false,
+  "baseline_decisions": [
+    {
+      "baseline": "B1_design",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.2666735838630073,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8625048526092651,
+      "pass": false
+    },
+    {
+      "baseline": "B2_training_loss",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.17436566150491345,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8625048526092651,
+      "pass": false
+    },
+    {
+      "baseline": "B3_training_state",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.18631296503080313,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8500189229905127,
+      "pass": false
+    }
+  ],
+  "eligible_to_freeze_pgdl_transfer_analysis": false,
+  "checkpoint_metric_association_open_authorized": false,
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false,
+  "smoke": false
+}

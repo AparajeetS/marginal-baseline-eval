@@ -1,0 +1,15 @@
+{
+  "id": "aparajeetshadangi/mbe-2-causal-text-factorial-replication",
+  "title": "MBE 2 Causal Text Factorial Replication",
+  "code_file": "mbe2_causal_text_factorial_replication.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

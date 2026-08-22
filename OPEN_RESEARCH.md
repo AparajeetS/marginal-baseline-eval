@@ -16,6 +16,7 @@ the available analyses, and propose competing designs.
 | Current protocol | [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md) | Active MBE 2.0 research design |
 | Legacy protocol | [`PROTOCOL_FREEZE.md`](PROTOCOL_FREEZE.md) | Preserved for provenance; superseded |
 | Evidence ledger | [`SUPPORTING_EVIDENCE.md`](SUPPORTING_EVIDENCE.md) | Exploratory results with validity warnings |
+| Evidence index | [`docs/EVIDENCE_INDEX.md`](docs/EVIDENCE_INDEX.md) | Current claim map, corrected causal artifacts, retained failures, and active replications |
 | Reproduction guide | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | CPU and GPU paths separated |
 | Milestone roadmap | [`docs/JMLR_MILESTONE_ROADMAP.md`](docs/JMLR_MILESTONE_ROADMAP.md) | Gated plan to submission-grade evidence |
 | Compute budget | [`docs/COMPUTE_AND_COST_PLAN.md`](docs/COMPUTE_AND_COST_PLAN.md) | Minimum and recommended estimates |
@@ -27,7 +28,9 @@ the available analyses, and propose competing designs.
 | Audit service boundary | [`docs/METRIC_RELIABILITY_AUDIT_SERVICE.md`](docs/METRIC_RELIABILITY_AUDIT_SERVICE.md) | Open-core and private-audit product model |
 | Credibility ledger | [`docs/MBE_CREDIBILITY_LEDGER.md`](docs/MBE_CREDIBILITY_LEDGER.md) | Adversarial validation gates, failures, and blocked claims |
 | Shared method comparison | [`experiments/10_method_comparison/`](experiments/10_method_comparison/) | Source-faithful CMI/granulated criteria and known-truth benchmark |
+| Conditional comparator benchmark | [`experiments/23_conditional_comparator_benchmark/`](experiments/23_conditional_comparator_benchmark/) | 153,600 rows across GCM, WGCM, KCI, orthogonal, rank, MBE, and principled CRT abstention |
 | Credibility freeze | [`experiments/11_credibility_freeze/`](experiments/11_credibility_freeze/) | Preregistration, file hashes, claim checks, and reviewer packet |
+| Replication packet v2 | [`experiments/12_independent_replication/`](experiments/12_independent_replication/) | Hash-sealed automated handoff; external execution and signature pending |
 | Citation metadata | [`CITATION.cff`](CITATION.cff) | Machine-readable citation |
 
 ## What Works Without New Compute
@@ -52,8 +55,9 @@ The public software and the scientific claim have different maturity levels:
   language-model evidence.
 - **MBE 2.0:** the active research program. Its nonlinear, grouped cross-fitted
   reference implementation, competing-method calibration, and refit-aware
-  uncertainty path are public. Protected transport and independent replication
-  are still incomplete, so submission-grade validation is not claimed.
+  uncertainty path are public. The protected transport gate ended in binding
+  abstention, and the replication packet has only been run internally, so
+  submission-grade validation is not claimed.
 
 This distinction is intentional. Openness includes publishing negative results,
 known limitations, and unfinished validation work rather than presenting a

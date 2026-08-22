@@ -1,0 +1,12 @@
+{
+  "planned_rows": 180,
+  "valid_rows": 180,
+  "error_rows": 0,
+  "configuration_count": 36,
+  "seeds_per_configuration": [
+    5
+  ],
+  "causal_test": "passed",
+  "inference_status": "eligible_for_frozen_refit_inference",
+  "random_negative_control_status": "valid"
+}

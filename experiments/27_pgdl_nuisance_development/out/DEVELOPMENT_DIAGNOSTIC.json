@@ -1,0 +1,284 @@
+{
+  "protocol_id": "mbe3-pgdl-nuisance-development-v1",
+  "candidate_baseline_diagnostics": [
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d2_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.55,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d2_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d2_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d2_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d4_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.5,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d4_r0001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d4_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d4_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.5,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d4_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d6_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B1_design",
+      "candidate_id": "interactions_d6_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.5,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d2_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d2_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d2_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d2_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d4_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.1,
+      "minimum_beta_0_50_positive_power_raw": 0.5,
+      "screen_pass": false
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d4_r0001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d4_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d4_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d4_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.95,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d6_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "candidate_id": "interactions_d6_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.8,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d2_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.55,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d2_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d2_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d2_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.8,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d4_r0",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.55,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d4_r0001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d4_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.6,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d4_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.1,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": false
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d4_r1",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.7,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d6_r001",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.05,
+      "minimum_beta_0_50_positive_power_raw": 0.8,
+      "screen_pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "candidate_id": "interactions_d6_r01",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_raw": 0.0,
+      "minimum_beta_0_50_positive_power_raw": 0.65,
+      "screen_pass": true
+    }
+  ],
+  "eligible_candidates_for_confirmation_design": [
+    "interactions_d2_r0",
+    "interactions_d2_r001",
+    "interactions_d2_r01",
+    "interactions_d2_r1",
+    "interactions_d4_r0001",
+    "interactions_d4_r001",
+    "interactions_d4_r1",
+    "interactions_d6_r001",
+    "interactions_d6_r01"
+  ],
+  "protected_association_open_authorized": false,
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false,
+  "smoke": false
+}

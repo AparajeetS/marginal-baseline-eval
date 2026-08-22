@@ -1,0 +1,26 @@
+{
+  "repetitions": 100,
+  "n": 150,
+  "scenarios": [
+    "null_metric",
+    "nonlinear_proxy",
+    "heteroskedastic_null",
+    "clustered_null",
+    "genuine_increment"
+  ],
+  "nuisance_models": [
+    "polynomial_ridge",
+    "polynomial_ridge_interactions"
+  ],
+  "draws": [
+    99,
+    199,
+    499,
+    999
+  ],
+  "permutations": 199,
+  "degree": 6,
+  "seed": 20260731,
+  "rows": 4000,
+  "paired_reference_draws": 999
+}

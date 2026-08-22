@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "status": "prepared_not_independently_executed",
+  "scope": "Known-truth comparator, orthogonal confirmation, and pooled-PGDL calibration sequence",
+  "packet_envelope_manifest": "experiments/12_independent_replication/PACKET_V2_SHA256SUMS",
+  "hash_manifests": [
+    "experiments/23_conditional_comparator_benchmark/FROZEN_SHA256SUMS",
+    "experiments/25_orthogonal_confirmation_192/FROZEN_SHA256SUMS",
+    "experiments/26_pgdl_transfer_calibration/FROZEN_SHA256SUMS",
+    "experiments/27_pgdl_nuisance_development/DEVELOPMENT_SHA256SUMS",
+    "experiments/28_pgdl_transfer_confirmation_v2/FROZEN_SHA256SUMS"
+  ],
+  "artifact_hash_manifests": [
+    "experiments/23_conditional_comparator_benchmark/out/SHA256SUMS",
+    "experiments/25_orthogonal_confirmation_192/out/SHA256SUMS",
+    "experiments/26_pgdl_transfer_calibration/out/SHA256SUMS",
+    "experiments/27_pgdl_nuisance_development/out/SHA256SUMS",
+    "experiments/28_pgdl_transfer_confirmation_v2/out/SHA256SUMS"
+  ],
+  "historical_source_aliases": [
+    {
+      "manifest_path": "mbe_eval/orthogonal.py",
+      "expected_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
+      "snapshot": "experiments/22_orthogonal_score_development/out_development_v2_100_finalists/source_snapshot/orthogonal_v2.py",
+      "reason": "Experiments 23-28 froze orthogonal-score v2 before experiment 29 added the repeated-split API to the live package module."
+    }
+  ],
+  "table_gates": [
+    {
+      "path": "experiments/23_conditional_comparator_benchmark/out/comparator_ledger.csv",
+      "rows": 153600,
+      "keys": ["scope", "baseline", "scenario", "icc", "beta", "repetition", "metric_name", "method"]
+    },
+    {
+      "path": "experiments/25_orthogonal_confirmation_192/out/confirmation_ledger.csv",
+      "rows": 9600,
+      "keys": ["design_scope", "baseline", "scenario", "icc", "beta", "repetition"]
+    },
+    {
+      "path": "experiments/26_pgdl_transfer_calibration/out/calibration_ledger.csv",
+      "rows": 4800,
+      "keys": ["baseline", "scenario", "reliability", "beta", "repetition"]
+    },
+    {
+      "path": "experiments/27_pgdl_nuisance_development/out/development_ledger.csv",
+      "rows": 10560,
+      "keys": ["baseline", "candidate_id", "scenario", "reliability", "beta", "repetition"]
+    },
+    {
+      "path": "experiments/28_pgdl_transfer_confirmation_v2/out/confirmation_ledger.csv",
+      "rows": 4800,
+      "keys": ["baseline", "scenario", "reliability", "beta", "repetition"]
+    }
+  ],
+  "protected_decisions": [
+    "experiments/26_pgdl_transfer_calibration/out/FINAL_ELIGIBILITY.json",
+    "experiments/28_pgdl_transfer_confirmation_v2/out/FINAL_ELIGIBILITY.json"
+  ],
+  "expected_claim": "Protected PGDL associations remain unauthorized unless every listed decision explicitly authorizes opening; the current packet must report abstention.",
+  "historical_exclusion": "Experiment 21 remains public evidence but is excluded from this clean packet because its original VM freeze contains nonlocal or superseded paths. Its terminal provenance remains in its experiment directory."
+}

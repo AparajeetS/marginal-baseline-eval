@@ -1,0 +1,12 @@
+{
+  "protocol_id": "mbe3-design-matched-calibration-v1",
+  "terminal_state": "complete_screen_abstention",
+  "corrected_screen_rows": 48000,
+  "corrected_unique_task_rows": 48000,
+  "corrected_nonestimable_rows": 0,
+  "screen_finalists": 0,
+  "confirmation_run": false,
+  "original_failure_rows": 48000,
+  "original_extra_trees_seed_domain_failures": 9600,
+  "protected_result_csv_read": false
+}

@@ -1,6 +1,6 @@
 # Statistical Estimand And Inference
 
-Status: primary MBE 2.0 statistical specification, 2026-07-16.
+Status: calibration-amended MBE 2.0 statistical specification, 2026-07-29.
 
 ## Estimand
 
@@ -20,9 +20,10 @@ The primary scale is rank-target mean squared error. Pairwise concordance is a
 preregistered sensitivity because a metric may improve ordering without
 improving squared-error calibration.
 
-## Primary Decision Rule
+## Historical Frozen Decision Rule
 
-A metric-target-baseline cell is `increment-supported` only when:
+The 2026-07-16 rule called a metric-target-baseline cell
+`increment-supported` only when:
 
 1. the full-refit configuration bootstrap gives a 95% interval for `Delta_L`
    strictly above zero;
@@ -37,6 +38,34 @@ A metric-target-baseline cell is `increment-supported` only when:
 Disagreement between nuisance families is reported as `nuisance-sensitive`.
 Failure to reject is not evidence that a metric is intrinsically useless.
 
+This rule remains the immutable analysis rule for experiments already frozen
+under it. It is not eligible for new confirmatory experiments without
+amendment. In the 36-configuration observed-design calibration, the
+interaction family had only 1.0%-4.6% power at the largest injected effect
+across degrees 1-6. Mandatory agreement therefore had at most 4.6% power even
+though the additive family recovered 98.2%-100% of the same large effects.
+Reducing degree did not repair the interaction veto.
+
+## Prospective Calibration-Gated Rule
+
+Before any new protected outcome is inspected:
+
+1. candidate nuisance families and complexity grids are frozen;
+2. each family is tested on named null/proxy controls and injected signals
+   matched to the target design and independence structure;
+3. eligibility thresholds for false support, power, estimability, and
+   practical effect size are frozen from those known-truth simulations;
+4. real-metric inference is run only for eligible families;
+5. `increment-supported` requires a full-refit 95% interval for `Delta_L`
+   above zero, direction agreement, and agreement among all eligible frozen
+   families;
+6. if no family is eligible, or eligible families disagree, MBE abstains.
+
+This amendment removes the circular requirement that an empirically
+underpowered family must veto every conclusion. It does not permit choosing a
+family because it favors a real metric. The exact eligibility thresholds must
+be preregistered before the next protected experiment.
+
 ## Residual Dependence
 
 Cross-fitted residual rank dependence and its within-environment permutation
@@ -44,20 +73,27 @@ p-value are secondary diagnostics. They can reveal remaining dependence that
 does not improve the chosen learner, but they are not required for the primary
 increment decision.
 
-This demotion is evidence-driven. In the frozen inference stress test, residual
-permutation was compatible with nominal 5% behavior for ordinary,
-heteroskedastic, and unequal-block nulls, while a clustered null rejected 7.0%
-of 500 repetitions. The full-refit predictive interval made one false support
-across 320 null/proxy cells and recovered all 80 injected-signal cells. These
-finite results justify the current operational rule but not a universal
-coverage guarantee.
+This demotion is evidence-driven. In the expanded 2,000-repetition block-null
+study, residual permutation rejected 6.95% of clustered nulls, 5.30% of
+heteroskedastic nulls, 7.05% of homoskedastic nulls, and 7.25% of
+unequal-block nulls. Three Wilson intervals excluded the nominal 5% level.
+
+The separate full-refit stress matrix contained 6,400 null/proxy rows and
+1,600 genuine-increment rows across sample sizes 100-300. Predictive false
+support was 0.25%, joint false support was 0.125%, and predictive recovery was
+100%. These finite results support the predictive interval for the named
+designs but are not a universal coverage guarantee.
 
 ## Uncertainty And Multiplicity
 
 - Bootstrap independent configurations and refit folds and nuisance models in
   every draw.
-- Report intervals separately for every nuisance family before applying the
-  agreement rule.
+- Report intervals separately for every eligible nuisance family before
+  applying the agreement rule.
+- Use at least 499 full-refit draws for publication-quality decisions near
+  zero. A paired convergence study found 499/499 decisions agreed with a
+  999-draw reference, while 199 draws had up to 3% disagreement in one
+  borderline proxy cell.
 - Control false discovery rate within each target, environment, and baseline
   level for secondary residual-dependence tests.
 - Report task-family effects individually before any pooled summary.

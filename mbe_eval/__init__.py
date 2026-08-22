@@ -21,8 +21,16 @@ from .calibration import make_calibration_ledger, run_calibration, run_monte_car
 from .reaudit import run_manifest_reaudit, run_published_reaudit, validate_study_manifest
 from .robust_sign_error import robust_sign_error_environments, robust_sign_error_summary
 from .checkpoint_metrics import summarize_checkpoint_pair
-from .comparators import granulated_kendall, jiang_normalized_cmi, kendall_rank_correlation
+from .comparators import (
+    cross_fitted_rank_residuals,
+    gcm_rank_test,
+    granulated_kendall,
+    jiang_normalized_cmi,
+    kendall_rank_correlation,
+    wgcm_est_rank_test,
+)
 from .diagnostics import abstention_reasons, audit_power_diagnostic, minimum_detectable_correlation
+from .orthogonal import orthogonal_score_audit, repeated_split_orthogonal_audit
 from .selection import (
     coverage_regret_curve,
     leave_one_task_out_global_choice,
@@ -46,17 +54,21 @@ __all__ = [
     "audit_metrics",
     "classify_effect",
     "cross_fitted_audit",
+    "cross_fitted_rank_residuals",
     "classify_increment_evidence",
     "classify_predictive_increment",
     "repeated_cross_fitted_audit",
     "refit_bootstrap_audit",
     "make_demo_runs",
     "granulated_kendall",
+    "gcm_rank_test",
     "abstention_reasons",
     "audit_power_diagnostic",
     "jiang_normalized_cmi",
     "kendall_rank_correlation",
     "minimum_detectable_correlation",
+    "orthogonal_score_audit",
+    "repeated_split_orthogonal_audit",
     "make_calibration_ledger",
     "partial_rank_corr",
     "run_demo",
@@ -76,6 +88,7 @@ __all__ = [
     "validate_study_manifest",
     "write_markdown_report",
     "validate_audit_inputs",
+    "wgcm_est_rank_test",
 ]
 
 

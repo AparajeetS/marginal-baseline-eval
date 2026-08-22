@@ -7,6 +7,23 @@
 > are retained to document the failure, not to support language-model claims.
 > New evidence must follow the [MBE 2.0 research program](docs/MBE_2_RESEARCH_PROGRAM.md).
 
+> **Corrected evidence update (2026-07-26):** The current MBE 2.0 evidence is
+> indexed in [docs/EVIDENCE_INDEX.md](docs/EVIDENCE_INDEX.md). A corrected
+> causal-LM pipeline has passed its implementation gate. The first 100-run
+> causal-text factorial is public but receives no metric verdict because it has
+> 20 configuration units and an invalid configuration-level random control; a
+> separately reported 180-run replication was active at that date. These
+> results do not alter the historical status of this v1 ledger.
+
+> **Calibration update (2026-07-29):** The 180-run replication, expanded
+> inference stress, observed-design power study, degrees 1-6 nuisance
+> ablation, and paired refit-draw convergence are complete. The frozen
+> two-family rule abstained on the real metrics, but known-truth simulation
+> found that its mandatory interaction-family veto has only 1.0%-4.6% power
+> for a large effect at 36 configurations. That abstention is not a substantive
+> metric null. Current evidence and reproduction links are summarized in
+> [docs/EVIDENCE_INDEX.md](docs/EVIDENCE_INDEX.md).
+
 This file records the evidence accumulated so far for Marginal Baseline
 Evaluation (MBE) and the FIM_norm case study.
 

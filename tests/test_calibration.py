@@ -116,7 +116,7 @@ def test_extra_trees_nuisance_model_detects_incremental_signal():
         ["baseline_a", "baseline_b"],
         nuisance_model="extra_trees",
         permutations=19,
-        seed=17,
+        seed=2**32 + 17,
     )
 
     assert result["nuisance_model"] == "extra_trees"

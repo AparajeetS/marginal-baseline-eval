@@ -1,0 +1,15 @@
+metric,configuration_units,raw_spearman,raw_permutation_p
+prediction_confidence,36,-0.9837837837837838,0.001
+prediction_margin,36,-0.9675675675675676,0.001
+distance_from_initialization_l2,36,-0.8965250965250965,0.001
+feature_erank,36,-0.8638352638352639,0.001
+update_to_weight_ratio,36,-0.7796653796653796,0.001
+relative_distance_from_initialization,36,-0.7688545688545688,0.001
+random_metric,36,-0.09214929214929216,0.548
+fim_erank,36,-0.03783783783783784,0.823
+fim_norm,36,-0.03783783783783784,0.833
+parameter_l2,36,-0.0018018018018018018,0.987
+empirical_fisher_trace,36,0.10553410553410554,0.517
+gradient_norm,36,0.15727155727155728,0.352
+sharpness_random_perturbation,36,0.19871299871299872,0.228
+prediction_entropy,36,0.9788931788931788,0.001

@@ -1,0 +1,32 @@
+{
+  "protocol_id": "mbe3-pgdl-transfer-confirmation-v2",
+  "global_pass": false,
+  "baseline_decisions": [
+    {
+      "baseline": "B1_design",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.054486196178705315,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5322052958094291,
+      "pass": true
+    },
+    {
+      "baseline": "B2_training_loss",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.054486196178705315,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5627772885472462,
+      "pass": true
+    },
+    {
+      "baseline": "B3_training_state",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.0845193642905276,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.4920143005341078,
+      "pass": false
+    }
+  ],
+  "eligible_to_freeze_pgdl_transfer_analysis": false,
+  "checkpoint_metric_association_open_authorized": false,
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false,
+  "smoke": false
+}

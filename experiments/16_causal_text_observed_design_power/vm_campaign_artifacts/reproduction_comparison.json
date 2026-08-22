@@ -1,0 +1,13 @@
+{
+  "raw_metric_order_equal": true,
+  "consensus_keys_equal": true,
+  "consensus_status_equal": true,
+  "support_decisions_equal": true,
+  "maximum_absolute_differences": {
+    "raw_spearman": 0.0,
+    "raw_permutation_p": 0.0,
+    "minimum_refit_delta_mse_ci_low": 3.3460040294031046e-13,
+    "maximum_residual_permutation_p": 0.0
+  },
+  "scientific_reproduction_pass": true
+}

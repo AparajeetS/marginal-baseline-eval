@@ -16,25 +16,18 @@ Status: known-ground-truth and semi-synthetic evidence only. This does not valid
 | Generic simulation | polynomial degree 2 | 0.000-1.000 | 1.000-1.000 |
 | Generic simulation | polynomial degree 6 | 0.000-0.010 | 1.000-1.000 |
 | PGDL semi-synthetic | polynomial degrees 2/4/6 | 0.000-0.070 | 0.980-1.000 |
-| Generic simulation | Extra Trees | 0.020-1.000 | 1.000-1.000 |
-| PGDL semi-synthetic | Extra Trees | 0.020-1.000 | 1.000-1.000 |
-| PGDL semi-synthetic | polynomial degree 6 + pairwise interactions | 0.000-0.020 | 0.970-1.000 |
-
-## Real-Data Baseline Check
-
-The PGDL metadata floor contains 24 frozen task-by-nuisance fits. Final training loss is increment-supported in 0; 6 fits show residual dependence without interval-supported predictive improvement. This is a baseline diagnostic only and does not evaluate the checkpoint-derived metric battery.
-
-## Shared Comparator Benchmark
-
-Across 50 balanced-factorial repetitions, corrected interaction MBE supported known design/interaction proxies in at most 4.0% of repetitions and recovered the stable increment in 96.0%. Raw and conditional descriptive scores often remained high for proxies, confirming that the methods answer different questions rather than defining one universal ranking.
 
 ## Refit-Aware Inference
 
-Across 320 null/proxy nuisance-by-sample-size cells, the maximum predictive-interval support rate was 5.0% and the maximum joint support rate was 0.0%. All 80 injected-signal cells were recovered. Residual-permutation rejection was 5.0% for the ordinary null and 7.0% for the clustered null. The full-refit predictive interval with nuisance-family agreement is therefore primary; residual permutation is diagnostic.
+Across 6400 null/proxy rows, the maximum cell-level predictive-interval support rate was 3.0% and the maximum joint support rate was 2.5%. Predictive support recovered 1600/1600 injected-signal rows and joint support recovered 1597/1600. Residual-permutation rejection was 7.05% for the ordinary null and 6.95% for the clustered null. The full-refit predictive interval is the primary uncertainty path for prospectively calibrated nuisance families; residual permutation is diagnostic.
+
+## Nuisance-Complexity And Power
+
+Across degrees 1-3, at least one generic null/proxy cell reached 100.0% false support. Degree 6 reduced the worst generic rates to 0.0%-3.0%, but interaction-family power at beta=0.5 was only 1.0%-4.6% in the 36-configuration observed design. The original mandatory consensus is therefore underpowered in that geometry and cannot support substantive null conclusions.
 
 ## What This Changes
 
-Degree 2 and the tested Extra Trees configuration are documented failure controls and cannot support primary MBE conclusions. Primary real-metric reporting must show every preregistered eligible nuisance learner, repeated cross-fitting, full-refit interval-supported predictive improvement, and residual dependence as a separate diagnostic. Learner disagreement is a result, not permission to select the favorable model.
+Low-degree polynomial fits, the tested Extra Trees configuration, anti-conservative residual permutation, and the underpowered universal consensus are documented failure controls. Future real-metric reporting must calibrate nuisance-family eligibility before protected outcomes, use repeated cross-fitting and full-refit interval-supported predictive improvement, and keep residual dependence separate. Learner disagreement is a result, not permission to select the favorable model.
 
 ## Remaining Gates
 

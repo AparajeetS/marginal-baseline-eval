@@ -1,0 +1,27 @@
+{
+  "protocol_id": "mbe3-orthogonal-split-stability-development-v1",
+  "status": "development-only",
+  "smoke": false,
+  "planned_rows": 1920,
+  "observed_rows": 1920,
+  "repetitions": 20,
+  "wild_draws_per_split": 499,
+  "split_repeats": 3,
+  "candidate": {
+    "candidate_id": "configmean_interactions_d4_r10",
+    "nuisance_model": "polynomial_ridge_interactions",
+    "degree": 4,
+    "ridge": 10.0
+  },
+  "rules": [
+    "single_005",
+    "unanimous_050",
+    "unanimous_025",
+    "unanimous_010",
+    "two_of_three_010"
+  ],
+  "source_runner_sha256": "f0bda68072c7c1fe65f384be2e30e135095028f492d215dcc0f6512799c25b40",
+  "estimator_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
+  "protected_result_csv_read": false,
+  "protected_analysis_open_authorized": false
+}

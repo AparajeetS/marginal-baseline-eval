@@ -178,6 +178,26 @@ python -m kaggle kernels push -p kaggle\mbe_metric_audit
 The package and saved-analysis scripts do not require GPU. Fresh model-training
 replications do.
 
+## Corrected Causal-Text Artifacts
+
+The current corrected causal-LM evidence is indexed in
+[`docs/EVIDENCE_INDEX.md`](docs/EVIDENCE_INDEX.md). The completed 100-run
+factorial is reproducible from its committed ledger and manifest:
+
+```bash
+python experiments/14_corrected_causal_text_factorial/analyze_factorial.py \
+  experiments/14_corrected_causal_text_factorial/kaggle_downloads/v2/mbe2_corrected_causal_text_factorial.csv \
+  experiments/14_corrected_causal_text_factorial/kaggle_downloads/v2/mbe2_corrected_causal_text_factorial_manifest.json \
+  --out-dir experiments/14_corrected_causal_text_factorial/out
+```
+
+That report must abstain from metric verdicts because the completed design has
+20 configuration units and an invalid configuration-level random control. The
+source, raw ledger, manifest, hashes, and report are recorded in
+[`experiments/14_corrected_causal_text_factorial/ARTIFACTS.md`](experiments/14_corrected_causal_text_factorial/ARTIFACTS.md).
+The 180-run sequential replication is a separately reported active run under
+`experiments/15_causal_text_factorial_replication/`.
+
 Current large-scale training scripts live in:
 
 ```text

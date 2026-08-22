@@ -1,0 +1,25 @@
+{
+  "rows": 144,
+  "valid_rows": 144,
+  "error_rows": 0,
+  "unique_run_ids": 144,
+  "duplicate_run_ids": 0,
+  "per_environment": {
+    "wikitext2": {
+      "valid_rows": 48,
+      "valid_configurations": 24,
+      "complete_two_seed_configurations": 24
+    },
+    "ptb": {
+      "valid_rows": 48,
+      "valid_configurations": 24,
+      "complete_two_seed_configurations": 24
+    },
+    "tinyshakespeare": {
+      "valid_rows": 48,
+      "valid_configurations": 24,
+      "complete_two_seed_configurations": 24
+    }
+  },
+  "primary_gate_pass": true
+}

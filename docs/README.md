@@ -7,11 +7,14 @@ Use this page as the map for the research repository.
 - [MBE 2.0 research program](MBE_2_RESEARCH_PROGRAM.md): current technical source of truth.
 - [JMLR milestone roadmap](JMLR_MILESTONE_ROADMAP.md): gated path from protocol freeze to submission.
 - [Compute and cost plan](COMPUTE_AND_COST_PLAN.md): minimum and recommended resource budgets.
+- [Historical CPU campaign runbook](CPU_CAMPAIGN_NEXT_48_HOURS.md): frozen queue and completion gates used for the July 2026 campaign.
 - [Independent replication protocol](INDEPENDENT_REPLICATION_PROTOCOL.md): external execution, conflict, acceptance, and reporting rules.
 - [Grant execution plan](../GRANT_EXECUTION_PLAN.md): exact 340-run matrix, budget ceilings, holdout, and public deliverables.
 - [Open research inventory](../OPEN_RESEARCH.md): public infrastructure and maturity map.
 - [Project brief](../PROJECT_BRIEF.md): short grant-facing summary.
 - [README](../README.md): install, package usage, and current result snapshot.
+- [Evidence index](EVIDENCE_INDEX.md): public claim map, corrected causal evidence, retained failures, and active work.
+- [Project status](PROJECT_STATUS.md): one-page, reviewer-oriented account of progress, boundaries, and next work.
 - [Agent recipes](agent_recipes.md): CLI-first patterns for coding assistants.
 - [Audit an ML training metric](audit_ml_training_metric.md): short search-shaped guide for run-ledger audits.
 - [Figures](../FIGURES.md): visual summary of current evidence.
@@ -44,6 +47,7 @@ research program.
 ## Reproducibility
 
 - [Reproducibility guide](../REPRODUCIBILITY.md): local setup and artifact regeneration.
+- [Artifact integrity and lineage](ARTIFACT_INTEGRITY.md): how to distinguish current output checksums from retained failure and recovery receipts.
 - [Large-scale artifacts](../experiments/07_jmlr_scale/ARTIFACTS.md): raw CSV hashes and regeneration commands.
 - [No-compute uncertainty](../experiments/07_jmlr_scale/no_compute_outputs/NO_COMPUTE_UNCERTAINTY.md): bootstrap CIs and threshold sensitivity from saved CSVs.
 - [Run progress log](../RUN_PROGRESS_LOG_2026-06-28.md): ledger for the current 680-model evidence set.

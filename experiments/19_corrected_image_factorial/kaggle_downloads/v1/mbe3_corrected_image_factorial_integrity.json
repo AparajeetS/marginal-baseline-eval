@@ -1,0 +1,15 @@
+{
+  "rows": 96,
+  "valid_rows": 96,
+  "error_rows": 0,
+  "unique_run_ids": 96,
+  "duplicate_run_ids": 0,
+  "valid_configurations": 48,
+  "configurations_with_two_seeds": 48,
+  "architectures": [
+    "cnn",
+    "resnet",
+    "wide_resnet"
+  ],
+  "primary_gate_pass": true
+}

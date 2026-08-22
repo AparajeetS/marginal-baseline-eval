@@ -1,0 +1,22 @@
+{
+  "protocol_id": "mbe3-orthogonal-confirmation-192-v1",
+  "stage": "confirmation",
+  "smoke": false,
+  "planned_rows": 9600,
+  "observed_rows": 9600,
+  "repetitions": 100,
+  "wild_draws": 4999,
+  "decision_alpha": 0.001,
+  "n_groups_per_geometry": 192,
+  "panels": {
+    "image": 4,
+    "text": 8
+  },
+  "nuisance_model": "polynomial_ridge_interactions",
+  "degree": 4,
+  "ridge": 10.0,
+  "design_source_sha256": "d74c90dbdb8c2179342390bfe1a971584a9daf62ff3eb698b980db14b2139568",
+  "estimator_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
+  "preregistration_sha256": "b7f3bf96cd58aa7f9410ceced72cb64d638fd68ebc2c24464f727ffcf16b210f",
+  "protected_result_csv_read": false
+}

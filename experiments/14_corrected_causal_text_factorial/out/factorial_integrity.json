@@ -1,0 +1,12 @@
+{
+  "planned_rows": 100,
+  "valid_rows": 100,
+  "error_rows": 0,
+  "configuration_count": 20,
+  "seeds_per_configuration": [
+    5
+  ],
+  "causal_test": "passed",
+  "inference_status": "abstain_below_30_configuration_units",
+  "random_negative_control_status": "invalid_constant_at_configuration_level"
+}

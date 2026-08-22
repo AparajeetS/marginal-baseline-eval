@@ -1,0 +1,285 @@
+{
+  "protocol_id": "mbe3-orthogonal-score-development-v1",
+  "status": "development-only",
+  "gate": {
+    "minimum_estimability": 0.98,
+    "maximum_null_support_wilson_upper": 0.1,
+    "minimum_beta_0_50_positive_power_wilson_lower": 0.5
+  },
+  "diagnostics": [
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8318196702937638,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5958499732047615,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8318196702937638,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.7224672001371107,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.31267376973365824,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.31267376973365824,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8922087325936989,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.49016247153664183,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.7634069094874361,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.49016247153664183,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.236593090512564,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.7634069094874361,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.7634069094874361,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8922087325936989,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5958499732047615,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8922087325936989,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.7224672001371107,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.31267376973365824,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.7634069094874361,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.0,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.236593090512564,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.10779126740630099,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.39677814746114537,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.236593090512564,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.10779126740630099,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8318196702937638,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.31267376973365824,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.236593090512564,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8318196702937638,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.05668215145437519,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8922087325936989,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "score_additive_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6873262302663417,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.16818032970623614,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "score_additive_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.236593090512564,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "score_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.6032218525388546,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.39677814746114537,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "score_interactions_d4",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.7634069094874361,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.05668215145437519,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "score_interactions_d6",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.8318196702937638,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.05668215145437519,
+      "development_gate_pass": false
+    }
+  ],
+  "protected_analysis_open_authorized": false,
+  "next_step": "Freeze candidate, untouched confirmation seeds, and comparator set only after development; this output cannot unlock protected associations.",
+  "smoke": false,
+  "warning": "Smoke or development output never authorizes protected analysis."
+}

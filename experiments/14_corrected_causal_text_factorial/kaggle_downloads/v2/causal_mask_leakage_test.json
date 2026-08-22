@@ -1,0 +1,7 @@
+{
+  "prefix_length": 13,
+  "causal_max_abs_difference": 0.0,
+  "unmasked_max_abs_difference": 3.1988818645477295,
+  "causal_pass": true,
+  "negative_control_pass": true
+}

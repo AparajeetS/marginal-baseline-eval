@@ -1,0 +1,53 @@
+{
+  "rows": 144,
+  "valid_rows": 144,
+  "error_rows": 0,
+  "unique_run_ids": 144,
+  "duplicate_run_ids": 0,
+  "run_ids_match_manifest": true,
+  "configurations": 72,
+  "all_configurations_have_two_seeds": true,
+  "environment_counts": {
+    "ptb": 48,
+    "tinyshakespeare": 48,
+    "wikitext2": 48
+  },
+  "complete_configurations_by_environment": {
+    "wikitext2": 24,
+    "ptb": 24,
+    "tinyshakespeare": 24
+  },
+  "seed_counts": {
+    "8201": 72,
+    "8202": 72
+  },
+  "missing_required_columns": [],
+  "nonfinite_required_values": {
+    "distance_from_initialization_l2": 0,
+    "empirical_fisher_trace": 0,
+    "feature_erank": 0,
+    "fim_erank": 0,
+    "fim_norm": 0,
+    "final_train_batch_loss": 0,
+    "gradient_norm": 0,
+    "metric_batch_loss": 0,
+    "parameter_l2": 0,
+    "prediction_confidence": 0,
+    "random_metric": 0,
+    "sharpness_random_perturbation": 0,
+    "test_loss": 0,
+    "test_perplexity": 0,
+    "test_token_accuracy": 0,
+    "val_loss": 0
+  },
+  "dataset_hashes_match": true,
+  "causal_mask_pass": true,
+  "unmasked_negative_control_pass": true,
+  "source_hashes_match": {
+    "PREREGISTRATION.md": true,
+    "mbe3_multicorpus_text_atlas.py": true,
+    "kernel-metadata.json": true
+  },
+  "reported_integrity_matches": true,
+  "pass": true
+}

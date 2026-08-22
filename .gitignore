@@ -10,6 +10,7 @@ dist_release_*/
 mbe_reports/
 kaggle_tmp/
 *.log
+!experiments/16_causal_text_observed_design_power/vm_campaign_artifacts/setup/pytest.log
 *.tar.gz
 .env
 .env.*
@@ -20,7 +21,20 @@ kaggle.json
 .pypirc
 experiments/**/data/
 experiments/**/out/data/
+experiments/**/out_smoke/
+experiments/**/out*smoke*/
+experiments/**/*.partial.csv
+experiments/**/out/package/
+experiments/**/out*/driver.err
+experiments/**/out*/driver.out
+experiments/**/PREREGISTRATION_DRAFT.md
+experiments/**/CAMPAIGN_STATE*
+experiments/**/CAMPAIGN_COMPLETE*
+experiments/**/*_status.tsv
 experiments/**/kaggle_downloads/**/data/
+experiments/**/kaggle_downloads/**/corpora/
+experiments/**/kaggle_downloads/**/wikitext-2/
+experiments/**/kaggle_downloads/**/*.log
 experiments/**/kaggle_oauth_state.json
 experiments/**/kaggle_oauth_manual.py
 experiments/**/__pycache__/
@@ -28,3 +42,5 @@ experiments/**/local_*
 experiments/07_jmlr_scale/**/tinyshakespeare.txt
 experiments/07_jmlr_scale/tinyshakespeare.txt
 experiments/13_causal_text_pilot_runs/
+experiments/15_causal_text_factorial_replication/out_chunks/
+experiments/15_causal_text_factorial_replication/out_screen_20/

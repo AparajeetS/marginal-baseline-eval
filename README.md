@@ -23,54 +23,83 @@ rank-correlation.
 
 ## Current Status
 
-This is an active research direction with an accompanying Python package,
-Kaggle-scale experiment artifacts, and a public walkthrough notebook.
+This is an active open-source research program, not a finished benchmark
+claim. The repository now contains corrected image and causal-language-model
+artifacts, design-matched calibration studies, strong conditional-independence
+comparators, retained failures, and a hash-sealed replication packet.
 
-**Software status:** `mbe-eval` v0.4.0 implements the stable MBE v1
-partial-rank audit. MBE 2.0 is the active research design and is not yet fully
-implemented or empirically validated. See the [open research inventory](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/OPEN_RESEARCH.md)
-for a precise map of what is available now.
+The central result so far is methodological: raw metric-performance
+association is easy to overread, while reliable incremental claims can become
+underpowered or miscalibrated at realistic experiment sizes. MBE therefore
+uses explicit claim gates and abstains when a procedure has not earned the
+right to interpret a protected result.
 
-The current direction is **MBE 2.0**, a multi-environment metric-validation
-framework that separates unconditional association, incremental information,
-transport, intervention response, and measurement reliability. The technical
-[research program](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_2_RESEARCH_PROGRAM.md), gated [JMLR roadmap](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/JMLR_MILESTONE_ROADMAP.md),
-and [compute plan](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/COMPUTE_AND_COST_PLAN.md) are the source of truth for new work.
+**Software status:** [`mbe-eval` v0.4.0](https://pypi.org/project/mbe-eval/)
+implements the stable MBE v1 partial-rank audit. MBE 2.0 is the active research
+design; its calibration and selection layers remain under prospective
+validation.
 
-MBE does not claim that partial correlation or hyperparameter conditioning is
-new. The proposed contribution is their calibrated integration with a baseline
-information ladder, five explicit estimands, deliberately deceptive controls,
-configuration-blocked uncertainty, environment transport, matched
-interventions, measurement reliability, and scoped metric claim cards. This
-novelty claim must pass the public-corpus comparison gate or be narrowed.
+| Public evidence | Current state |
+|---|---|
+| Corrected trained-model artifacts | 96 image runs, 144 multi-corpus causal-LM runs, and a separate 180-run causal-text replication |
+| Known-truth calibration | 48,000-cell design-matched screen, 9,600-dataset conditional-comparator benchmark, and follow-on development/confirmation studies |
+| Protected evidence | Image, text-atlas, and PGDL metric-target associations remain sealed because the prespecified opening gates did not pass |
+| Reproducibility | Source, preregistrations, canonical ledgers, manifests, hashes, validators, and an executable independent-replication packet |
 
-- Package: [`mbe-eval`](https://pypi.org/project/mbe-eval/)
-- Public notebook: [Audit ML Training Metrics with MBE](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe)
-- Agent guide: [AGENTS.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/AGENTS.md)
-- LLM discovery file: [llms.txt](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/llms.txt)
-- Documentation map: [docs/README.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/README.md)
-- Conditional reliability protocol: [atlas, selector, and abstention design](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md)
-- Metric audit service: [open-core product boundary](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/METRIC_RELIABILITY_AUDIT_SERVICE.md)
-- Credibility ledger: [passed, failed, fixed, and blocked evidence gates](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md)
-- Shared method comparison: [CMI, granulated Kendall, rank, and MBE benchmark](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/experiments/10_method_comparison/README.md)
-- Preregistration and claim gate: [credibility freeze](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/experiments/11_credibility_freeze/PREREGISTRATION.md)
-- Statistical specification: [estimand, inference, and assumptions](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md)
-- Paper workspace: [JMLR manuscript skeleton and generated tables](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/paper/README.md)
-- Evidence ledger: [SUPPORTING_EVIDENCE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/SUPPORTING_EVIDENCE.md)
-- Reproducibility notes: [REPRODUCIBILITY.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/REPRODUCIBILITY.md)
-- Legacy v1 protocol: [PROTOCOL_FREEZE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PROTOCOL_FREEZE.md)
-- Metric taxonomy: [METRIC_TAXONOMY.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/METRIC_TAXONOMY.md)
-- Figures: [FIGURES.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/FIGURES.md)
-- Project brief: [PROJECT_BRIEF.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PROJECT_BRIEF.md)
-- Superseded v1 experiment protocol: [NEXT_EXPERIMENT_PROTOCOL.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/NEXT_EXPERIMENT_PROTOCOL.md)
-- Paper skeleton: [PAPER_SKELETON.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PAPER_SKELETON.md)
-- Paper notes: [PAPER.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PAPER.md) and [PUBLICATION_STRATEGY.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/PUBLICATION_STRATEGY.md)
-- Contribution guide: [CONTRIBUTING.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/CONTRIBUTING.md)
-- Open research inventory: [OPEN_RESEARCH.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/OPEN_RESEARCH.md)
-- Grant execution plan: [GRANT_EXECUTION_PLAN.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/GRANT_EXECUTION_PLAN.md)
-- Independent replication protocol: [docs/INDEPENDENT_REPLICATION_PROTOCOL.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/INDEPENDENT_REPLICATION_PROTOCOL.md)
-- Governance: [GOVERNANCE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/GOVERNANCE.md)
-- Roadmap: [ROADMAP.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/ROADMAP.md)
+### Start Here
+
+- [One-page research status](docs/PROJECT_STATUS.md)
+- [Evidence index and claim boundaries](docs/EVIDENCE_INDEX.md)
+- [Experiment-by-experiment synthesis](docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md)
+- [Adversarial credibility ledger](docs/MBE_CREDIBILITY_LEDGER.md)
+- [Statistical estimand and assumptions](docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md)
+- [Reproduction guide](REPRODUCIBILITY.md)
+- [Artifact integrity and hash lineage](docs/ARTIFACT_INTEGRITY.md)
+- [MBE 2.0 research program](docs/MBE_2_RESEARCH_PROGRAM.md) and [JMLR roadmap](docs/JMLR_MILESTONE_ROADMAP.md)
+- [Independent replication protocol](docs/INDEPENDENT_REPLICATION_PROTOCOL.md)
+
+The package has a [public Kaggle walkthrough](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe),
+an [agent guide](AGENTS.md), and a machine-readable [LLM discovery file](llms.txt).
+The complete documentation directory is indexed in [docs/README.md](docs/README.md).
+
+## Evidence At A Glance
+
+The clearest current account of the research is the
+[evidence index](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/EVIDENCE_INDEX.md).
+It separates calibrated method evidence, corrected implementation evidence,
+active replications, historical pilots, retained failures, and blocked claims.
+The [experiment evidence synthesis](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md)
+links every experiment program to its reproduction entry point and states what
+the full body of work does and does not justify.
+
+- The grouped, cross-fitted MBE 2.0 procedure has conditional support from
+  synthetic, semi-synthetic, refit-bootstrap, and comparator calibration.
+- A corrected causal-language pipeline has passed its behavioral masking and
+  implementation gate on WikiText-2.
+- The first corrected 100-run causal-text factorial is public as a transparent
+  artifact, but it abstains from metric verdicts because it has only 20
+  independent configurations and an invalid configuration-level random control.
+- A separately reported 180-run sequential replication has 36 configurations,
+  a corrected random control, and a completed 199-draw full-refit analysis.
+  No metric passed its frozen within-environment increment rule; this is not a
+  universal metric verdict.
+- The corrected 96-run image factorial and 144-run multi-corpus causal-LM atlas
+  are artifact-complete, but their protected associations remain locked after
+  the outcome-blind calibration screen selected no eligible rule.
+- A separate 240-model PGDL transfer calibration ended in a binding near miss:
+  every null cell passed, but one frozen power bound was 0.492 versus 0.500.
+  The checkpoint-metric associations therefore remain unopened.
+- A 153,600-row comparator benchmark found that none of the tested MBE, GCM,
+  WGCM, KCI, orthogonal-score, or rank procedures combined strict worst-cell
+  calibration with useful worst-cell power at 24/48 configurations.
+- A fresh 10,080-row repeated-split development screen rejected all six
+  prespecified candidates; it did not trigger another protected-data opening.
+- The independent-replication packet is executable and hash-sealed. A genuinely
+  external signed run, a new eligible holdout, and prospective selection
+  evidence remain necessary before submission-grade claims are made.
+
+This is deliberate: the project treats a discovered failure as public evidence
+about the method's limits, not something to hide after the fact.
 
 ## Legacy Pilot Evidence
 
@@ -94,9 +123,11 @@ The ledger contains:
   confidence/calibration metrics, sharpness metrics, weight norms, and
   distance/update proxies.
 
-## What The Evidence Suggests
+## Historical Pilot Observations
 
-The current Kaggle-scale runs support a selective audit story:
+The legacy Kaggle-scale pool is retained as motivation and a regression target,
+not as current MBE 2.0 confirmation. Within that exploratory pool, raw and
+controlled associations differed in ways that motivate the current research:
 
 - MBE is selective rather than indiscriminate; many metrics retain signal under the declared controls.
 - Several validation, confidence/logit, gradient/Fisher magnitude, and
@@ -117,10 +148,10 @@ FIM_norm summary from the legacy pilot pool:
 | Full image+text pool, default controls | 680 | +0.225 | -0.203 | reverse-inversion |
 | Full image+text pool, strict + validation loss | 680 | +0.225 | -0.300 | reverse-inversion |
 
-Full result tables and interpretation are in
+Full historical tables are in
 [SUPPORTING_EVIDENCE.md](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/SUPPORTING_EVIDENCE.md).
-CPU-only bootstrap confidence intervals and threshold sensitivity are summarized
-in the no-compute uncertainty report listed from the reproducibility guide.
+The current corrected evidence, its limitations, and active replication are in
+the [evidence index](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/EVIDENCE_INDEX.md).
 
 ## Install
 
@@ -261,9 +292,9 @@ claim is narrower and more useful:
 > set, and environment. MBE audits that scope and tests whether it supports a
 > useful recommendation or an honest abstention.
 
-This is a methodological hypothesis under active validation. The current PGDL
-pilot checks implementation behavior; it does not establish a general metric
-router, universal metric failure, or causal effects.
+This is a methodological hypothesis under active validation. The current
+calibration and holdout work does not establish a general metric router,
+universal metric failure, or causal effects.
 
 ## Citation
 

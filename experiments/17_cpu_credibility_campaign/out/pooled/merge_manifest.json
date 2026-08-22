@@ -1,0 +1,23 @@
+{
+  "factorial": {
+    "shards": 4,
+    "rows": 1200,
+    "repetitions_per_scenario": 200
+  },
+  "monte_carlo": {
+    "nuisance_families": [
+      "extra_trees",
+      "polynomial_ridge",
+      "polynomial_ridge_interactions"
+    ],
+    "rows": 19200,
+    "repetitions_per_cell": 100
+  },
+  "inference_stress": {
+    "shards": 8,
+    "refit_rows": 8000,
+    "block_rows": 8000,
+    "repetitions_per_refit_cell": 200,
+    "repetitions_per_block_structure": 2000
+  }
+}

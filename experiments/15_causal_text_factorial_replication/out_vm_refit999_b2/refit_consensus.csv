@@ -1,0 +1,15 @@
+baseline,metric,nuisance_models_estimated,minimum_refit_delta_mse_ci_low,maximum_residual_permutation_p,both_refit_lower_positive,consensus_status
+B2_training_state,prediction_confidence,2,-0.0008978672052188825,0.019,False,no_consensus_increment
+B2_training_state,prediction_entropy,2,-0.0016080219425250993,0.081,False,no_consensus_increment
+B2_training_state,prediction_margin,2,-0.0012471925704758417,0.149,False,no_consensus_increment
+B2_training_state,gradient_norm,2,-0.003250670710713679,0.003,False,no_consensus_increment
+B2_training_state,empirical_fisher_trace,2,-0.005434869377687942,0.001,False,no_consensus_increment
+B2_training_state,fim_erank,2,-0.005357555935241457,0.005,False,no_consensus_increment
+B2_training_state,fim_norm,2,-0.005357555935241457,0.005,False,no_consensus_increment
+B2_training_state,feature_erank,2,-0.006297106657201881,0.732,False,no_consensus_increment
+B2_training_state,parameter_l2,2,-0.007617279528433993,0.985,False,no_consensus_increment
+B2_training_state,distance_from_initialization_l2,2,-0.004293514861047887,0.125,False,no_consensus_increment
+B2_training_state,relative_distance_from_initialization,2,-0.004506089687119091,0.938,False,no_consensus_increment
+B2_training_state,update_to_weight_ratio,2,-0.004904009082666332,0.189,False,no_consensus_increment
+B2_training_state,sharpness_random_perturbation,2,-0.003064535972145607,0.195,False,no_consensus_increment
+B2_training_state,random_metric,2,-0.0017505413050973497,0.359,False,no_consensus_increment

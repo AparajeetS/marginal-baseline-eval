@@ -1,0 +1,12 @@
+{
+  "event": "windows_atomic_checkpoint_replace_lock",
+  "first_process_terminal_status": "infrastructure_failure",
+  "last_complete_checkpoint_rows": 15925,
+  "remaining_tasks_rerun": 875,
+  "scientific_settings_changed": false,
+  "task_seeds_changed": false,
+  "recovery_change": "bounded retry around os.replace for checkpoint files",
+  "final_rows": 16800,
+  "final_duplicate_keys": 0,
+  "final_error_rows": 0
+}

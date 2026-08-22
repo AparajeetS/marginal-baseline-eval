@@ -1,0 +1,7 @@
+{
+  "failure_class": "deterministic_estimator_seed_domain",
+  "original_rows": 48000,
+  "failed_extra_trees_rows": 9600,
+  "retained_identical_rows": 38400,
+  "recovery": "Normalize only ExtraTreesRegressor random_state modulo 2**32 and rerun the missing candidate cells with identical frozen task seeds and settings."
+}

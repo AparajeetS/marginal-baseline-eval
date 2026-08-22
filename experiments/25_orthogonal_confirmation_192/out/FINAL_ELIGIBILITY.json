@@ -1,0 +1,59 @@
+{
+  "protocol_id": "mbe3-orthogonal-confirmation-192-v1",
+  "stage": "confirmation",
+  "global_pass": true,
+  "pair_decisions": [
+    {
+      "design_scope": "image",
+      "baseline": "B1_design",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.07001179072854388,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8882495307680808,
+      "pass": true
+    },
+    {
+      "design_scope": "image",
+      "baseline": "B2_training_state",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.07001179072854388,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.9154806357094724,
+      "pass": true
+    },
+    {
+      "design_scope": "image",
+      "baseline": "B3_validation",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.07001179072854388,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.9455138038212946,
+      "pass": true
+    },
+    {
+      "design_scope": "text",
+      "baseline": "B1_design",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.07001179072854388,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8136870349691969,
+      "pass": true
+    },
+    {
+      "design_scope": "text",
+      "baseline": "B2_training_state",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.054486196178705315,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8500189229905127,
+      "pass": true
+    },
+    {
+      "design_scope": "text",
+      "baseline": "B3_validation",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.054486196178705315,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.8882495307680808,
+      "pass": true
+    }
+  ],
+  "eligible_for_192_group_external_evaluation": true,
+  "protected_gpu_24_48_open_authorized": false,
+  "protected_result_csv_read": false,
+  "smoke": false
+}

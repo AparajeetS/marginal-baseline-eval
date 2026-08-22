@@ -1,0 +1,95 @@
+{
+  "protocol_id": "mbe3-orthogonal-score-development-v2",
+  "status": "development-only",
+  "smoke": false,
+  "planned_rows": 6720,
+  "observed_rows": 6720,
+  "repetitions": 10,
+  "wild_draws": 999,
+  "score_aggregation": "product-of-group-mean-residuals",
+  "decision_alpha": 0.005,
+  "paired_simulation_seeds_across_candidates_and_baselines": true,
+  "candidates": [
+    {
+      "candidate_id": "configmean_additive_d4_r01",
+      "nuisance_model": "polynomial_ridge",
+      "degree": 4,
+      "ridge": 0.1,
+      "complexity_rank": 1
+    },
+    {
+      "candidate_id": "configmean_additive_d6_r01",
+      "nuisance_model": "polynomial_ridge",
+      "degree": 6,
+      "ridge": 0.1,
+      "complexity_rank": 2
+    },
+    {
+      "candidate_id": "configmean_additive_d6_r1",
+      "nuisance_model": "polynomial_ridge",
+      "degree": 6,
+      "ridge": 1.0,
+      "complexity_rank": 3
+    },
+    {
+      "candidate_id": "configmean_interactions_d4_r01",
+      "nuisance_model": "polynomial_ridge_interactions",
+      "degree": 4,
+      "ridge": 0.1,
+      "complexity_rank": 4
+    },
+    {
+      "candidate_id": "configmean_interactions_d4_r1",
+      "nuisance_model": "polynomial_ridge_interactions",
+      "degree": 4,
+      "ridge": 1.0,
+      "complexity_rank": 5
+    },
+    {
+      "candidate_id": "configmean_interactions_d4_r10",
+      "nuisance_model": "polynomial_ridge_interactions",
+      "degree": 4,
+      "ridge": 10.0,
+      "complexity_rank": 6
+    },
+    {
+      "candidate_id": "configmean_extra_trees",
+      "nuisance_model": "extra_trees",
+      "degree": 1,
+      "ridge": 0.0,
+      "complexity_rank": 7
+    }
+  ],
+  "icc_levels": [
+    0.3,
+    0.8
+  ],
+  "signal_effects": [
+    0.2,
+    0.35,
+    0.5
+  ],
+  "null_scenarios": [
+    "independent_null",
+    "additive_proxy_null",
+    "nonlinear_proxy_null",
+    "interaction_proxy_null",
+    "heteroskedastic_proxy_null"
+  ],
+  "signal_scenarios": [
+    "interaction_increment"
+  ],
+  "design_rows": {
+    "image": 96,
+    "text": 48
+  },
+  "design_groups": {
+    "image": 48,
+    "text": 24
+  },
+  "design_source": "experiments\\21_design_matched_calibration\\run_calibration.py",
+  "design_source_sha256": "d74c90dbdb8c2179342390bfe1a971584a9daf62ff3eb698b980db14b2139568",
+  "estimator_source_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
+  "protected_result_csv_read": false,
+  "protected_analysis_open_authorized": false
+}

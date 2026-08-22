@@ -1,0 +1,33 @@
+{
+  "protocol_id": "mbe3-orthogonal-sample-size-frontier-v1",
+  "status": "development-only",
+  "smoke": false,
+  "planned_rows": 16800,
+  "observed_rows": 16800,
+  "repetitions": 50,
+  "wild_draws": 999,
+  "decision_alpha": 0.005,
+  "panels": {
+    "image": [
+      1,
+      2,
+      4
+    ],
+    "text": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "nested_panel_seeds": true,
+  "candidate": {
+    "nuisance_model": "polynomial_ridge_interactions",
+    "degree": 4,
+    "ridge": 10.0
+  },
+  "source_runner_sha256": "f0bda68072c7c1fe65f384be2e30e135095028f492d215dcc0f6512799c25b40",
+  "estimator_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
+  "protected_result_csv_read": false,
+  "protected_analysis_open_authorized": false
+}

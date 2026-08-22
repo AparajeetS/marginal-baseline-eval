@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "dataset_id": "pgdl_tasks_6_9_pooled_transfer",
+  "benchmark": "Predicting Generalization in Deep Learning",
+  "role": "external transfer holdout, not wholly unseen dataset",
+  "intake_hash_manifest": "experiments/24_external_holdout/INTAKE_SHA256SUMS",
+  "independent_unit": "trained model",
+  "task_model_counts": {"task6": 96, "task7": 48, "task8": 64, "task9": 32},
+  "total_independent_models": 240,
+  "checkpoint_files_per_model": 2,
+  "prior_exposure": {
+    "target_distributions_characterized": true,
+    "metadata_training_loss_floor_characterized": true,
+    "checkpoint_metric_associations_opened": false,
+    "disclosure": "Target distributions and metadata-only training-loss behavior were inspected before this transfer protocol. Checkpoint-derived metric associations were not inspected."
+  },
+  "frozen_metric_plan": "experiments/09_published_metric_reaudit/studies/pgdl2020/metric_plan.json",
+  "model_ledger": "experiments/09_published_metric_reaudit/data/pgdl_model_ledger.csv",
+  "calibration_decision": "experiments/28_pgdl_transfer_confirmation_v2/out/FINAL_ELIGIBILITY.json",
+  "planned_metric_families": [
+    "parameter_count",
+    "weight_norm",
+    "distance_from_initialization",
+    "update_to_weight",
+    "spectral_complexity",
+    "frobenius_complexity",
+    "path_norm",
+    "margin",
+    "prediction_entropy",
+    "gradient_norm",
+    "empirical_fisher",
+    "fim_norm",
+    "sharpness"
+  ],
+  "current_status": "sealed_after_failed_calibration_gate",
+  "protected_analysis_authorized": false
+}

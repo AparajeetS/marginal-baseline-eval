@@ -1,0 +1,29 @@
+{
+  "source_csv": "experiments/15_causal_text_factorial_replication/kaggle_downloads/v1/mbe2_causal_text_factorial_replication.csv",
+  "rows": 180,
+  "configurations": 36,
+  "repetitions": 100,
+  "effects": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "refit_bootstrap": 199,
+  "permutations": 99,
+  "degree": 3,
+  "workers": 8,
+  "seed": 20260729,
+  "tiers": [
+    "low",
+    "median",
+    "high"
+  ],
+  "baselines": [
+    "B1_design",
+    "B2_training_state",
+    "B3_validation"
+  ],
+  "primary_decision": "both nuisance-family refit Delta-MSE lower bounds above zero"
+}

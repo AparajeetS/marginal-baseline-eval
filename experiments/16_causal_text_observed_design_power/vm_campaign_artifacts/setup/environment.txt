@@ -1,0 +1,45 @@
+2026-07-29T00:36:01+00:00
+Python 3.14.4
+build==1.5.0
+certifi==2026.7.22
+cffi==2.1.0
+charset-normalizer==3.4.9
+cryptography==49.0.0
+docutils==0.23
+id==1.6.1
+idna==3.18
+iniconfig==2.3.0
+jaraco.classes==3.4.0
+jaraco.context==6.1.2
+jaraco.functools==4.6.0
+jeepney==0.9.0
+joblib==1.5.3
+keyring==25.7.0
+markdown-it-py==4.2.0
+# Editable install with no version control (mbe-eval==0.4.0)
+-e /home/codex/mbe
+mdurl==0.1.2
+more-itertools==11.1.0
+narwhals==2.24.0
+nh3==0.3.6
+numpy==2.5.1
+packaging==26.2
+pandas==3.0.5
+pluggy==1.6.0
+pycparser==3.0
+Pygments==2.20.0
+pyproject_hooks==1.2.0
+pytest==9.1.1
+python-dateutil==2.9.0.post0
+readme_renderer==45.0
+requests==2.34.2
+requests-toolbelt==1.0.0
+rfc3986==2.0.0
+rich==15.0.0
+scikit-learn==1.9.0
+scipy==1.18.0
+SecretStorage==3.5.0
+six==1.17.0
+threadpoolctl==3.6.0
+twine==7.0.0
+urllib3==2.7.0

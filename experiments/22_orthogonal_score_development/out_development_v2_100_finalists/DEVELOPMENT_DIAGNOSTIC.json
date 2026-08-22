@@ -1,0 +1,124 @@
+{
+  "protocol_id": "mbe3-orthogonal-score-development-v2",
+  "status": "development-only",
+  "gate": {
+    "minimum_estimability": 0.98,
+    "maximum_null_support_wilson_upper": 0.1,
+    "minimum_beta_0_50_positive_power_wilson_lower": 0.5
+  },
+  "decision_alpha": 0.005,
+  "diagnostics": [
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.11175046923191913,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.2101483574912227,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B1_design",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.17436566150491345,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.47215389549212305,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.1247681544589592,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.28182360534324524,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B2_training_state",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.1622621285271631,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5120301704584073,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.14998107700948735,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.4231657776522397,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "image",
+      "baseline": "B3_validation",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.18631296503080313,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.5627772885472462,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.11175046923191913,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.1170022549894635,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B1_design",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.14998107700948735,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.24563122734128034,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.14998107700948735,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.10095288488804782,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B2_training_state",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.1247681544589592,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.1926958414957634,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "configmean_extra_trees",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.11175046923191913,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.17545211362287672,
+      "development_gate_pass": false
+    },
+    {
+      "scope": "text",
+      "baseline": "B3_validation",
+      "candidate_id": "configmean_interactions_d4_r10",
+      "minimum_estimability": 1.0,
+      "maximum_null_support_wilson_upper": 0.137495147390735,
+      "minimum_beta_0_50_positive_power_wilson_lower": 0.18404698464748132,
+      "development_gate_pass": false
+    }
+  ],
+  "protected_analysis_open_authorized": false,
+  "next_step": "Freeze candidate, untouched confirmation seeds, and comparator set only after development; this output cannot unlock protected associations.",
+  "smoke": false,
+  "warning": "Smoke or development output never authorizes protected analysis."
+}

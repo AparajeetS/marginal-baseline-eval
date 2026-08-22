@@ -1,8 +1,15 @@
+from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 import pytest
 
-from mbe_eval.comparators import granulated_kendall, jiang_normalized_cmi
+from mbe_eval.comparators import (
+    gcm_rank_test,
+    granulated_kendall,
+    jiang_normalized_cmi,
+    wgcm_est_rank_test,
+)
 
 
 def factorial_frame(repeats: int = 2) -> pd.DataFrame:
@@ -51,3 +58,38 @@ def test_jiang_cmi_null_is_small_in_balanced_factorial() -> None:
     frame["target"] = np.repeat([0.0, 1.0, 2.0], 3)
     score, _ = jiang_normalized_cmi(frame, "metric", "target", ["a", "b"])
     assert score < 0.05
+
+
+def _frame(seed: int, signal: float) -> pd.DataFrame:
+    rng = np.random.default_rng(seed)
+    n = 240
+    z = rng.normal(size=n)
+    latent = rng.normal(size=n)
+    metric = np.sin(z) + latent + rng.normal(scale=0.4, size=n)
+    target = np.square(z) + signal * latent + rng.normal(scale=0.4, size=n)
+    return pd.DataFrame(
+        {"group": [f"g{i}" for i in range(n)], "z": z, "metric": metric, "target": target}
+    )
+
+
+def test_gcm_rank_test_detects_strong_increment() -> None:
+    result = gcm_rank_test(
+        _frame(7, 1.0), "metric", "target", ["z"], group_col="group", seed=11
+    )
+    assert result["n_groups"] == 240
+    assert result["score_mean"] > 0
+    assert result["p_value"] < 0.01
+
+
+def test_wgcm_est_is_deterministic_and_split_safe() -> None:
+    frame = _frame(9, 0.8)
+    first = wgcm_est_rank_test(
+        frame, "metric", "target", ["z"], group_col="group", seed=13
+    )
+    second = wgcm_est_rank_test(
+        frame, "metric", "target", ["z"], group_col="group", seed=13
+    )
+    assert first == second
+    assert first["weight_groups"] == 72
+    assert first["n_groups"] == 168
+    assert np.isfinite(first["p_value"])

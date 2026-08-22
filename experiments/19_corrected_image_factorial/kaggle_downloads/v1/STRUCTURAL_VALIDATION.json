@@ -1,0 +1,50 @@
+{
+  "rows": 96,
+  "valid_rows": 96,
+  "error_rows": 0,
+  "unique_run_ids": 96,
+  "duplicate_run_ids": 0,
+  "run_ids_match_manifest": true,
+  "configurations": 48,
+  "all_configurations_have_two_seeds": true,
+  "architecture_counts": {
+    "cnn": 32,
+    "resnet": 32,
+    "wide_resnet": 32
+  },
+  "optimizer_counts": {
+    "adamw": 48,
+    "sgd": 48
+  },
+  "seed_counts": {
+    "8111": 48,
+    "8112": 48
+  },
+  "missing_required_columns": [],
+  "nonfinite_required_values": {
+    "confidence_mean": 0,
+    "distance_from_init_l2": 0,
+    "feature_erank": 0,
+    "fim_erank": 0,
+    "fim_norm": 0,
+    "final_train_batch_loss": 0,
+    "fisher_trace": 0,
+    "grad_norm": 0,
+    "hessian_trace_hutchinson": 0,
+    "metric_batch_loss": 0,
+    "random_metric": 0,
+    "sam_sharpness": 0,
+    "test_acc": 0,
+    "test_loss": 0,
+    "val_loss": 0,
+    "weight_l2": 0
+  },
+  "split_hashes_match": true,
+  "source_hashes_match": {
+    "PREREGISTRATION.md": true,
+    "mbe3_corrected_image_factorial.py": true,
+    "kernel-metadata.json": true
+  },
+  "reported_integrity_matches": true,
+  "pass": true
+}
