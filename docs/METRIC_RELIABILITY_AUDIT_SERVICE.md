@@ -40,7 +40,7 @@ baselines, configuration IDs, and environment IDs. No checkpoints are needed.
 
 ### Checkpoint audit
 
-The customer supplies checkpoints or grants controlled access. The service
+The customer supplies checkpoints or provides controlled access. The service
 computes a frozen metric battery, records runtime/coverage, and audits the
 resulting ledger.
 

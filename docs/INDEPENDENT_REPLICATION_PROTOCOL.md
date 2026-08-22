@@ -1,6 +1,6 @@
 # Independent Replication Protocol
 
-Status: grant execution specification. The external replicator is not yet
+Status: active research protocol. The external replicator is not yet
 selected. Their identity, conflicts, and scope will be published before the
 protected holdout is opened.
 
@@ -75,3 +75,10 @@ current sealed decision. It has not yet been run or signed by an independent
 executor. The final protected-holdout packet remains blocked until a future
 estimator passes its opening gate. A failed or null replication remains a valid
 deliverable and must be retained in the public discrepancy log.
+
+## Reporting Boundary
+
+The replicator reports methods, discrepancies, unresolved failures, and the
+final conclusion regardless of direction. Any logistical arrangement must not
+condition compensation, authorship, or publication rights on a positive
+result.

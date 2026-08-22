@@ -1,67 +1,85 @@
-# Documentation Index
+# Documentation
 
-Use this page as the map for the research repository.
+This index separates active research specifications from evidence, execution
+guides, product notes, and historical material.
 
 ## Start Here
 
-- [MBE 2.0 research program](MBE_2_RESEARCH_PROGRAM.md): current technical source of truth.
-- [JMLR milestone roadmap](JMLR_MILESTONE_ROADMAP.md): gated path from protocol freeze to submission.
-- [Compute and cost plan](COMPUTE_AND_COST_PLAN.md): minimum and recommended resource budgets.
-- [Historical CPU campaign runbook](CPU_CAMPAIGN_NEXT_48_HOURS.md): frozen queue and completion gates used for the July 2026 campaign.
-- [Independent replication protocol](INDEPENDENT_REPLICATION_PROTOCOL.md): external execution, conflict, acceptance, and reporting rules.
-- [Grant execution plan](../GRANT_EXECUTION_PLAN.md): exact 340-run matrix, budget ceilings, holdout, and public deliverables.
-- [Open research inventory](../OPEN_RESEARCH.md): public infrastructure and maturity map.
-- [Project brief](../PROJECT_BRIEF.md): short grant-facing summary.
-- [README](../README.md): install, package usage, and current result snapshot.
-- [Evidence index](EVIDENCE_INDEX.md): public claim map, corrected causal evidence, retained failures, and active work.
-- [Project status](PROJECT_STATUS.md): one-page, reviewer-oriented account of progress, boundaries, and next work.
-- [Agent recipes](agent_recipes.md): CLI-first patterns for coding assistants.
-- [Audit an ML training metric](audit_ml_training_metric.md): short search-shaped guide for run-ledger audits.
-- [Figures](../FIGURES.md): visual summary of current evidence.
-- [Supporting evidence](../SUPPORTING_EVIDENCE.md): run-by-run result ledger.
-- [Synthetic protocol calibration](../experiments/08_protocol_calibration/README.md): known-ground-truth audit cases.
-- [Published metric reaudit](../experiments/09_published_metric_reaudit/README.md): manifest-driven retrospective framework.
-- [Conditional metric reliability protocol](CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md): frozen atlas, selector, and abstention design.
-- [Metric reliability audit service](METRIC_RELIABILITY_AUDIT_SERVICE.md): product hypothesis, deliverables, and research boundaries.
-- [MBE credibility ledger](MBE_CREDIBILITY_LEDGER.md): passed, failed, fixed, and still-blocked validation gates.
-- [Statistical estimand and inference](STATISTICAL_ESTIMAND_AND_INFERENCE.md): primary learner-relative quantity, assumptions, and decision rule.
-- [Metric taxonomy and ablations](METRIC_TAXONOMY_AND_ABLATIONS.md): target-specific families and frozen JMLR table rows.
-- [Prospective selection protocol](PROSPECTIVE_SELECTION_PROTOCOL.md): outcome-blind selector and abstention evaluation.
-- [No-GPU closure status](NO_GPU_CLOSURE_STATUS.md): completed work and remaining external or compute dependencies.
-- [Method comparison](../experiments/10_method_comparison/README.md): shared known-truth CMI, granulated Kendall, rank, and MBE benchmark.
-- [Credibility freeze](../experiments/11_credibility_freeze/PREREGISTRATION.md): preregistration, hashes, claim gate, and external-review packet.
+- [Research overview](PROJECT_OVERVIEW.md)
+- [One-page project status](PROJECT_STATUS.md)
+- [Evidence index](EVIDENCE_INDEX.md)
+- [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)
+- [Authoritative roadmap](../ROADMAP.md)
+- [Open research inventory](../OPEN_RESEARCH.md)
+- [Reproducibility guide](../REPRODUCIBILITY.md)
+- [Credibility ledger](MBE_CREDIBILITY_LEDGER.md)
 
-## Legacy MBE 1.0 Material
+## Active Method
 
-- [Protocol freeze](../PROTOCOL_FREEZE.md): historical protocol for the existing pilot artifacts.
-- [Metric taxonomy](../METRIC_TAXONOMY.md): metric families and interpretation.
-- [Next experiment protocol](../NEXT_EXPERIMENT_PROTOCOL.md): superseded v1 replication plan; do not launch new compute from it.
-- [Paper skeleton](../PAPER_SKELETON.md): historical manuscript scaffold.
-- [Paper direction](../PAPER.md): historical v1 thesis and claims.
-- [Publication strategy](../PUBLICATION_STRATEGY.md): historical strategy notes.
+- [MBE 2.0 research program](MBE_2_RESEARCH_PROGRAM.md): objective, estimands,
+  baseline ladder, environments, work packages, and decision gates.
+- [Statistical estimand and inference](STATISTICAL_ESTIMAND_AND_INFERENCE.md):
+  primary estimand, uncertainty, assumptions, and practical significance.
+- [Conditional metric reliability protocol](CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md):
+  atlas, selector, evidence levels, and abstention.
+- [Prospective selection protocol](PROSPECTIVE_SELECTION_PROTOCOL.md):
+  frozen comparison against global and oracle selectors.
+- [Metric taxonomy and ablations](METRIC_TAXONOMY_AND_ABLATIONS.md):
+  metric families and required ablation table.
 
-These files remain available for provenance. They are not the approved design
-for future experiments unless a decision is explicitly carried into the MBE 2.0
-research program.
+## Evidence And Credibility
 
-## Reproducibility
+- [Supporting evidence](../SUPPORTING_EVIDENCE.md): exploratory results and
+  validity boundaries.
+- [Credibility ledger](MBE_CREDIBILITY_LEDGER.md): supported, blocked,
+  provisional, withdrawn, and falsified claims.
+- [Evidence index](EVIDENCE_INDEX.md): corrected artifacts, calibration gates,
+  retained failures, and current non-claims.
+- [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md): findings and
+  reproduction entry point for every experiment program.
+- [Artifact integrity and lineage](ARTIFACT_INTEGRITY.md): current checksums,
+  historical receipts, recovery records, and source snapshots.
+- [No-GPU closure status](NO_GPU_CLOSURE_STATUS.md): work completed without new
+  training and work requiring external state.
+- [Protocol calibration](../experiments/08_protocol_calibration/)
+- [Published-study reaudit](../experiments/09_published_metric_reaudit/)
+- [Method comparison](../experiments/10_method_comparison/)
+- [Conditional comparator benchmark](../experiments/23_conditional_comparator_benchmark/)
+- [External holdout intake](../experiments/24_external_holdout/)
+- [Independent replication packet](../experiments/12_independent_replication/)
+- [Credibility freeze](../experiments/11_credibility_freeze/)
 
-- [Reproducibility guide](../REPRODUCIBILITY.md): local setup and artifact regeneration.
-- [Artifact integrity and lineage](ARTIFACT_INTEGRITY.md): how to distinguish current output checksums from retained failure and recovery receipts.
-- [Large-scale artifacts](../experiments/07_jmlr_scale/ARTIFACTS.md): raw CSV hashes and regeneration commands.
-- [No-compute uncertainty](../experiments/07_jmlr_scale/no_compute_outputs/NO_COMPUTE_UNCERTAINTY.md): bootstrap CIs and threshold sensitivity from saved CSVs.
-- [Run progress log](../RUN_PROGRESS_LOG_2026-06-28.md): ledger for the current 680-model evidence set.
+## Execution
 
-## Package
+- [Roadmap](../ROADMAP.md): milestone gates and stop-loss rules.
+- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-11.md): current scientific blockers and opening gates.
+- [Execution resources](EXECUTION_RESOURCES.md): workload estimates and
+  compute-release gates, without monetary assumptions.
+- [Historical CPU campaign runbook](CPU_CAMPAIGN_NEXT_48_HOURS.md): frozen queue
+  and completion gates used for the July 2026 campaign.
+- [Independent replication protocol](INDEPENDENT_REPLICATION_PROTOCOL.md):
+  independence, execution, acceptance, and discrepancy rules.
+- [Reproducibility guide](../REPRODUCIBILITY.md): CPU, artifact-only, and GPU
+  paths.
 
-- [PyPI package](https://pypi.org/project/mbe-eval/)
-- [Package source](../mbe_eval/)
-- [Tests](../tests/)
-- [Examples](../examples/)
-- [Governance](../GOVERNANCE.md)
-- [Security policy](../SECURITY.md)
+## Guides And Interfaces
 
-## Public Notebook
+- [How to audit an ML training metric](audit_ml_training_metric.md)
+- [Agent recipes](agent_recipes.md)
+- [Agent contract](../AGENTS.md)
+- [Machine-readable discovery file](../llms.txt)
+- [Metric reliability audit service](METRIC_RELIABILITY_AUDIT_SERVICE.md)
 
-- [Kaggle notebook](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe)
-- [Notebook source](../kaggle/mbe_metric_audit/how_to_audit_ml_training_metrics_mbe.ipynb)
+## Paper
+
+- [Paper workspace](../paper/README.md)
+- [Current manuscript skeleton](../paper/JMLR_MANUSCRIPT_SKELETON.md)
+- [Archived paper notes](../paper/archive/)
+
+## Historical Material
+
+The files in [archive/](archive/) preserve the v1 protocol, early taxonomy,
+superseded experiment plan, and original progress log. They explain how the
+research changed but do not define current work.
+
+Release records are kept in [releases/](releases/).

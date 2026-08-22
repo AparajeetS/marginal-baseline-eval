@@ -1,8 +1,8 @@
 # Next Experiment Protocol
 
 > **Superseded MBE 1.0 plan.** Do not launch this experiment. The active design
-> is [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md), with
-> gates in [`docs/JMLR_MILESTONE_ROADMAP.md`](docs/JMLR_MILESTONE_ROADMAP.md).
+> is [`docs/MBE_2_RESEARCH_PROGRAM.md`](../MBE_2_RESEARCH_PROGRAM.md), with
+> gates in [`ROADMAP.md`](../../ROADMAP.md).
 
 Status: historical pre-registration draft.
 

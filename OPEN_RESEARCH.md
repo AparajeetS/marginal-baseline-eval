@@ -1,79 +1,78 @@
 # Open Research Inventory
 
 Marginal Baseline Evaluation is maintained as shared research infrastructure.
-The repository, package, protocols, evidence records, and reproduction paths are
-public so that researchers can inspect the method, audit its claims, reproduce
-the available analyses, and propose competing designs.
+The code, protocols, evidence records, and reproduction paths are public so
+that researchers can inspect the method, audit its claims, reproduce the
+available analyses, and propose competing designs.
 
-## What Is Public
+## Public Surfaces
 
-| Surface | Public location | Current status |
+| Surface | Location | Status |
 |---|---|---|
-| Source code | [`mbe_eval/`](mbe_eval/) | MIT licensed; installable audit implementation |
-| Python package | [PyPI: `mbe-eval`](https://pypi.org/project/mbe-eval/) | Stable v1 API; version shown on PyPI |
-| Command-line tools | `mbe-eval-audit`, `mbe-eval-demo` | Included with the package |
+| Source code | [`mbe_eval/`](mbe_eval/) | MIT licensed; installable |
+| Python package | [PyPI: `mbe-eval`](https://pypi.org/project/mbe-eval/) | Stable v1 API |
+| Command-line tools | `mbe-eval-audit`, `mbe-eval-demo` | Included in package |
 | Public notebook | [Kaggle walkthrough](https://www.kaggle.com/code/aparajeetshadangi/audit-ml-training-metrics-with-mbe) | Introductory v1 demonstration |
-| Current protocol | [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md) | Active MBE 2.0 research design |
-| Legacy protocol | [`PROTOCOL_FREEZE.md`](PROTOCOL_FREEZE.md) | Preserved for provenance; superseded |
-| Evidence ledger | [`SUPPORTING_EVIDENCE.md`](SUPPORTING_EVIDENCE.md) | Exploratory results with validity warnings |
-| Evidence index | [`docs/EVIDENCE_INDEX.md`](docs/EVIDENCE_INDEX.md) | Current claim map, corrected causal artifacts, retained failures, and active replications |
-| Reproduction guide | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | CPU and GPU paths separated |
-| Milestone roadmap | [`docs/JMLR_MILESTONE_ROADMAP.md`](docs/JMLR_MILESTONE_ROADMAP.md) | Gated plan to submission-grade evidence |
-| Compute budget | [`docs/COMPUTE_AND_COST_PLAN.md`](docs/COMPUTE_AND_COST_PLAN.md) | Minimum and recommended estimates |
-| Grant execution plan | [`GRANT_EXECUTION_PLAN.md`](GRANT_EXECUTION_PLAN.md) | Exact run matrix, holdout, budget ceilings, and deliverables |
-| Independent replication | [`docs/INDEPENDENT_REPLICATION_PROTOCOL.md`](docs/INDEPENDENT_REPLICATION_PROTOCOL.md) | Conflict, execution, acceptance, and reporting rules |
-| Synthetic calibration | [`experiments/08_protocol_calibration/`](experiments/08_protocol_calibration/) | Known-ground-truth MBE 2.0 protocol checks |
-| Published metric reaudit | [`experiments/09_published_metric_reaudit/`](experiments/09_published_metric_reaudit/) | Strict manifest schema and retrospective audit runner |
-| Conditional reliability protocol | [`docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md`](docs/CONDITIONAL_METRIC_RELIABILITY_PROTOCOL.md) | Frozen atlas, selector, and abstention evaluation |
-| Audit service boundary | [`docs/METRIC_RELIABILITY_AUDIT_SERVICE.md`](docs/METRIC_RELIABILITY_AUDIT_SERVICE.md) | Open-core and private-audit product model |
-| Credibility ledger | [`docs/MBE_CREDIBILITY_LEDGER.md`](docs/MBE_CREDIBILITY_LEDGER.md) | Adversarial validation gates, failures, and blocked claims |
-| Shared method comparison | [`experiments/10_method_comparison/`](experiments/10_method_comparison/) | Source-faithful CMI/granulated criteria and known-truth benchmark |
-| Conditional comparator benchmark | [`experiments/23_conditional_comparator_benchmark/`](experiments/23_conditional_comparator_benchmark/) | 153,600 rows across GCM, WGCM, KCI, orthogonal, rank, MBE, and principled CRT abstention |
-| Credibility freeze | [`experiments/11_credibility_freeze/`](experiments/11_credibility_freeze/) | Preregistration, file hashes, claim checks, and reviewer packet |
-| Replication packet v2 | [`experiments/12_independent_replication/`](experiments/12_independent_replication/) | Hash-sealed automated handoff; external execution and signature pending |
+| Active research program | [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md) | MBE 2.0 specification |
+| Statistical specification | [`docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md`](docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md) | Estimand, inference, assumptions |
+| Project status | [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Reviewer-facing progress, boundaries, and next gates |
+| Evidence index | [`docs/EVIDENCE_INDEX.md`](docs/EVIDENCE_INDEX.md) | Corrected artifacts, retained failures, and blocked claims |
+| Experiment synthesis | [`docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md`](docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md) | Experiment-by-experiment findings and reproduction paths |
+| Credibility ledger | [`docs/MBE_CREDIBILITY_LEDGER.md`](docs/MBE_CREDIBILITY_LEDGER.md) | Claim-by-claim gate status |
+| Reproduction guide | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | CPU, artifact, and GPU paths |
+| Roadmap | [`ROADMAP.md`](ROADMAP.md) | Gated path to submission-grade evidence |
+| Execution resources | [`docs/EXECUTION_RESOURCES.md`](docs/EXECUTION_RESOURCES.md) | Workload estimates and release gates |
+| Independent replication | [`docs/INDEPENDENT_REPLICATION_PROTOCOL.md`](docs/INDEPENDENT_REPLICATION_PROTOCOL.md) | Independence and acceptance rules |
+| Synthetic calibration | [`experiments/08_protocol_calibration/`](experiments/08_protocol_calibration/) | Known-truth protocol checks |
+| Published-study reaudit | [`experiments/09_published_metric_reaudit/`](experiments/09_published_metric_reaudit/) | Manifest-based retrospective audit |
+| Method comparison | [`experiments/10_method_comparison/`](experiments/10_method_comparison/) | Shared known-truth benchmark |
+| Conditional comparator benchmark | [`experiments/23_conditional_comparator_benchmark/`](experiments/23_conditional_comparator_benchmark/) | 153,600 method rows across strong comparators |
+| Corrected GPU artifacts | [`experiments/19_corrected_image_factorial/`](experiments/19_corrected_image_factorial/) and [`experiments/20_multicorpus_text_atlas/`](experiments/20_multicorpus_text_atlas/) | Structurally complete; associations remain sealed |
+| External holdout intake | [`experiments/24_external_holdout/`](experiments/24_external_holdout/) | 240-model PGDL intake validated; outcome opening denied |
+| Credibility freeze | [`experiments/11_credibility_freeze/`](experiments/11_credibility_freeze/) | Preregistration, hashes, and claim checks |
+| Replication packet v2 | [`experiments/12_independent_replication/`](experiments/12_independent_replication/) | Hash-sealed handoff; external execution and signature pending |
 | Citation metadata | [`CITATION.cff`](CITATION.cff) | Machine-readable citation |
 
 ## What Works Without New Compute
 
-Researchers can install the package, run the synthetic demo, audit their own
-CSV training ledger, inspect the statistical implementation, regenerate tables
-from the committed artifacts, and submit issues or pull requests. The package
-does not require access to the authors' infrastructure.
+Researchers can:
+
+- install the package and run the synthetic demo;
+- audit their own multi-run CSV ledger;
+- inspect the statistical implementation;
+- regenerate tables from committed artifacts;
+- rerun known-truth calibration and method comparisons;
+- validate the frozen claim ledger;
+- submit issues, replications, or competing implementations.
 
 ```bash
 pip install mbe-eval
 mbe-eval-demo --bootstrap 200
 ```
 
-## Research Maturity
+## Maturity
 
-The public software and the scientific claim have different maturity levels:
+- **MBE v1 software:** usable for linear partial-rank audits.
+- **MBE v1 evidence:** exploratory and retained for provenance.
+- **MBE 2.0 implementation:** public and under calibration.
+- **Conditional reliability atlas:** protocol frozen; broad evidence incomplete.
+- **Prospective selector:** provisional until it beats fixed comparators on
+  protected environments.
+- **Independent replication:** protocol public; execution incomplete.
 
-- **MBE v1 software:** available and usable for linear partial-rank audits.
-- **MBE v1 evidence:** exploratory and retained for provenance; it contains
-  repeated configurations, and the legacy text setup is invalid as causal
-  language-model evidence.
-- **MBE 2.0:** the active research program. Its nonlinear, grouped cross-fitted
-  reference implementation, competing-method calibration, and refit-aware
-  uncertainty path are public. The protected transport gate ended in binding
-  abstention, and the replication packet has only been run internally, so
-  submission-grade validation is not claimed.
+Openness includes negative results, implementation failures, and blocked claims.
+A research plan is not presented as completed evidence.
 
-This distinction is intentional. Openness includes publishing negative results,
-known limitations, and unfinished validation work rather than presenting a
-research plan as completed evidence.
+## Continuity
 
-## Independence And Continuity
-
-The project uses the MIT License, standard Python packaging, plain CSV and
-Markdown artifacts, and publicly documented commands. A third party may fork,
-maintain, reproduce, criticize, or extend it without requesting permission.
-Maintenance and decision practices are documented in [`GOVERNANCE.md`](GOVERNANCE.md).
+The project uses an MIT license, standard Python packaging, plain CSV and
+Markdown artifacts, deterministic manifests, and public commands. A third party
+may fork, maintain, reproduce, criticize, or extend it without permission.
+Maintenance and decision practices are described in [GOVERNANCE.md](GOVERNANCE.md).
 
 ## Reporting Problems
 
-- Scientific or reproducibility issue: open a GitHub issue with the artifact,
-  command, expected result, and observed result.
-- Package improvement: use the package-improvement issue template.
-- Security concern: follow [`SECURITY.md`](SECURITY.md).
-- Contribution: follow [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- Scientific or reproducibility issue:
+  [open a GitHub issue](https://github.com/AparajeetS/marginal-baseline-eval/issues).
+- Security-sensitive issue: follow [SECURITY.md](SECURITY.md).
+- Contribution or replication: follow [CONTRIBUTING.md](CONTRIBUTING.md).

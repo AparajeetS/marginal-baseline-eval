@@ -230,7 +230,8 @@ The legacy pilot pool used:
 Use these files when checking the research claims:
 
 - `SUPPORTING_EVIDENCE.md`: run-by-run interpretation and washout lists.
-- `RUN_PROGRESS_LOG_2026-06-28.md`: run ledger for the current large-scale pass.
+- `docs/archive/RUN_PROGRESS_LOG_2026-06-28.md`: historical run ledger for the
+  original large-scale pass.
 - `experiments/07_jmlr_scale/ARTIFACTS.md`: artifact hashes and raw CSV references.
 - `experiments/06_independent_audit/artifact_audit_report.md`: independent audit of older artifacts.
 
@@ -238,7 +239,7 @@ Use these files when checking the research claims:
 
 The repository is intentionally usable without fresh compute. Submission-grade
 evidence requires both corrected methods and replication scale. The active
-sequence is defined in [`docs/JMLR_MILESTONE_ROADMAP.md`](docs/JMLR_MILESTONE_ROADMAP.md):
+sequence is defined in [`ROADMAP.md`](ROADMAP.md):
 
 1. freeze the MBE 2.0 protocol and claim ledger;
 2. validate the implementation on synthetic controls and public corpora;
