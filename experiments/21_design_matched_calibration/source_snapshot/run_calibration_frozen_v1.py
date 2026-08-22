@@ -265,9 +265,7 @@ def _group_latent(
 ) -> np.ndarray:
     groups = sorted(frame["config_id"].astype(str).unique())
     draws = rng.normal(scale=scale, size=len(groups))
-    if len(groups) != len(draws):
-        raise RuntimeError("group latent draws must align with configuration IDs")
-    mapping = dict(zip(groups, draws))
+    mapping = dict(zip(groups, draws, strict=True))
     return frame["config_id"].astype(str).map(mapping).to_numpy(dtype=float)
 
 
@@ -425,8 +423,6 @@ GROUP_KEYS = ["scope", "baseline", "candidate_id", "scenario", "icc", "beta"]
 def summarize(ledger: pd.DataFrame) -> pd.DataFrame:
     rows: list[dict[str, object]] = []
     for key, cell in ledger.groupby(GROUP_KEYS, sort=True, dropna=False):
-        if len(key) != len(GROUP_KEYS):
-            raise RuntimeError("summary key does not match the frozen grouping schema")
         estimated = cell.loc[cell["status"].eq("estimated")]
         total = len(cell)
         predictive_count = int(estimated["predictive_supported"].fillna(False).sum())
@@ -434,7 +430,7 @@ def summarize(ledger: pd.DataFrame) -> pd.DataFrame:
         predictive_low, predictive_high = wilson_interval(predictive_count, total)
         joint_low, joint_high = wilson_interval(joint_count, total)
         rows.append(
-            dict(zip(GROUP_KEYS, key))
+            dict(zip(GROUP_KEYS, key, strict=True))
             | {
                 "planned_repetitions": total,
                 "estimated_repetitions": len(estimated),

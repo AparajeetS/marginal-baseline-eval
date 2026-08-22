@@ -31,6 +31,9 @@ cross-platform reproduction steps are in
 The independent-replication packet provides the smallest portable verification
 surface. Its amendment maps the historical orthogonal-score implementation to
 the committed source snapshot without rewriting the frozen campaign records.
+It also records two behavior-preserving Python 3.9 portability changes made
+after public CI exposed use of Python 3.10-only `zip` strictness. Exact frozen
+sources remain committed and continue to satisfy the original hashes.
 See
 [`PACKET_V2_AMENDMENT_2026-08-22.md`](../experiments/12_independent_replication/PACKET_V2_AMENDMENT_2026-08-22.md).
 

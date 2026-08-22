@@ -23,6 +23,18 @@
       "expected_sha256": "4bdaa889b43d9661ed3f23e7906429d9323ae4c654861d4c4b1849961abad6aa",
       "snapshot": "experiments/22_orthogonal_score_development/out_development_v2_100_finalists/source_snapshot/orthogonal_v2.py",
       "reason": "Experiments 23-28 froze orthogonal-score v2 before experiment 29 added the repeated-split API to the live package module."
+    },
+    {
+      "manifest_path": "mbe_eval/comparators.py",
+      "expected_sha256": "caf9f24c76dbf495de08da4d3adaaa61a1f572b1d416a822118c96f5e662f421",
+      "snapshot": "experiments/23_conditional_comparator_benchmark/source_snapshot/comparators_frozen_v1.py",
+      "reason": "The frozen comparator source used Python 3.10 zip strictness; the live module later received an equivalent Python 3.9 compatibility check after public CI exposed the supported-version failure."
+    },
+    {
+      "manifest_path": "experiments/21_design_matched_calibration/run_calibration.py",
+      "expected_sha256": "d74c90dbdb8c2179342390bfe1a971584a9daf62ff3eb698b980db14b2139568",
+      "snapshot": "experiments/21_design_matched_calibration/source_snapshot/run_calibration_frozen_v1.py",
+      "reason": "The frozen calibration runner used Python 3.10 zip strictness; the live runner later received equivalent explicit length checks for the advertised Python 3.9 floor."
     }
   ],
   "table_gates": [

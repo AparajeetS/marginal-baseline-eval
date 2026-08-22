@@ -388,10 +388,7 @@ def wgcm_est_rank_test(
         seed=seed + 503,
     )
     grouped = main_residuals.groupby("group", sort=True).mean(numeric_only=True)
-    main_group_names = main_grouped[group_col].astype(str).tolist()
-    if len(main_group_names) != len(weights):
-        raise RuntimeError("WGCM.est produced one weight per main group")
-    weight_map = dict(zip(main_group_names, weights))
+    weight_map = dict(zip(main_grouped[group_col].astype(str), weights, strict=True))
     ordered_weights = grouped.index.to_series().map(weight_map).to_numpy(dtype=float)
     scores = (
         grouped["metric_residual"].to_numpy(dtype=float)
