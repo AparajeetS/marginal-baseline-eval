@@ -1,6 +1,6 @@
 # MBE Project Status
 
-Updated: 2026-08-25
+Updated: 2026-08-26
 
 ## The Problem
 
@@ -77,6 +77,15 @@ A credible pre-decision audit layer would make the evidential scope of those
 measurements explicit and would surface abstention before they guide higher
 stakes choices.
 
+The first proposed safety-facing case is an audit of automated jailbreak and
+harmfulness judges against independently defined human assessments. It will
+compare raw-correlation selection, a globally fixed judge, and an MBE-supported
+choice or abstention on a held-out model or attack family. StrongREJECT is the
+leading development candidate and HarmBench is a transfer candidate, but both
+must pass provenance, licensing, target-independence, and independent-unit
+checks before use. The [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md)
+states the design and non-claims.
+
 The next decisive work is scientific rather than cosmetic: develop and freeze
 a rule with controlled false support and useful power at realistic sample
 sizes, confirm it on disjoint known-truth data, evaluate one genuinely external
@@ -87,9 +96,10 @@ are all publication-worthy when the gate is fixed in advance.
 ## Review Trail
 
 - [Evidence index](EVIDENCE_INDEX.md)
+- [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md)
 - [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)
 - [Credibility ledger](MBE_CREDIBILITY_LEDGER.md)
 - [Statistical specification](STATISTICAL_ESTIMAND_AND_INFERENCE.md)
-- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-11.md)
+- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-26.md)
 - [Reproduction guide](../REPRODUCIBILITY.md)
 - [Open research inventory](../OPEN_RESEARCH.md)

@@ -11,6 +11,12 @@ Marginal Baseline Evaluation (MBE) tests whether a candidate metric adds useful
 information beyond ordinary explanations such as architecture, optimizer,
 learning rate, training state, task, and environment.
 
+The same failure mode matters in AI safety. An automated judge, monitor, or
+interpretability score can look predictive because it tracks model family,
+general capability, response length, prompt family, or another cheap signal.
+MBE asks whether the score contributes information beyond those baselines
+before it is used to justify a safety decision.
+
 A metric can correlate with held-out performance because it measures something
 useful. It can also correlate because an experiment pooled easier and harder
 settings. MBE is designed to tell those cases apart and to state the boundary
@@ -21,9 +27,28 @@ of the evidence.
 > and when the evaluator should abstain.
 
 [Install from PyPI](https://pypi.org/project/mbe-eval/) |
+[Read the AI-safety measurement case](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/AI_SAFETY_MEASUREMENT_CASE.md) |
 [Read the research overview](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/PROJECT_OVERVIEW.md) |
 [See the credibility ledger](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md) |
-[Follow project updates](https://aparajeets.github.io/phason-labs/)
+[See current project status](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/PROJECT_STATUS.md)
+
+## Why This Matters For AI Safety
+
+Safety work often ends in a measurement claim: a monitor detected dangerous
+behavior, a jailbreak defense lowered harmful completions, or an automated
+judge says one system is safer than another. A real correlation is not enough
+if the score only restates information the evaluator already had.
+
+The next proposed safety-facing study will audit automated jailbreak and
+harmfulness judges against independently defined human assessments. It will ask
+whether a judge improves held-out prediction beyond cheap model, attack,
+prompt, refusal, and response-length baselines, and whether that increment
+survives a held-out model or attack family. StrongREJECT is the leading
+development candidate and HarmBench is a transfer candidate, subject to data,
+licensing, target-independence, and unit-of-analysis checks.
+
+This is a proposed application, not completed safety evidence. It remains
+blocked until a prospectively frozen MBE rule passes known-truth calibration.
 
 ## At A Glance
 
@@ -34,6 +59,7 @@ of the evidence.
 | Corrected trained-model artifacts | 96-run image factorial, 144-run multi-corpus causal-LM atlas, 180-run text replication, and a separate 360-model image transport campaign |
 | Known-truth calibration | 48,000-cell screen, 153,600 comparator rows, and a 126,000-row oracle feasibility frontier |
 | Conditional reliability atlas | 360-model image atlas complete; protected interpretation locked |
+| AI-safety measurement audit | Concrete study specified; blocked behind calibration and eligibility gates |
 | Protected evidence | Image, text-atlas, and PGDL associations remain sealed after prespecified gates failed |
 | Independent replication | Executable hash-sealed packet public; external signed execution pending |
 
@@ -41,6 +67,20 @@ Software availability does not imply that every MBE 2.0 scientific claim is
 established. Supported, provisional, blocked, withdrawn, and failed claims are
 tracked in the
 [credibility ledger](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md).
+
+### The Result That Sets The Next Gate
+
+The 126,000-row known-truth frontier located a design-specific feasibility
+boundary rather than validating the current estimator:
+
+| Independent configurations | Frozen result | Meaning |
+|---:|---|---|
+| 24 | Observable oracle calibrated, but weakest effect-0.50 power was 36.4% | The studied noisy-observable regime was information-limited |
+| 48 | Observable oracle reached 4.0% worst-null support and 72.0% weakest power | Useful information existed in this design |
+| 48 | Learned rules reached useful power but 14.2-15.2% worst-null support | Nuisance estimation still manufactured too much support |
+
+The number 48 is not a universal sample-size rule. A real study must calibrate
+its own model, attack, noise, and grouping structure before outcomes are opened.
 
 ## Current Evidence
 
@@ -243,6 +283,8 @@ Current evidence and failure records:
 - [conditional comparator benchmark](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/23_conditional_comparator_benchmark);
 - [external holdout intake](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/24_external_holdout);
 - [repeated-split development result](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/29_repeated_split_stability_development);
+- [oracle feasibility frontier](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/30_oracle_feasibility_frontier);
+- [image target-transport atlas](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/31_image_target_transport_atlas);
 - [independent replication packet](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/12_independent_replication).
 
 Negative results and failed assumptions remain part of the public artifact.
@@ -318,7 +360,7 @@ Historical protocols and drafts live under `docs/archive/` and
   title={Marginal Baseline Evaluation for Auditing Generalization Metrics},
   author={Shadangi, Aparajeet},
   year={2026},
-  note={Preprint and open-source research artifact}
+  note={Open-source research artifact; paper in preparation}
 }
 ```
 

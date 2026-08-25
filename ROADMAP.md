@@ -26,6 +26,8 @@ The project is ready for peer review when:
 - raw ledgers, hashes, metric cards, code, and table regeneration are public;
 - an independent executor reports agreement or discrepancies from frozen
   artifacts;
+- one safety-facing measurement audit uses an independently defined target and
+  reports support or abstention under a prospectively calibrated rule;
 - the manuscript survives adversarial review against the strongest plausible
   rejection arguments.
 
@@ -35,8 +37,9 @@ The project is ready for peer review when:
 |---|---|---|---|---:|
 | M0 | Quarantine legacy evidence | Passed | corrected claim and provenance boundary | CPU |
 | M1 | Freeze scientific questions | Passed | estimands, controls, metrics, and non-claims | CPU |
-| M2 | Calibrate MBE 2.0 | Blocked by calibration-power frontier | known-truth calibration and strong-comparator benchmark | CPU |
-| M3 | Public-corpus reliability atlas | Artifacts prepared; associations sealed | task-conditioned metric profiles | 60-100 GPU-h |
+| M2 | Calibrate MBE 2.0 | Blocked; 48-configuration oracle gap identified | known-truth calibration and strong-comparator benchmark | CPU |
+| M3 | Public-corpus reliability atlas | 360-model image artifact complete; associations sealed | task-conditioned metric profiles | 60-100 GPU-h |
+| M3a | AI-safety measurement audit | Design specified; blocked behind M2 | automated-judge support or abstention report | design-calibrated GPU/API work |
 | M3b | Selector feasibility | Protocol frozen; blocked behind M2/M3 | held-out-family selector and abstention test | CPU after M3 |
 | M4 | End-to-end pilot | Passed | validated image and causal-text pipelines | completed |
 | M5 | Corrected image factorial | 96-run artifact complete; scale confirmation pending | blocked multi-architecture image evidence | 70-120 GPU-h |
@@ -99,14 +102,16 @@ Completed:
   WGCM, KCI, orthogonal-score, rank, and CRT procedures;
 - disjoint confirmation and PGDL-transfer calibration;
 - a repeated-split development screen with all six candidates rejected;
+- a 126,000-row oracle feasibility frontier separating information,
+  measurement-noise, and nuisance-estimation limits at 24-192 configurations;
 - regression tests for failures discovered during calibration.
 
 Remaining:
 
-- design a substantively different estimator or calibrated abstention rule on
-  fresh development data;
-- demonstrate controlled false support and useful power at 24-48 independent
-  configurations;
+- design a substantively different estimator or calibrated abstention rule for
+  the observed 48-configuration oracle gap on fresh development data;
+- demonstrate controlled false support and useful power at the
+  design-calibrated independent-unit count;
 - confirm the frozen rule on disjoint known-truth data;
 - obtain an independent implementation review.
 
@@ -115,6 +120,14 @@ no procedure with both strict worst-cell calibration and useful worst-cell
 power at 24/48 configurations. The PGDL transfer rule missed one frozen power
 bound by 0.008, and the follow-on repeated-split family did not advance. These
 are retained scientific results, not permission to tune on protected outcomes.
+
+The oracle frontier narrowed the problem. At 24 independent configurations,
+the observable oracle was calibrated but underpowered. At 48, it passed both
+frozen gates, while learned residualization produced 14.2-15.2% worst-null
+support. In that frozen design, usable information exists; learning the
+baseline relationship without manufacturing support is the binding problem.
+The 48-configuration boundary is design-specific, not a universal sample-size
+rule.
 
 Gate:
 
@@ -141,6 +154,43 @@ Gate:
 - metric missingness is reported rather than silently filtered;
 - the atlas adds a useful distinction beyond existing methods;
 - protected transfer tasks remain unopened.
+
+## M3a: AI-Safety Measurement Audit
+
+Status: the decision and opening protocol are specified, but no safety-facing
+target-metric association is authorized while M2 remains blocked.
+
+The primary proposed case audits automated jailbreak and harmfulness judges
+against independently defined human assessments. StrongREJECT is the leading
+development candidate and HarmBench is a transfer candidate, subject to
+provenance, licensing, target-independence, label-reliability, and
+independent-unit checks.
+
+Tasks:
+
+1. freeze the target, candidate judges, cheap evaluator baselines, and
+   practical effect threshold;
+2. set the independent configuration count from outcome-blind,
+   design-matched power calibration, with 48 as a floor rather than a
+   universal answer;
+3. use multi-way grouping for shared models and attack families;
+4. compare raw-correlation selection, a globally fixed judge, and the
+   MBE-supported judge or abstention;
+5. test transport to a held-out model or attack family;
+6. retain all exclusions, missing cells, leakage checks, and deviations.
+
+Gate:
+
+- a fixed MBE rule passes disjoint known-truth calibration before the
+  target-metric table is opened;
+- the human target is independent of the scores being audited;
+- every prespecified cell and configuration-level uncertainty unit is
+  accounted for;
+- failed calibration produces abstention rather than a post-hoc rule;
+- the final packet can be executed from frozen artifacts by an external
+  researcher.
+
+See the [AI-safety measurement case](docs/AI_SAFETY_MEASUREMENT_CASE.md).
 
 ## M3b: Selector Feasibility
 

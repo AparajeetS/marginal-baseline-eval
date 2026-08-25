@@ -4,6 +4,14 @@ import importlib.util
 from pathlib import Path
 import sys
 
+import pytest
+
+
+pytest.importorskip(
+    "torch",
+    reason="the image transport runner uses the optional PyTorch dependency",
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNNER = ROOT / "experiments" / "31_image_target_transport_atlas" / "mbe3_image_transport_atlas.py"

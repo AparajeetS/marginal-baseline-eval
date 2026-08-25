@@ -1,6 +1,9 @@
 # MBE JMLR Critical Path
 
-Status: active roadmap after the experiment 21 calibration abstention,
+> Superseded by the [2026-08-26 critical path](JMLR_CRITICAL_PATH_2026-08-26.md).
+> This file is retained as a dated record of the state through experiment 29.
+
+Status: superseded roadmap after the experiment 21 calibration abstention,
 experiment 26 pooled-PGDL failure, experiment 28 binding near miss, and
 experiment 23 conditional-comparator benchmark.
 

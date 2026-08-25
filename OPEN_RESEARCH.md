@@ -16,6 +16,7 @@ available analyses, and propose competing designs.
 | Active research program | [`docs/MBE_2_RESEARCH_PROGRAM.md`](docs/MBE_2_RESEARCH_PROGRAM.md) | MBE 2.0 specification |
 | Statistical specification | [`docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md`](docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md) | Estimand, inference, assumptions |
 | Project status | [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Reviewer-facing progress, boundaries, and next gates |
+| AI-safety measurement case | [`docs/AI_SAFETY_MEASUREMENT_CASE.md`](docs/AI_SAFETY_MEASUREMENT_CASE.md) | Proposed automated-judge audit, gates, and non-claims |
 | Evidence index | [`docs/EVIDENCE_INDEX.md`](docs/EVIDENCE_INDEX.md) | Corrected artifacts, retained failures, and blocked claims |
 | Experiment synthesis | [`docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md`](docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md) | Experiment-by-experiment findings and reproduction paths |
 | Credibility ledger | [`docs/MBE_CREDIBILITY_LEDGER.md`](docs/MBE_CREDIBILITY_LEDGER.md) | Claim-by-claim gate status |

@@ -28,6 +28,21 @@ The long-term goal is a public reliability atlas and an abstaining selector:
 given a task and target, recommend only metrics with relevant evidence and
 decline to recommend when transfer support is insufficient.
 
+## Primary AI-Safety Application
+
+The first proposed safety-facing study will audit automated jailbreak and
+harmfulness judges against independently defined human assessments. It will
+test whether a judge predicts the human target beyond cheap model, attack,
+prompt, refusal, and response-length baselines, and whether that increment
+survives a held-out model or attack family.
+
+StrongREJECT is the leading development candidate and HarmBench is a transfer
+candidate, subject to public eligibility checks for provenance, licensing,
+target independence, label reliability, and independent-unit structure. This
+is a proposed application, not completed evidence. The protected analysis may
+proceed only after a prospectively frozen MBE rule passes design-matched
+known-truth calibration. See the [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md).
+
 ## Method
 
 The active MBE 2.0 design separates five estimands:
@@ -58,6 +73,11 @@ The repository contains:
   associations remain sealed;
 - follow-on confirmation and development studies, including a binding PGDL
   power near miss and a rejected 10,080-row repeated-split screen;
+- a 126,000-row oracle feasibility frontier that found a design-specific
+  observable-information boundary at 48 independent configurations while
+  current learned nuisance rules remained anti-conservative;
+- a completed 360-model CIFAR-10, CIFAR-100, and SVHN transport artifact whose
+  protected associations remain sealed;
 - an executable, hash-sealed independent-replication packet;
 - public preregistrations, validators, canonical ledgers, hashes, failure
   provenance, and explicit non-claims.
@@ -109,8 +129,9 @@ MBE is not:
 ## Next Gates
 
 The active sequence is maintained in [the roadmap](../ROADMAP.md). The immediate
-work is to develop a substantively different, adequately powered opening rule
-on fresh known-truth data; freeze and confirm it prospectively; evaluate a
-genuinely external holdout only if it passes; obtain an externally executed and
-signed replication; test prospective selection on future task families; and
-finish the paper with failed calibration gates retained as results.
+work is to develop a substantively different opening rule for the observed
+48-configuration oracle gap on fresh known-truth data; freeze and confirm it
+prospectively; run the safety-measurement audit and a genuinely external
+holdout only if it passes; obtain an externally executed and signed
+replication; test prospective selection on future task families; and finish
+the paper with failed calibration gates retained as results.

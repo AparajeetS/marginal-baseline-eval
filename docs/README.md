@@ -7,6 +7,7 @@ guides, product notes, and historical material.
 
 - [Research overview](PROJECT_OVERVIEW.md)
 - [One-page project status](PROJECT_STATUS.md)
+- [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md)
 - [Evidence index](EVIDENCE_INDEX.md)
 - [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)
 - [Authoritative roadmap](../ROADMAP.md)
@@ -16,6 +17,9 @@ guides, product notes, and historical material.
 
 ## Active Method
 
+- [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md): proposed
+  jailbreak and harmfulness-judge audit, opening gate, decision comparison,
+  and non-claims.
 - [MBE 2.0 research program](MBE_2_RESEARCH_PROGRAM.md): objective, estimands,
   baseline ladder, environments, work packages, and decision gates.
 - [Statistical estimand and inference](STATISTICAL_ESTIMAND_AND_INFERENCE.md):
@@ -45,6 +49,8 @@ guides, product notes, and historical material.
 - [Published-study reaudit](../experiments/09_published_metric_reaudit/)
 - [Method comparison](../experiments/10_method_comparison/)
 - [Conditional comparator benchmark](../experiments/23_conditional_comparator_benchmark/)
+- [Oracle feasibility frontier](../experiments/30_oracle_feasibility_frontier/)
+- [Image target-transport atlas](../experiments/31_image_target_transport_atlas/)
 - [External holdout intake](../experiments/24_external_holdout/)
 - [Independent replication packet](../experiments/12_independent_replication/)
 - [Credibility freeze](../experiments/11_credibility_freeze/)
@@ -52,7 +58,7 @@ guides, product notes, and historical material.
 ## Execution
 
 - [Roadmap](../ROADMAP.md): milestone gates and stop-loss rules.
-- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-11.md): current scientific blockers and opening gates.
+- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-26.md): current scientific blockers and opening gates.
 - [Execution resources](EXECUTION_RESOURCES.md): workload estimates and
   compute-release gates, without monetary assumptions.
 - [Historical CPU campaign runbook](CPU_CAMPAIGN_NEXT_48_HOURS.md): frozen queue
