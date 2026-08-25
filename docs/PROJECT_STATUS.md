@@ -1,6 +1,6 @@
 # MBE Project Status
 
-Updated: 2026-08-22
+Updated: 2026-08-25
 
 ## The Problem
 
@@ -27,9 +27,14 @@ environment, while refusing to rank them when the evidence is inadequate.
   confirmatory sample.
 - Corrected prospective artifacts: 96 CIFAR-10 image runs, 144 causal-LM runs
   across three corpora, and a separate 180-run causal-text replication.
+- A completed 360-model, multi-target image transport atlas across CIFAR-10,
+  CIFAR-100, and a protected SVHN environment, with all structural gates
+  passing and no target-metric associations inspected.
 - A completed 48,000-cell outcome-blind calibration screen, a 153,600-row
   strong-comparator benchmark, and multiple disjoint development and
   confirmation studies.
+- A completed 126,000-row oracle feasibility frontier separating information,
+  measurement, and nuisance-estimation limits at 24-192 configurations.
 - A 240-model PGDL external-holdout intake and an executable, hash-sealed
   independent-replication packet.
 - Public preregistrations, canonical result ledgers, integrity manifests,
@@ -45,6 +50,15 @@ claims. A 192-group orthogonal-score rule passed its scoped synthetic
 confirmation, but did not transfer cleanly to the pooled PGDL geometry. A
 revised PGDL rule controlled every null cell and then missed one prespecified
 power bound by 0.008. The protected outcomes remained sealed.
+
+The oracle frontier sharpened that result. In its frozen noisy-observable
+regime, 24 independent configurations were underpowered even when the nuisance
+functions were known exactly. At 48 configurations, the observable oracle
+passed calibration and power, but learned nuisance estimators still produced
+excess false support. The completed 360-model image atlas has 24 independent
+configurations per environment, so it is a high-quality prospective artifact,
+not a license to treat its 120 repeated-seed rows per dataset as independent
+evidence. Its protected SVHN associations remain sealed.
 
 That restraint is part of the result. The repository preserves failed gates,
 an invalid seed-range attempt, an independent-unit counting correction, and

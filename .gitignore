@@ -35,6 +35,8 @@ experiments/**/kaggle_downloads/**/data/
 experiments/**/kaggle_downloads/**/corpora/
 experiments/**/kaggle_downloads/**/wikitext-2/
 experiments/**/kaggle_downloads/**/*.log
+# Protected prospective holdout; publish only hashes and structural validation.
+experiments/31_image_target_transport_atlas/kaggle_downloads/svhn/v1/mbe3_image_transport_svhn.csv
 experiments/**/kaggle_oauth_state.json
 experiments/**/kaggle_oauth_manual.py
 experiments/**/__pycache__/

@@ -31,9 +31,9 @@ of the evidence.
 |---|---|
 | `mbe-eval` v0.4.0 package and CLI | Available, tested, and installable from PyPI |
 | Nonlinear grouped cross-fitted audit | Implemented; under calibration |
-| Corrected trained-model artifacts | 96 image runs, 144 multi-corpus causal-LM runs, and a separate 180-run text replication |
-| Known-truth calibration | 48,000-cell screen plus 9,600 datasets and 153,600 method rows against strong comparators |
-| Conditional reliability atlas | In progress |
+| Corrected trained-model artifacts | 96-run image factorial, 144-run multi-corpus causal-LM atlas, 180-run text replication, and a separate 360-model image transport campaign |
+| Known-truth calibration | 48,000-cell screen, 153,600 comparator rows, and a 126,000-row oracle feasibility frontier |
+| Conditional reliability atlas | 360-model image atlas complete; protected interpretation locked |
 | Protected evidence | Image, text-atlas, and PGDL associations remain sealed after prespecified gates failed |
 | Independent replication | Executable hash-sealed packet public; external signed execution pending |
 
@@ -58,6 +58,12 @@ null cells, while conservative rules can lack useful power.
   bound by 0.008; the checkpoint-metric associations remained unopened.
 - A subsequent 10,080-row repeated-split screen rejected all six prespecified
   candidates and did not authorize another protected-data opening.
+- The 126,000-row oracle frontier found that the studied noisy-observable
+  regime was information-limited at 24 configurations. At 48 configurations
+  the signal was recoverable in principle, but current learned nuisance rules
+  remained anti-conservative.
+- A prospective 360-model CIFAR-10/CIFAR-100/SVHN campaign completed every
+  planned row and integrity gate. Its SVHN associations remain sealed.
 - An external holdout and independently executed signed replication remain
   necessary before submission-grade claims are made.
 

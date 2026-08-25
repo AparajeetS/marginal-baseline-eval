@@ -1,6 +1,6 @@
 # MBE Evidence Index
 
-Status: 2026-08-11. This is the public map from evidence to claims. It is
+Status: 2026-08-25. This is the public map from evidence to claims. It is
 designed to make it easy to distinguish a validated component, a completed
 pipeline, an informative failure, and an unresolved scientific question.
 
@@ -23,6 +23,8 @@ and what it has not.
 | Multi-corpus causal-LM atlas | Completed; protected analysis locked | A preregistered 144-run, 72-configuration artifact balanced across WikiText-2, Penn Treebank, and Tiny Shakespeare; all causal and structural gates passed. | Within-corpus or transport verdicts: the outcome-blind calibration screen selected no eligible rule, so opening remains unauthorized. |
 | Legacy 680-row image/text pool | Exploratory and quarantined | Historical motivation, software regression cases, and examples of why pooled correlation can mislead. | Confirmatory language-model, transport, or independent-sample claims. |
 | PGDL pooled transfer calibration | Completed abstention | The first rule failed null control; a lower-shrinkage revision controlled all null cells but missed one frozen power gate by Wilson lower bound 0.492 versus 0.500. | Protected PGDL target-metric associations; they remain sealed. |
+| Oracle feasibility frontier | Completed known-truth diagnostic | At 24 configurations, the observable oracle was calibrated but underpowered; at 48 it passed both frozen gates, while learned nuisance estimators still produced excess false support. | Validation of the learned MBE rule or authorization to inspect protected outcomes. |
+| Multi-target image transport atlas | Completed; protected analysis locked | A preregistered 360-model artifact across CIFAR-10, CIFAR-100, and SVHN, with 72 dataset-specific configuration blocks and every structural gate passed. | Metric survivor/washout, target-specific reliability, or cross-environment transport claims; SVHN remains sealed. |
 | External holdout, prospective selector, independent replication | Prepared but incomplete | The 240-model PGDL intake and replication packet v2 are structurally validated and hash-sealed; protected opening is denied and the replication run to date is internal only. | Holdout results, prospective selection utility, or independent confirmation. Main paper claims remain blocked. |
 
 The adversarial gate-by-gate record is maintained in
@@ -44,6 +46,13 @@ The completed, analysis-locked GPU artifacts are in
 [`experiments/19_corrected_image_factorial/`](../experiments/19_corrected_image_factorial/)
 and
 [`experiments/20_multicorpus_text_atlas/`](../experiments/20_multicorpus_text_atlas/).
+The completed known-truth oracle frontier is in
+[`experiments/30_oracle_feasibility_frontier/`](../experiments/30_oracle_feasibility_frontier/).
+The complete prospective image transport campaign, including the development
+ledgers and all three structural validation records, is in
+[`experiments/31_image_target_transport_atlas/`](../experiments/31_image_target_transport_atlas/).
+The SVHN raw ledger is retained by the custodian but excluded from Git until a
+frozen known-truth opening rule authorizes release.
 
 ## CPU Credibility Campaign
 

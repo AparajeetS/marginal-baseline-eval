@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "status": "preregistered_image_target_transport_atlas",
+  "experiment": "mbe3_image_target_transport_atlas_v1",
+  "environment_id": "cifar10-target-transport-v1",
+  "split_id": "cifar10-train-validation-test-20260823",
+  "split_hashes": {
+    "train_indices": "e618908f93614249102683fe45c9ef2a451ceaa5d5218c9adf458eb6c07c87bf",
+    "validation_indices": "d9c7bd6aa4013af3bf7812cc7c53bdf9f6e7f68c5dd40f7c18f87138b1d188c9",
+    "test_indices": "1bf1341c375c5983ef46ad89f95faec61487a87c998c88cd9595c193ca400cfe"
+  },
+  "device": "cpu",
+  "gpu": null,
+  "torch_version": "2.12.0+cpu",
+  "grid": [
+    {
+      "dataset": "cifar10",
+      "arch": "cnn",
+      "optimizer": "adamw",
+      "lr_level": "low",
+      "lr": 0.0003,
+      "wd": 0.0,
+      "dropout": 0.0,
+      "seed": 8311,
+      "config_id": "7cddd6cd2cdf",
+      "run_id": "7cddd6cd2cdf-s8311"
+    },
+    {
+      "dataset": "cifar10",
+      "arch": "resnet",
+      "optimizer": "adamw",
+      "lr_level": "low",
+      "lr": 0.0003,
+      "wd": 0.0,
+      "dropout": 0.0,
+      "seed": 8311,
+      "config_id": "e6d41b31f768",
+      "run_id": "e6d41b31f768-s8311"
+    },
+    {
+      "dataset": "cifar10",
+      "arch": "wide_resnet",
+      "optimizer": "adamw",
+      "lr_level": "low",
+      "lr": 0.0003,
+      "wd": 0.0,
+      "dropout": 0.0,
+      "seed": 8311,
+      "config_id": "565b20ba866e",
+      "run_id": "565b20ba866e-s8311"
+    }
+  ],
+  "planned_runs": 3,
+  "planned_configurations": 3,
+  "epochs": 1,
+  "batch_size": 128,
+  "n_train": 128,
+  "n_validation": 64,
+  "n_test": 64,
+  "metric_batch_repeats": 3,
+  "metric_batch_seed_offsets": [
+    300,
+    301,
+    302
+  ],
+  "max_hours": 0.5,
+  "primary_target": "clean_test_loss",
+  "secondary_targets": [
+    "corruption_mean_loss",
+    "clean_test_ece",
+    "clean_test_brier"
+  ],
+  "corruption_suite": {
+    "gaussian_noise_normalized_sigma": 0.2,
+    "blur": "3x3 average pool, stride 1, padding 1",
+    "low_contrast_normalized_scale": 0.55,
+    "seed": "SHA256 of full run_id"
+  },
+  "frozen_controls": [
+    "arch",
+    "optimizer",
+    "lr_level",
+    "learning_rate",
+    "weight_decay",
+    "dropout",
+    "seed_id",
+    "final_train_batch_loss",
+    "val_loss"
+  ],
+  "primary_gate": "At least 90% of 120 planned runs, all 24 configurations, at least four seeds per included configuration, all three architectures, and no duplicate run IDs. Otherwise descriptive only.",
+  "negative_control_definition": "One Gaussian value per full run_id from a SHA256-derived seed.",
+  "exclusion_rule": "Retain every row and every failure. Exclude failed rows only from analyses requiring valid metric values.",
+  "finished_at_unix": 1787432899.2790797,
+  "elapsed_hours": 0.05391850001282162,
+  "integrity": {
+    "rows": 3,
+    "valid_rows": 3,
+    "error_rows": 0,
+    "unique_run_ids": 3,
+    "duplicate_run_ids": 0,
+    "valid_configurations": 3,
+    "configurations_with_at_least_four_seeds": 0,
+    "architectures": [
+      "cnn",
+      "resnet",
+      "wide_resnet"
+    ],
+    "primary_gate_pass": false
+  }
+}

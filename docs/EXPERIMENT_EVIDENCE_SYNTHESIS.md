@@ -1,6 +1,6 @@
 # Experiment Evidence Synthesis
 
-Status: 2026-08-11. This is a map of every experiment program in this
+Status: 2026-08-25. This is a map of every experiment program in this
 repository, what it observed, and the strongest conclusion it can support.
 It intentionally distinguishes completed evidence from protocols and
 infrastructure. It is not a count of independent models or a claim that the
@@ -35,6 +35,8 @@ external holdout and independent execution.
 | MBE calibration and comparator studies | Full-refit MBE can be conservative in named designs, but the 24/48-configuration benchmark exposed a sharp calibration-power frontier across MBE, GCM, WGCM, KCI, and rank references. | Conditional methodological evidence with explicit sample-size, nuisance, and estimand boundaries. |
 | Dziugaite et al. public ledger | Many established measures retain incremental predictive information; a few wash out or reverse, and source robustness ranking measures something different. | MBE is not a blanket metric killer; it is a complementary audit. |
 | Corrected causal text | A valid random control and strict refit rule abstained even for strong raw associations in one 36-configuration environment. | MBE can avoid promoting association to support here; real-environment power remains unresolved. |
+| Oracle feasibility frontier | The noisy observable regime was information-limited at 24 configurations; at 48 the information was sufficient in principle, but the learned nuisance estimators remained miscalibrated. | Sample size, metric reliability, and nuisance estimation are separate bottlenecks; this validates the research question, not the current rule. |
+| Multi-target image transport atlas | All 360 CIFAR-10, CIFAR-100, and SVHN models completed with 72 dataset-specific blocks and clean integrity checks. | A prospective transport benchmark now exists, but no metric or transport claim is authorized while the 24-configuration opening gate remains unmet. |
 
 ## Experiment-by-Experiment Record
 
@@ -61,6 +63,8 @@ external holdout and independent execution.
 | 22, 25-28: orthogonal development and PGDL transfer | A 192-group rule passed synthetic confirmation, failed pooled-PGDL null control, and was revised. The revision controlled all null cells but narrowly missed one frozen power criterion. | Useful estimator development and honest near miss; no PGDL association was authorized. | [`experiments/22_orthogonal_score_development`](../experiments/22_orthogonal_score_development), [`experiments/28_pgdl_transfer_confirmation_v2`](../experiments/28_pgdl_transfer_confirmation_v2) |
 | 23: conditional comparator benchmark | 9,600 paired datasets and 153,600 method rows showed no uniformly calibrated, adequately powered method at 24/48 configurations. | A calibration-power frontier across distinct estimands, not a global method ranking. | [`COMPARATOR_RESULTS.md`](../experiments/23_conditional_comparator_benchmark/COMPARATOR_RESULTS.md) |
 | 29: repeated-split stability development | A 10,080-row fresh known-truth screen rejected all six split-stability candidates: tighter stability reduced support but did not retain the required low-sample power. | A retained negative result; no candidate advances to confirmation and no protected association is opened. | [`DEVELOPMENT_RESULTS.md`](../experiments/29_repeated_split_stability_development/DEVELOPMENT_RESULTS.md) |
+| 30: oracle feasibility frontier | The 126,000-row known-truth study separated information limits from nuisance-estimation error: the observable oracle failed useful power at 24 configurations, passed both gates at 48, and learned degree-2 rules remained anti-conservative. | Positive evidence for a sample-size-aware audit layer, not validation of the present MBE estimator or permission to open protected data. | [`RESULT_SUMMARY.md`](../experiments/30_oracle_feasibility_frontier/RESULT_SUMMARY.md) |
+| 31: multi-target image transport atlas | 360/360 models completed across CIFAR-10, CIFAR-100, and SVHN; every dataset retained 24 configurations, five seeds, three architectures, and zero errors or duplicates. | Artifact and protocol feasibility only. Protected associations remain unopened, so no metric reliability or transport verdict is available. | [`DEVELOPMENT_COMPLETION_REPORT.md`](../experiments/31_image_target_transport_atlas/DEVELOPMENT_COMPLETION_REPORT.md) |
 
 ## What This Body Of Work Supports
 
@@ -82,10 +86,16 @@ external holdout and independent execution.
 5. **CEI-style residual composites are exploratory.** Feature-dispersion
    residuals merit a preregistered follow-up, but neither the general composite
    nor a cross-domain mechanism is validated.
+6. **Independent configuration count is a scientific constraint.** The oracle
+   frontier indicates that 24 configurations can be information-limited even
+   with known nuisance functions, while 48 can contain enough information in
+   principle. More repeated seeds cannot substitute for more independent
+   configurations.
 
 ## What Must Be Verified At Higher Scale
 
-- corrected image factorials with enough independently varied configurations;
+- a calibrated rule for the completed image transport design, or a new image
+  campaign with more independently varied configurations;
 - multiple public checkpoint environments, starting with a frozen PGDL
   development/validation/transfer sequence;
 - a locked external holdout evaluated once from frozen code and thresholds;

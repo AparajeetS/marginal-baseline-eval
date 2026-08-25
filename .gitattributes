@@ -15,3 +15,8 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *SHA256SUMS text eol=lf
+
+# Frozen evidence trees hash exact submitted/output bytes. Do not normalize
+# their line endings when adding them to or checking them out from Git.
+experiments/30_oracle_feasibility_frontier/** -text -eol
+experiments/31_image_target_transport_atlas/** -text -eol

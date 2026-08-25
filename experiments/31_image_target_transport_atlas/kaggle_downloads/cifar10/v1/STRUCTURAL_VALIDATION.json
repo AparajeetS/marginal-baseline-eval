@@ -1,0 +1,27 @@
+{
+  "dataset": "cifar10",
+  "checks": {
+    "dataset_matches": true,
+    "planned_runs": true,
+    "planned_configurations": true,
+    "minimum_valid_rows": true,
+    "all_configurations": true,
+    "at_least_four_seeds_per_configuration": true,
+    "three_architectures": true,
+    "no_duplicate_run_ids": true,
+    "targets_finite": true,
+    "integrity_gate": true,
+    "svhn_associations_unopened": true
+  },
+  "rows": 120,
+  "valid_rows": 120,
+  "error_rows": 0,
+  "unique_configurations": 24,
+  "artifact_sha256": {
+    "mbe3_image_transport_cifar10.csv": "bb8ee05ed22191f8e63509341f8b6be846d78aefaf2ccc71d6a32972813f0fc5",
+    "mbe3_image_transport_cifar10_manifest.json": "3240b9654c70eede76c441e98cb503ecf6d59a42f370ec6b4d0c3e7bd3d9ce6a",
+    "mbe3_image_transport_cifar10_integrity.json": "d8b12dbdd1e2d533aabba709c79437e3fe2ac557e111a2704970be9a05eed963"
+  },
+  "metric_target_associations_inspected": false,
+  "valid": true
+}

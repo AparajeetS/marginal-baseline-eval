@@ -28,6 +28,8 @@ available analyses, and propose competing designs.
 | Method comparison | [`experiments/10_method_comparison/`](experiments/10_method_comparison/) | Shared known-truth benchmark |
 | Conditional comparator benchmark | [`experiments/23_conditional_comparator_benchmark/`](experiments/23_conditional_comparator_benchmark/) | 153,600 method rows across strong comparators |
 | Corrected GPU artifacts | [`experiments/19_corrected_image_factorial/`](experiments/19_corrected_image_factorial/) and [`experiments/20_multicorpus_text_atlas/`](experiments/20_multicorpus_text_atlas/) | Structurally complete; associations remain sealed |
+| Oracle feasibility frontier | [`experiments/30_oracle_feasibility_frontier/`](experiments/30_oracle_feasibility_frontier/) | 126,000-row known-truth diagnostic; no protected opening authorized |
+| Image transport atlas | [`experiments/31_image_target_transport_atlas/`](experiments/31_image_target_transport_atlas/) | 360/360 models complete across CIFAR-10, CIFAR-100, and sealed SVHN |
 | External holdout intake | [`experiments/24_external_holdout/`](experiments/24_external_holdout/) | 240-model PGDL intake validated; outcome opening denied |
 | Credibility freeze | [`experiments/11_credibility_freeze/`](experiments/11_credibility_freeze/) | Preregistration, hashes, and claim checks |
 | Replication packet v2 | [`experiments/12_independent_replication/`](experiments/12_independent_replication/) | Hash-sealed handoff; external execution and signature pending |

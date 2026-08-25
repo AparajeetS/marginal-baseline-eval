@@ -1,0 +1,28 @@
+{
+  "protocol_id": "mbe3-oracle-feasibility-frontier-v1",
+  "smoke": false,
+  "planned_rows": 126000,
+  "observed_rows": 126000,
+  "sample_sizes": [
+    24,
+    48,
+    96,
+    192
+  ],
+  "repetitions": {
+    "24": 500,
+    "48": 500,
+    "96": 250,
+    "192": 250
+  },
+  "methods": [
+    "latent_ceiling",
+    "observable_oracle",
+    "learned_raw_d2",
+    "learned_rank_d2"
+  ],
+  "runner_sha256": "412dfd80a45c88912120150fbec23195220e9d00bc891cfe7036a5b1bdd05b82",
+  "orthogonal_sha256": "eb0f787c044fa4f607a9b26abb0f788d34427bb40a7a47e406d306ed23e7f4d3",
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false
+}

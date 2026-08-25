@@ -1,0 +1,187 @@
+{
+  "protocol_id": "mbe3-oracle-feasibility-frontier-v1",
+  "method_sample_size_diagnostics": [
+    {
+      "method": "latent_ceiling",
+      "n_configurations": 24,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.042,
+      "maximum_null_wilson_high_a05": 0.06335158575433016,
+      "minimum_beta_0_50_power_a05": 0.714,
+      "minimum_beta_0_50_wilson_low_a05": 0.6728768354985485,
+      "strictly_calibrated": true,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "latent_ceiling",
+      "n_configurations": 48,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.042,
+      "maximum_null_wilson_high_a05": 0.06335158575433016,
+      "minimum_beta_0_50_power_a05": 0.97,
+      "minimum_beta_0_50_wilson_low_a05": 0.9510963331640543,
+      "strictly_calibrated": true,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "latent_ceiling",
+      "n_configurations": 96,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.052,
+      "maximum_null_wilson_high_a05": 0.08692178118372709,
+      "minimum_beta_0_50_power_a05": 0.996,
+      "minimum_beta_0_50_wilson_low_a05": 0.9776942144345839,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "latent_ceiling",
+      "n_configurations": 192,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.056,
+      "maximum_null_wilson_high_a05": 0.0917907207329439,
+      "minimum_beta_0_50_power_a05": 1.0,
+      "minimum_beta_0_50_wilson_low_a05": 0.9848667005045553,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_rank_d2",
+      "n_configurations": 24,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.174,
+      "maximum_null_wilson_high_a05": 0.20968159789986787,
+      "minimum_beta_0_50_power_a05": 0.366,
+      "minimum_beta_0_50_wilson_low_a05": 0.32494760488221347,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": false
+    },
+    {
+      "method": "learned_rank_d2",
+      "n_configurations": 48,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.152,
+      "maximum_null_wilson_high_a05": 0.18611414828743875,
+      "minimum_beta_0_50_power_a05": 0.574,
+      "minimum_beta_0_50_wilson_low_a05": 0.5302541759784422,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_rank_d2",
+      "n_configurations": 96,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.104,
+      "maximum_null_wilson_high_a05": 0.14802034070796105,
+      "minimum_beta_0_50_power_a05": 0.856,
+      "minimum_beta_0_50_wilson_low_a05": 0.8070876594372886,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_rank_d2",
+      "n_configurations": 192,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.08,
+      "maximum_null_wilson_high_a05": 0.12032964320384165,
+      "minimum_beta_0_50_power_a05": 0.996,
+      "minimum_beta_0_50_wilson_low_a05": 0.9776942144345839,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_raw_d2",
+      "n_configurations": 24,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.172,
+      "maximum_null_wilson_high_a05": 0.20754744749912687,
+      "minimum_beta_0_50_power_a05": 0.404,
+      "minimum_beta_0_50_wilson_low_a05": 0.36187922469306827,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": false
+    },
+    {
+      "method": "learned_raw_d2",
+      "n_configurations": 48,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.142,
+      "maximum_null_wilson_high_a05": 0.1753296673247754,
+      "minimum_beta_0_50_power_a05": 0.596,
+      "minimum_beta_0_50_wilson_low_a05": 0.5524153513244502,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_raw_d2",
+      "n_configurations": 96,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.108,
+      "maximum_null_wilson_high_a05": 0.15257255840387324,
+      "minimum_beta_0_50_power_a05": 0.888,
+      "minimum_beta_0_50_wilson_low_a05": 0.8428908673839414,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "learned_raw_d2",
+      "n_configurations": 192,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.092,
+      "maximum_null_wilson_high_a05": 0.13426175727497602,
+      "minimum_beta_0_50_power_a05": 0.996,
+      "minimum_beta_0_50_wilson_low_a05": 0.9776942144345839,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "observable_oracle",
+      "n_configurations": 24,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.04,
+      "maximum_null_wilson_high_a05": 0.060973595834850805,
+      "minimum_beta_0_50_power_a05": 0.364,
+      "minimum_beta_0_50_wilson_low_a05": 0.32301143591892645,
+      "strictly_calibrated": true,
+      "useful_beta_0_50_power": false
+    },
+    {
+      "method": "observable_oracle",
+      "n_configurations": 48,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.04,
+      "maximum_null_wilson_high_a05": 0.060973595834850805,
+      "minimum_beta_0_50_power_a05": 0.72,
+      "minimum_beta_0_50_wilson_low_a05": 0.6790813332381924,
+      "strictly_calibrated": true,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "observable_oracle",
+      "n_configurations": 96,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.048,
+      "maximum_null_wilson_high_a05": 0.08201230121318728,
+      "minimum_beta_0_50_power_a05": 0.932,
+      "minimum_beta_0_50_wilson_low_a05": 0.8938107478142963,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    },
+    {
+      "method": "observable_oracle",
+      "n_configurations": 192,
+      "minimum_estimability": 1.0,
+      "maximum_null_support_rate_a05": 0.048,
+      "maximum_null_wilson_high_a05": 0.08201230121318728,
+      "minimum_beta_0_50_power_a05": 1.0,
+      "minimum_beta_0_50_wilson_low_a05": 0.9848667005045553,
+      "strictly_calibrated": false,
+      "useful_beta_0_50_power": true
+    }
+  ],
+  "protected_association_open_authorized": false,
+  "generalization_target_columns_read": false,
+  "checkpoint_metric_columns_read": false,
+  "smoke": false,
+  "planned_rows": 126000,
+  "observed_rows": 126000
+}

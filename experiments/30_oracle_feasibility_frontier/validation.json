@@ -1,0 +1,49 @@
+{
+  "protocol_id": "mbe3-oracle-feasibility-frontier-v1",
+  "checks": {
+    "frozen_hashes_present": true,
+    "frozen_hashes_match": true,
+    "expected_rows": true,
+    "expected_cells": true,
+    "expected_summary_rows": true,
+    "no_duplicate_task_keys": true,
+    "repetition_balance": true,
+    "no_nonestimable_rows": true,
+    "manifest_rows_match": true,
+    "no_protected_reads": true,
+    "no_open_authorization": true
+  },
+  "frozen_hash_checks": [
+    {
+      "path": "experiments/30_oracle_feasibility_frontier/PREREGISTRATION.md",
+      "expected": "57262398c2f7b5b53695cf288490f5be5bbbea37a0d79db70637f03529c25812",
+      "actual": "57262398c2f7b5b53695cf288490f5be5bbbea37a0d79db70637f03529c25812",
+      "matches": true
+    },
+    {
+      "path": "experiments/30_oracle_feasibility_frontier/run_frontier.py",
+      "expected": "412dfd80a45c88912120150fbec23195220e9d00bc891cfe7036a5b1bdd05b82",
+      "actual": "412dfd80a45c88912120150fbec23195220e9d00bc891cfe7036a5b1bdd05b82",
+      "matches": true
+    },
+    {
+      "path": "experiments/30_oracle_feasibility_frontier/validate_outputs.py",
+      "expected": "7783c4479c4c727665c7a1ad572b6216def94317b84e7c9ca9bcf38649109fc2",
+      "actual": "7783c4479c4c727665c7a1ad572b6216def94317b84e7c9ca9bcf38649109fc2",
+      "matches": true
+    },
+    {
+      "path": "mbe_eval/orthogonal.py",
+      "expected": "eb0f787c044fa4f607a9b26abb0f788d34427bb40a7a47e406d306ed23e7f4d3",
+      "actual": "eb0f787c044fa4f607a9b26abb0f788d34427bb40a7a47e406d306ed23e7f4d3",
+      "matches": true
+    },
+    {
+      "path": "mbe_eval/crossfit.py",
+      "expected": "83347f7407f63b89af4c21aeccdf7afd9b83541ef6bbf72c5188d0305e510ba0",
+      "actual": "83347f7407f63b89af4c21aeccdf7afd9b83541ef6bbf72c5188d0305e510ba0",
+      "matches": true
+    }
+  ],
+  "valid": true
+}

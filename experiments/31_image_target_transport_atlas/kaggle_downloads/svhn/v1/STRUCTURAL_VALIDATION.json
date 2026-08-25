@@ -1,0 +1,27 @@
+{
+  "dataset": "svhn",
+  "checks": {
+    "dataset_matches": true,
+    "planned_runs": true,
+    "planned_configurations": true,
+    "minimum_valid_rows": true,
+    "all_configurations": true,
+    "at_least_four_seeds_per_configuration": true,
+    "three_architectures": true,
+    "no_duplicate_run_ids": true,
+    "targets_finite": true,
+    "integrity_gate": true,
+    "svhn_associations_unopened": true
+  },
+  "rows": 120,
+  "valid_rows": 120,
+  "error_rows": 0,
+  "unique_configurations": 24,
+  "artifact_sha256": {
+    "mbe3_image_transport_svhn.csv": "5043042032c421512a89f67b1b87b4c25ca3da0e3e6a1849c02ff418de21e3a8",
+    "mbe3_image_transport_svhn_manifest.json": "a04100f18a5445110fef5d43bbfa9562862c53f42a35ad9333f6503c6f6fb240",
+    "mbe3_image_transport_svhn_integrity.json": "d8b12dbdd1e2d533aabba709c79437e3fe2ac557e111a2704970be9a05eed963"
+  },
+  "metric_target_associations_inspected": false,
+  "valid": true
+}

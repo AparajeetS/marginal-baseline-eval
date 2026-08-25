@@ -1,0 +1,15 @@
+{
+  "id": "aparajeetshadangi/mbe-3-image-transport-svhn",
+  "title": "MBE 3 Image Transport SVHN",
+  "code_file": "mbe3_transport_svhn.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

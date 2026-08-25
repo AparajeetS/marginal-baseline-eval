@@ -1,0 +1,15 @@
+[Unit]
+Description=MBE oracle feasibility and sample-size frontier
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=apara
+WorkingDirectory=/home/apara/mbe-calibration
+ExecStart=/home/apara/mbe-calibration/experiments/30_oracle_feasibility_frontier/vm_campaign/run_campaign.sh
+TimeoutStartSec=infinity
+Nice=5
+
+[Install]
+WantedBy=multi-user.target
+
