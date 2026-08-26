@@ -143,6 +143,7 @@ The study will not establish that:
 
 ## Public Trail
 
+- [Safety-study feasibility memo](SAFETY_STUDY_FEASIBILITY_MEMO.md)
 - [Current project status](PROJECT_STATUS.md)
 - [Evidence index](EVIDENCE_INDEX.md)
 - [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)

@@ -8,6 +8,7 @@ guides, product notes, and historical material.
 - [Research overview](PROJECT_OVERVIEW.md)
 - [One-page project status](PROJECT_STATUS.md)
 - [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md)
+- [Safety-study feasibility memo](SAFETY_STUDY_FEASIBILITY_MEMO.md)
 - [Evidence index](EVIDENCE_INDEX.md)
 - [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)
 - [Authoritative roadmap](../ROADMAP.md)
@@ -20,6 +21,9 @@ guides, product notes, and historical material.
 - [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md): proposed
   jailbreak and harmfulness-judge audit, opening gate, decision comparison,
   and non-claims.
+- [Safety-study feasibility memo](SAFETY_STUDY_FEASIBILITY_MEMO.md):
+  outcome-blind StrongREJECT and HarmBench intake, frozen study shape, opening
+  gates, and stop rules.
 - [MBE 2.0 research program](MBE_2_RESEARCH_PROGRAM.md): objective, estimands,
   baseline ladder, environments, work packages, and decision gates.
 - [Statistical estimand and inference](STATISTICAL_ESTIMAND_AND_INFERENCE.md):
