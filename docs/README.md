@@ -37,10 +37,12 @@ guides, product notes, and historical material.
 
 ## Evidence And Credibility
 
-- [Supporting evidence](../SUPPORTING_EVIDENCE.md): exploratory results and
-  validity boundaries.
-- [Credibility ledger](MBE_CREDIBILITY_LEDGER.md): supported, blocked,
-  provisional, withdrawn, and falsified claims.
+- [Current evidence summary](../SUPPORTING_EVIDENCE.md): concise findings,
+  limitations, non-claims, and reviewer path.
+- [Adversarial credibility ledger](MBE_CREDIBILITY_LEDGER.md): supported,
+  blocked, provisional, withdrawn, and falsified claims in gate-by-gate detail.
+- [Archived MBE v1 supporting evidence](archive/SUPPORTING_EVIDENCE_V1.md):
+  quarantined exploratory results retained for provenance.
 - [Evidence index](EVIDENCE_INDEX.md): corrected artifacts, calibration gates,
   retained failures, and current non-claims.
 - [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md): findings and

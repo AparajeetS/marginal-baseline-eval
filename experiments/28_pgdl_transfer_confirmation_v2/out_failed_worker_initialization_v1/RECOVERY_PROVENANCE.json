@@ -1,8 +1,0 @@
-{
-  "status": "invalid_infrastructure_attempt_preserved",
-  "reason": "Windows spawn workers used experiment 26 degree-4/ridge-10 defaults instead of the preregistered degree-2/ridge-0.1 settings.",
-  "detection": "All score and p-value columns matched experiment 26 exactly.",
-  "scientific_interpretation_allowed": false,
-  "protected_target_or_metric_read": false,
-  "recovery_scope": "Set the preregistered protocol ID, degree, and ridge in every worker initializer; retain all scientific settings and seeds."
-}

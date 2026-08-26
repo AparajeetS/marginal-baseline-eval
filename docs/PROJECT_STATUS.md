@@ -60,12 +60,13 @@ configurations per environment, so it is a high-quality prospective artifact,
 not a license to treat its 120 repeated-seed rows per dataset as independent
 evidence. Its protected SVHN associations remain sealed.
 
-That restraint is part of the result. The repository preserves failed gates,
-an invalid seed-range attempt, an independent-unit counting correction, and
-development candidates that did not advance. These results support continued
-work on calibrated, sample-size-aware metric auditing. They do not establish
-that MBE is universally valid, that established metrics are broadly defective,
-or that a production metric selector is ready.
+That restraint is part of the result. The repository preserves failed
+scientific gates, independent-unit corrections, and development candidates
+that did not advance. These results support continued work on calibrated,
+sample-size-aware metric auditing. They do not establish that MBE is
+universally valid, that established metrics are broadly defective, or that a
+production metric selector is ready. Routine execution incidents are recorded
+only in experiment-level recovery provenance and are not scientific findings.
 
 ## Why Further Work Matters
 
@@ -93,13 +94,19 @@ holdout, obtain an externally executed signed replication, and test prospective
 metric selection on future task families. Positive, null, and failed outcomes
 are all publication-worthy when the gate is fixed in advance.
 
-## Review Trail
+## Reviewer Path
 
-- [Evidence index](EVIDENCE_INDEX.md)
-- [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md)
-- [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md)
-- [Credibility ledger](MBE_CREDIBILITY_LEDGER.md)
-- [Statistical specification](STATISTICAL_ESTIMAND_AND_INFERENCE.md)
-- [JMLR critical path](JMLR_CRITICAL_PATH_2026-08-26.md)
-- [Reproduction guide](../REPRODUCIBILITY.md)
-- [Open research inventory](../OPEN_RESEARCH.md)
+1. [Current evidence summary](../SUPPORTING_EVIDENCE.md) and [evidence
+   index](EVIDENCE_INDEX.md) for the claim-to-artifact map.
+2. [Reproduction guide](../REPRODUCIBILITY.md) and [artifact-integrity
+   guide](ARTIFACT_INTEGRITY.md) for commands, manifests, and hashes.
+3. [Experiment synthesis](EXPERIMENT_EVIDENCE_SYNTHESIS.md) for the complete
+   program-level record.
+4. [Adversarial credibility ledger](MBE_CREDIBILITY_LEDGER.md) for detailed
+   failures, corrections, blocked gates, and statistical risks.
+
+The proposed application and the remaining scientific work are described in
+the [AI-safety measurement case](AI_SAFETY_MEASUREMENT_CASE.md), [statistical
+specification](STATISTICAL_ESTIMAND_AND_INFERENCE.md), [JMLR critical
+path](JMLR_CRITICAL_PATH_2026-08-26.md), and [open research
+inventory](../OPEN_RESEARCH.md).

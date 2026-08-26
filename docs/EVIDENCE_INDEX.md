@@ -27,9 +27,11 @@ and what it has not.
 | Multi-target image transport atlas | Completed; protected analysis locked | A preregistered 360-model artifact across CIFAR-10, CIFAR-100, and SVHN, with 72 dataset-specific configuration blocks and every structural gate passed. | Metric survivor/washout, target-specific reliability, or cross-environment transport claims; SVHN remains sealed. |
 | External holdout, prospective selector, independent replication | Prepared but incomplete | The 240-model PGDL intake and replication packet v2 are structurally validated and hash-sealed; protected opening is denied and the replication run to date is internal only. | Holdout results, prospective selection utility, or independent confirmation. Main paper claims remain blocked. |
 
-The adversarial gate-by-gate record is maintained in
+The concise [current evidence summary](../SUPPORTING_EVIDENCE.md) is the
+reviewer entry point. The adversarial gate-by-gate record is maintained in
 [MBE_CREDIBILITY_LEDGER.md](MBE_CREDIBILITY_LEDGER.md). The historical v1
-ledger is retained separately in [SUPPORTING_EVIDENCE.md](../SUPPORTING_EVIDENCE.md).
+ledger is quarantined separately in
+[archive/SUPPORTING_EVIDENCE_V1.md](archive/SUPPORTING_EVIDENCE_V1.md).
 For a complete experiment-by-experiment account, including reproduction entry
 points and the claim boundary of each program, see
 [EXPERIMENT_EVIDENCE_SYNTHESIS.md](EXPERIMENT_EVIDENCE_SYNTHESIS.md).

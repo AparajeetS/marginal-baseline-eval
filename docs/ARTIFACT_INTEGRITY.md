@@ -40,3 +40,20 @@ See
 Git remains the release-level content-addressed record. The repository forces
 research text, source, and tabular artifacts to LF line endings so a Windows
 checkout does not silently invalidate hashes created on Linux.
+
+## Public-Surface Curation Note
+
+The former root `SUPPORTING_EVIDENCE.md` was the exploratory v1 ledger hashed
+by the July CPU-campaign manifest. It now lives at
+[`archive/SUPPORTING_EVIDENCE_V1.md`](archive/SUPPORTING_EVIDENCE_V1.md), with
+only its relative documentation links retargeted after the move. The historical
+manifest is intentionally unchanged and continues to identify the original
+root-path bytes in Git history. The new root file is a living current-evidence
+summary and is not represented by that historical hash.
+
+Raw bundles from two deterministic infrastructure failures were removed from
+the current tree: the seed-domain screen attempt in experiment 21 and the
+worker-initialization attempt in experiment 28. Their adjacent recovery records
+and historical checksum ledgers remain, and Git history retains the removed
+files. No negative scientific result, frozen gate decision, or canonical
+successful output was removed.

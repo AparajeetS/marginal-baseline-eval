@@ -12,8 +12,9 @@ associations remain sealed.
 - Manifested method: degree-2 interaction ridge, penalty 0.1.
 - No generalization target or checkpoint metric was read.
 
-The first infrastructure-invalid attempt and its spawn-safe recovery are fully
-preserved in `RECOVERY_PROVENANCE.md` and the failure output directory.
+The first infrastructure-invalid attempt and its spawn-safe recovery are
+recorded in `RECOVERY_PROVENANCE.md`; frozen hashes preserve its identity, and
+the invalid raw bundle remains available from Git history.
 
 ## Frozen Gate
 

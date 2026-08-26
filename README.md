@@ -7,109 +7,98 @@
 
 **Audit an ML training metric before trusting it.**
 
-Marginal Baseline Evaluation (MBE) tests whether a candidate metric adds useful
-information beyond ordinary explanations such as architecture, optimizer,
-learning rate, training state, task, and environment.
+Machine-learning projects routinely select metrics from correlations with a
+held-out score. That can reward a metric for restating ordinary facts—model
+family, optimizer, learning rate, training state, task difficulty, response
+length—rather than adding information that improves a decision.
 
-The same failure mode matters in AI safety. An automated judge, monitor, or
-interpretability score can look predictive because it tracks model family,
-general capability, response length, prompt family, or another cheap signal.
-MBE asks whether the score contributes information beyond those baselines
-before it is used to justify a safety decision.
-
-A metric can correlate with held-out performance because it measures something
-useful. It can also correlate because an experiment pooled easier and harder
-settings. MBE is designed to tell those cases apart and to state the boundary
-of the evidence.
-
-> MBE does not ask which metric is universally best. It asks which metric is
-> supported for a declared target, baseline information set, and environment,
-> and when the evaluator should abstain.
+Marginal Baseline Evaluation (MBE) makes that measurement problem explicit. It
+tests a candidate metric for a declared target, baseline information set, and
+environment, then reports scoped support or abstains. It is not a claim that
+one metric is universally best, and incremental prediction is not causality.
 
 [Install from PyPI](https://pypi.org/project/mbe-eval/) |
-[Read the AI-safety measurement case](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/AI_SAFETY_MEASUREMENT_CASE.md) |
-[Read the research overview](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/PROJECT_OVERVIEW.md) |
-[See the credibility ledger](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md) |
-[See current project status](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/PROJECT_STATUS.md)
+[Check current status](docs/PROJECT_STATUS.md) |
+[Review current evidence](SUPPORTING_EVIDENCE.md) |
+[Reproduce the work](REPRODUCIBILITY.md) |
+[Read the research overview](docs/PROJECT_OVERVIEW.md)
 
-## Why This Matters For AI Safety
+## A Usable Audit Package
 
-Safety work often ends in a measurement claim: a monitor detected dangerous
-behavior, a jailbreak defense lowered harmful completions, or an automated
-judge says one system is safer than another. A real correlation is not enough
-if the score only restates information the evaluator already had.
+The published `mbe-eval` package provides a CPU-ready CLI and Python API for
+run ledgers. It compares raw and baseline-adjusted associations, respects
+declared grouping structure, provides bootstrap diagnostics, and fails closed
+when required columns are absent.
 
-The next proposed safety-facing study will audit automated jailbreak and
-harmfulness judges against independently defined human assessments. It will ask
-whether a judge improves held-out prediction beyond cheap model, attack,
-prompt, refusal, and response-length baselines, and whether that increment
-survives a held-out model or attack family. StrongREJECT is the leading
-development candidate and HarmBench is a transfer candidate, subject to data,
-licensing, target-independence, and unit-of-analysis checks.
+```bash
+pip install mbe-eval
+mbe-eval-demo --bootstrap 200
+```
 
-This is a proposed application, not completed safety evidence. It remains
-blocked until a prospectively frozen MBE rule passes known-truth calibration.
+The package is supported by tests, agent-ready examples, a public Kaggle
+notebook, versioned experiment runners, structural validators, manifests, and
+hash-based artifact checks. These are usable research infrastructure even
+while the broader MBE 2.0 estimator is still being calibrated.
 
-## At A Glance
+## What Has Been Built
 
-| Surface | Status |
+| Surface | Completed public artifact |
 |---|---|
-| `mbe-eval` v0.4.0 package and CLI | Available, tested, and installable from PyPI |
-| Nonlinear grouped cross-fitted audit | Implemented; under calibration |
-| Corrected trained-model artifacts | 96-run image factorial, 144-run multi-corpus causal-LM atlas, 180-run text replication, and a separate 360-model image transport campaign |
-| Known-truth calibration | 48,000-cell screen, 153,600 comparator rows, and a 126,000-row oracle feasibility frontier |
-| Conditional reliability atlas | 360-model image atlas complete; protected interpretation locked |
-| AI-safety measurement audit | Concrete study specified; blocked behind calibration and eligibility gates |
-| Protected evidence | Image, text-atlas, and PGDL associations remain sealed after prespecified gates failed |
-| Independent replication | Executable hash-sealed packet public; external signed execution pending |
+| Audit software | `mbe-eval` v0.4.0 package, CLI, Python API, examples, and notebook |
+| Corrected prospective studies | 96-run image factorial, 144-run multi-corpus causal-LM atlas, and 180-run causal-text replication |
+| Transport infrastructure | Separate 360-model CIFAR-10/CIFAR-100/SVHN image atlas with all structural gates passed |
+| Known-truth infrastructure | 48,000-cell design screen, 153,600-row comparator benchmark, and 126,000-row oracle frontier |
+| Auditability | Public preregistrations, raw ledgers or custody records, manifests, hashes, validators, and retained negative results |
+| Replication | Executable hash-sealed packet; external signed execution remains pending |
 
-Software availability does not imply that every MBE 2.0 scientific claim is
-established. Supported, provisional, blocked, withdrawn, and failed claims are
-tracked in the
-[credibility ledger](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md).
+Artifact completion is not being presented as a metric-validity verdict. Image,
+text-atlas, PGDL, and SVHN target-metric associations remain sealed where the
+prespecified analysis gate did not pass.
 
-### The Result That Sets The Next Gate
+## Known-Truth Scientific Contribution
 
-The 126,000-row known-truth frontier located a design-specific feasibility
-boundary rather than validating the current estimator:
+The current scientific contribution is a measured calibration-power frontier,
+not a declaration that the learned estimator is finished. The 126,000-row
+oracle study separated a lack of information from nuisance-estimation failure:
 
-| Independent configurations | Frozen result | Meaning |
+| Independent configurations | Frozen result | Interpretation |
 |---:|---|---|
-| 24 | Observable oracle calibrated, but weakest effect-0.50 power was 36.4% | The studied noisy-observable regime was information-limited |
+| 24 | Observable oracle calibrated; weakest effect-0.50 power 36.4% | The studied noisy-observable design was information-limited |
 | 48 | Observable oracle reached 4.0% worst-null support and 72.0% weakest power | Useful information existed in this design |
-| 48 | Learned rules reached useful power but 14.2-15.2% worst-null support | Nuisance estimation still manufactured too much support |
+| 48 | Learned rules reached useful power but 14.2-15.2% worst-null support | Current nuisance estimation created excess support |
 
-The number 48 is not a universal sample-size rule. A real study must calibrate
-its own model, attack, noise, and grouping structure before outcomes are opened.
+That result identifies a concrete research target: close the learned-rule gap
+at realistic independent-unit counts, then confirm the rule on fresh
+known-truth data before opening protected outcomes. The number 48 is not a
+universal sample-size rule; each deployment geometry requires its own
+outcome-blind calibration.
 
-## Current Evidence
+## Proposed AI-Safety Study
 
-The public record now includes corrected image and causal-language artifacts,
-known-truth calibration, strong conditional-independence comparators, retained
-failures, and protected results that stayed closed when their gates did not
-pass. The main finding is a calibration-power frontier: methods that look
-powerful at 24-48 independent configurations can be anti-conservative in hard
-null cells, while conservative rules can lack useful power.
+The next safety-facing application would audit automated jailbreak or
+harmfulness judges against independently defined human assessments. It would
+compare raw-association selection, a fixed judge, and an MBE-supported choice
+or abstention on a held-out model or attack family, controlling for cheap model,
+attack, prompt, refusal, and response-length information.
 
-- The 153,600-row comparator benchmark found no tested MBE, GCM, WGCM, KCI,
-  orthogonal-score, or rank procedure with both strict worst-cell calibration
-  and useful worst-cell power at 24/48 configurations.
-- The PGDL transfer gate controlled every null cell but missed one frozen power
-  bound by 0.008; the checkpoint-metric associations remained unopened.
-- A subsequent 10,080-row repeated-split screen rejected all six prespecified
-  candidates and did not authorize another protected-data opening.
-- The 126,000-row oracle frontier found that the studied noisy-observable
-  regime was information-limited at 24 configurations. At 48 configurations
-  the signal was recoverable in principle, but current learned nuisance rules
-  remained anti-conservative.
-- A prospective 360-model CIFAR-10/CIFAR-100/SVHN campaign completed every
-  planned row and integrity gate. Its SVHN associations remain sealed.
-- An external holdout and independently executed signed replication remain
-  necessary before submission-grade claims are made.
+StrongREJECT is a useful development candidate but its 47 observed
+model-by-jailbreak blocks fall below the current 48-block floor. HarmBench is a
+prospective transfer candidate pending canonical intake, licensing, lineage,
+and target-independence checks. This is a specified study, not completed safety
+evidence, and no safety outcome will be opened unless a prospectively frozen
+known-truth rule first passes its gate. See the [feasibility
+memo](docs/SAFETY_STUDY_FEASIBILITY_MEMO.md).
 
-Start with the [one-page status](docs/PROJECT_STATUS.md), [evidence
-index](docs/EVIDENCE_INDEX.md), [experiment synthesis](docs/EXPERIMENT_EVIDENCE_SYNTHESIS.md),
-and [artifact-integrity guide](docs/ARTIFACT_INTEGRITY.md).
+## Reviewer Path
+
+1. [Scientific status](docs/PROJECT_STATUS.md): what exists, what the evidence
+   says, and what remains.
+2. [Current evidence summary](SUPPORTING_EVIDENCE.md) and [evidence
+   index](docs/EVIDENCE_INDEX.md): claim-to-artifact mapping.
+3. [Reproducibility guide](REPRODUCIBILITY.md) and [artifact-integrity
+   guide](docs/ARTIFACT_INTEGRITY.md): commands, manifests, and hashes.
+4. [Adversarial technical ledger](docs/MBE_CREDIBILITY_LEDGER.md): every failed,
+   blocked, withdrawn, corrected, and unresolved gate.
 
 ## The Core Idea
 
@@ -266,17 +255,20 @@ Read:
 - [statistical specification](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/STATISTICAL_ESTIMAND_AND_INFERENCE.md);
 - [research roadmap](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/ROADMAP.md).
 
-## Evidence Boundary
+## Evidence Boundary And Technical Audit
 
 The historical 680-row pilot motivated MBE but is not a submission-grade
 independent sample. It contains repeated configurations, and its original text
 experiment permits label leakage. The artifacts are retained for provenance
 and regression testing, not confirmatory claims.
 
-Current evidence and failure records:
+Use the current summary first; the detailed ledger is an adversarial technical
+appendix rather than the project overview:
 
-- [supporting evidence](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/SUPPORTING_EVIDENCE.md);
-- [credibility ledger](https://github.com/AparajeetS/marginal-baseline-eval/blob/master/docs/MBE_CREDIBILITY_LEDGER.md);
+- [current evidence summary](SUPPORTING_EVIDENCE.md);
+- [evidence index](docs/EVIDENCE_INDEX.md);
+- [adversarial credibility ledger](docs/MBE_CREDIBILITY_LEDGER.md);
+- [quarantined MBE v1 evidence archive](docs/archive/SUPPORTING_EVIDENCE_V1.md);
 - [protocol calibration](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/08_protocol_calibration);
 - [published-study reaudit](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/09_published_metric_reaudit);
 - [method comparison](https://github.com/AparajeetS/marginal-baseline-eval/tree/master/experiments/10_method_comparison);

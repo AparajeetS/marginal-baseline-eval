@@ -1,8 +1,15 @@
 # MBE Credibility Ledger
 
-Status: active adversarial evidence ledger, updated 2026-08-25.
+Status: adversarial technical appendix, updated 2026-08-25.
 
-This document records what would make MBE credible, which checks have passed,
+This is the project’s deliberately skeptical, gate-by-gate audit record. It is
+not the project overview or the recommended first read; start with the
+[one-page status](PROJECT_STATUS.md) and [current evidence
+summary](../SUPPORTING_EVIDENCE.md). Reviewers who need the complete record of
+failed checks, corrections, blocked claims, and unresolved statistical risks
+should use this appendix.
+
+The ledger records what would make MBE credible, which checks have passed,
 which have failed, and which claims remain blocked. A failure stays in the
 ledger after it is fixed. Passing MBE means recovering independently known or
 future outcomes, not producing many metric washouts.

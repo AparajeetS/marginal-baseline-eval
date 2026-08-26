@@ -22,6 +22,12 @@ The intake inspected source provenance, hashes, columns, missingness, and the
 number of candidate inference units. It did not inspect associations between
 human targets and automated scores.
 
+> **Eligibility conclusion:** StrongREJECT has only 47 observed
+> model-by-jailbreak blocks, below the current 48-block minimum, and cannot be
+> the sole confirmatory study. HarmBench remains a transfer candidate subject
+> to a canonical adapter and independence review. Neither dataset is presently
+> authorized as an opened confirmatory MBE safety analysis.
+
 ### StrongREJECT: development candidate
 
 The [StrongREJECT paper](https://arxiv.org/abs/2402.10260) validates automated
@@ -46,13 +52,10 @@ development data before a separate eligible confirmation.
 [HarmBench](https://arxiv.org/abs/2402.04249) compared 18 red-teaming methods
 and 33 target models and defenses, and its
 [public repository](https://github.com/centerforaisafety/HarmBench) includes a
-human-labeled classifier validation artifact. The inspected repository
-snapshot contains 602 records, three human-label fields, 22 recorded model
-strings, ten attack-method labels, and 147 observed model-by-method cells. The
-matrix is sparse, and one model string is malformed. A recent independent
-[jailbreak-judge audit](https://arxiv.org/abs/2606.25487) reports a filtered
-596-completion subset, confirming that inclusion rules and source versions
-must be reconciled rather than assumed.
+human-labeled classifier validation artifact. Outcome-blind inspection found a
+potentially adequate but sparse model-by-method structure. The public sources
+do not yet define one unambiguous canonical row set; the version and filtering
+discrepancy is recorded in the technical intake note below.
 
 HarmBench remains the leading transfer candidate, not a declared holdout. It
 must first pass a public adapter audit covering the canonical row set, model
@@ -147,7 +150,15 @@ from receiving stronger evidential status than the data support.
 This is the intended safety contribution: not another judge leaderboard, but
 a public gate between a measurement result and the decision made from it.
 
-## Intake Receipts
+## Technical Intake Note And Receipts
+
+The HarmBench repository snapshot contains 602 records, three human-label
+fields, 22 recorded model strings, ten attack-method labels, and 147 observed
+model-by-method cells. One model string is malformed. A recent independent
+[jailbreak-judge audit](https://arxiv.org/abs/2606.25487) reports a filtered
+596-completion subset. The six-row difference and malformed value are intake
+issues, not scientific results; the adapter must reconcile them prospectively
+before eligibility is declared.
 
 - StrongREJECT repository snapshot and public OSF files were inspected on
   2026-08-27 at commit

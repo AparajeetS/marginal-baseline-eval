@@ -6,9 +6,10 @@ failed before model fitting because the deterministic analysis seeds exceeded
 scikit-learn's accepted unsigned 32-bit `random_state` range.
 
 This was classified as an implementation failure rather than a scientific
-estimability result. The complete first screen, including every failed row,
-was preserved as `out/screen_failed_seed_range_v1` and covered by its original
-artifact hashes.
+estimability result. `SCREEN_V1_RECOVERY_SHA256SUMS` preserves the hashes of
+the invalid bundle, which remains recoverable from Git history. The redundant
+raw failed rows are not kept in the current tree because they contain no model
+fits or scientific outcomes.
 
 Recovery changes only the adapter in `mbe_eval.crossfit._extra_trees_predict`:
 the existing deterministic seed is mapped modulo `2**32` when passed to

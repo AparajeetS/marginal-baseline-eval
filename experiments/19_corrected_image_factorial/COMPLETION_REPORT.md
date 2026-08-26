@@ -20,6 +20,12 @@ Completed on Kaggle on 2026-08-11.
 - Frozen source hashes: matched
 - Preregistered primary completion gate: passed
 
+Version 1 ended before dataset loading or training because the assigned P100
+was incompatible with the default PyTorch wheel. Version 2 changed only the
+runtime compatibility bootstrap; the grid, seeds, outcomes, controls, and
+preregistration were unchanged. `FAILED_V1_SHA256SUMS` preserves the version-1
+source identity.
+
 The independent structural check is stored in
 `kaggle_downloads/v1/STRUCTURAL_VALIDATION.json`. The recursive artifact ledger
 is `kaggle_downloads/v1/ARTIFACT_SHA256SUMS`.

@@ -229,7 +229,9 @@ The legacy pilot pool used:
 
 Use these files when checking the research claims:
 
-- `SUPPORTING_EVIDENCE.md`: run-by-run interpretation and washout lists.
+- `SUPPORTING_EVIDENCE.md`: concise current evidence and reviewer path.
+- `docs/archive/SUPPORTING_EVIDENCE_V1.md`: quarantined v1 run-by-run
+  interpretation and washout lists.
 - `docs/archive/RUN_PROGRESS_LOG_2026-06-28.md`: historical run ledger for the
   original large-scale pass.
 - `experiments/07_jmlr_scale/ARTIFACTS.md`: artifact hashes and raw CSV references.

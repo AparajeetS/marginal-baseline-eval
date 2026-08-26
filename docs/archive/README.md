@@ -10,3 +10,7 @@ They do not define the active MBE 2.0 protocol. Start with:
 - [MBE 2.0 research program](../MBE_2_RESEARCH_PROGRAM.md);
 - [roadmap](../../ROADMAP.md);
 - [credibility ledger](../MBE_CREDIBILITY_LEDGER.md).
+
+`SUPPORTING_EVIDENCE_V1.md` is the former root-level exploratory evidence
+ledger. It is preserved unchanged for provenance; the active short summary is
+[`../../SUPPORTING_EVIDENCE.md`](../../SUPPORTING_EVIDENCE.md).
