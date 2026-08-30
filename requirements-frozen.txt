@@ -21,7 +21,7 @@ numpy==2.4.3
 packaging==26.2
 pandas==3.0.1
 pandas-flavor==0.8.1
-pillow==12.2.0
+pillow==12.3.0
 pingouin==0.6.1
 Pygments==2.20.0
 pyparsing==3.3.2
