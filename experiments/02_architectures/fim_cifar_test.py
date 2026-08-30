@@ -1,9 +1,9 @@
 """
-CEI v2 — FIM_norm on ResNet-18 / CIFAR-10.
+CEI v2 â€” FIM_norm on ResNet-18 / CIFAR-10.
 
 This is the v1 benchmark: CEI v1 showed increasing activation erank on
 ResNet-18 (opposite direction to MLP), which was attributed to BatchNorm.
-FIM_norm should be BatchNorm-agnostic — this is the direct replication test.
+FIM_norm should be BatchNorm-agnostic â€” this is the direct replication test.
 
 Architecture: ResNet-18 with CIFAR mods
   - First conv: 7x7 stride-2 -> 3x3 stride-1
@@ -20,7 +20,7 @@ SAM sharpness for comparison.
 Output: fim_cifar_results.png + fim_cifar_summary.txt
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math, os
 import numpy as np
 import torch
@@ -190,7 +190,7 @@ def train_cifar(X_tr, y_tr, X_te, y_te, X_ev, y_ev,
         if ep % measure_every == 0 or ep == epochs - 1:
             model.eval()
             with torch.no_grad():
-                # mini-batched eval — avoids OOM / extreme slowdown on CPU
+                # mini-batched eval â€” avoids OOM / extreme slowdown on CPU
                 def batched_acc(X, y):
                     correct = 0
                     for i in range(0, len(X), EVAL_BATCH):
@@ -200,7 +200,7 @@ def train_cifar(X_tr, y_tr, X_te, y_te, X_ev, y_ev,
                     return correct / len(X)
                 tr = batched_acc(X_tr, y_tr)
                 te = batched_acc(X_te, y_te)
-            # FIM on TRAINING data — consistent with MLP/CNN/Transformer tests,
+            # FIM on TRAINING data â€” consistent with MLP/CNN/Transformer tests,
             # and required for the noise mechanism (corrupted labels live in train set).
             fm    = fim_norm_cifar(model, X_tr, y_tr, device=device)
             sharp = sam_cifar(model, X_ev, y_ev, device=device)
@@ -297,7 +297,7 @@ def run():
     for cname, logs in all_logs.items():
         fms = [log[-1]["fim_norm"] for log in logs]
         tes = [log[-1]["te"]       for log in logs]
-        print(f"  {cname}: FIM={np.mean(fms):.5f}±{np.std(fms):.5f}  te={np.mean(tes):.3f}")
+        print(f"  {cname}: FIM={np.mean(fms):.5f}Â±{np.std(fms):.5f}  te={np.mean(tes):.3f}")
     print(f"  Overall rho(FIM_norm, test_acc) = {rho:.3f}  p={p:.2e}")
     consistent_with_theory = rho < 0
     print(f"  Direction correct (negative): {consistent_with_theory}")

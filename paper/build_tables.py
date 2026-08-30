@@ -43,9 +43,8 @@ def main() -> int:
     blocks.columns = ["Structure", "Repetitions", "Rejections", "Rate", "Wilson low", "Wilson high"]
     (OUT / "inference_calibration.md").write_text(markdown_table(blocks), encoding="utf-8")
 
-    claims = json.loads(
-        (ROOT / "experiments/11_credibility_freeze/claim_ledger.json").read_text(encoding="utf-8")
-    )
+    claim_ledger = ROOT / "experiments/11_credibility_freeze/claim_ledger.json"
+    claims = json.loads(claim_ledger.read_text(encoding="utf-8"))
     claim_frame = pd.DataFrame(
         [{"Claim": claim["id"], "Status": claim["status"], "Scope": claim["scope"]} for claim in claims["claims"]]
     )

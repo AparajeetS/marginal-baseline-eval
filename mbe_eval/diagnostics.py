@@ -56,12 +56,27 @@ def abstention_reasons(
         return ["no-audit-results"]
     if audit_rows["independence_units"].min() < minimum_units:
         reasons.append("insufficient-independent-units")
-    if audit_rows["nuisance_model"].nunique() < 2:
+    grouping_columns = [
+        column
+        for column in ("scope", "baseline_level", "metric", "target")
+        if column in audit_rows
+    ]
+    groups = (
+        [group for _, group in audit_rows.groupby(grouping_columns, dropna=False)]
+        if grouping_columns
+        else [audit_rows]
+    )
+    if any(group["nuisance_model"].nunique() < 2 for group in groups):
         reasons.append("nuisance-sensitivity-not-run")
-    classes = set(audit_rows["increment_classification"].dropna().astype(str))
-    if len(classes) > 1:
+    if any(
+        group["increment_classification"].dropna().astype(str).nunique() > 1
+        for group in groups
+    ):
         reasons.append("nuisance-model-disagreement")
-    if require_refit_interval and "refit_delta_mse_ci_low" not in audit_rows:
+    if require_refit_interval and (
+        "refit_delta_mse_ci_low" not in audit_rows
+        or audit_rows["refit_delta_mse_ci_low"].isna().any()
+    ):
         reasons.append("refit-aware-uncertainty-not-run")
     if "delta_mse_ci_low" in audit_rows and audit_rows["delta_mse_ci_low"].isna().any():
         reasons.append("predictive-interval-missing")

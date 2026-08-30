@@ -16,6 +16,7 @@ mbe-eval-audit \
   --target test_accuracy \
   --controls learning_rate,weight_decay,optimizer,arch \
   --groupby task \
+  --inference-unit config_id \
   --bootstrap 200 \
   --seed 42 \
   --output audit_report.md \

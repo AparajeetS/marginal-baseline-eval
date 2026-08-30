@@ -29,6 +29,19 @@ def validate_check(root: Path, check: dict[str, object]) -> None:
     kind = check["type"]
     if kind == "file_exists":
         return
+    if kind == "json_equals":
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        observed: object = payload
+        for component in str(check["field"]).split("."):
+            if not isinstance(observed, dict) or component not in observed:
+                raise ValueError(f"missing JSON assertion field: {check['field']}")
+            observed = observed[component]
+        if observed != check["value"]:
+            raise AssertionError(
+                f"{path}: observed {check['field']}={observed!r}, "
+                f"expected {check['value']!r}"
+            )
+        return
     frame = pd.read_csv(path)
     selected = _filtered(frame, dict(check.get("filters", {})))
     if selected.empty:

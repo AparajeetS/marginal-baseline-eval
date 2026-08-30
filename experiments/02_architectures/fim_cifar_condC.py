@@ -3,7 +3,7 @@ Run only condition C (n=5000, 30% noise) for CIFAR ResNet-18 test.
 Conditions A and B were already captured from the first run.
 Uses 25 epochs for better convergence than the 15-epoch run.
 """
-import path_setup  # noqa: F401 — configures sys.path for repo structure
+import path_setup  # noqa: F401 â€” configures sys.path for repo structure
 import sys, math, os
 import numpy as np
 import torch

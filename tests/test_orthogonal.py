@@ -99,6 +99,35 @@ def test_orthogonal_score_requires_block_constant_within_group() -> None:
         )
 
 
+def test_block_labels_change_block_clustered_inference() -> None:
+    frame = _signal_frame(groups=100)
+    frame["two_blocks"] = np.repeat(np.arange(100) % 2, 2)
+    four = orthogonal_score_audit(
+        frame,
+        "metric",
+        "target",
+        ["baseline"],
+        group_col="config_id",
+        permutation_block_col="environment",
+        wild_draws=199,
+        seed=31,
+    )
+    two = orthogonal_score_audit(
+        frame,
+        "metric",
+        "target",
+        ["baseline"],
+        group_col="config_id",
+        permutation_block_col="two_blocks",
+        wild_draws=199,
+        seed=31,
+    )
+    assert four["n_blocks"] == 4
+    assert two["n_blocks"] == 2
+    assert four["orthogonal_score_t"] != two["orthogonal_score_t"]
+    assert four["orthogonal_student_p"] != two["orthogonal_student_p"]
+
+
 def test_repeated_split_orthogonal_requires_stable_signal() -> None:
     first = repeated_split_orthogonal_audit(
         _signal_frame(groups=100),

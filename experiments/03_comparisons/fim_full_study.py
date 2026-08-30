@@ -1,5 +1,5 @@
 """
-CEI v2 — Full study: FIM_norm + SAM sharpness, 6 conditions x 3 seeds.
+CEI v2 â€” Full study: FIM_norm + SAM sharpness, 6 conditions x 3 seeds.
 
 Questions:
   1. Does FIM_norm@ep20 predict final test_acc? (leading indicator)
@@ -19,7 +19,7 @@ Seeds: 42, 7, 123
 Output: fim_full_results.png + fim_full_table.csv
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math, csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -259,7 +259,7 @@ def run():
             "D_n400_l2med":"#27ae60","E_n400_early50":"#e67e22","F_n400_noise30":"#9b59b6"}
 
     fig, axes = plt.subplots(2, 3, figsize=(18, 10))
-    fig.suptitle("FIM_norm Full Study — 6 conditions x 3 seeds\n"
+    fig.suptitle("FIM_norm Full Study â€” 6 conditions x 3 seeds\n"
                  "CEI v2 vs SAM sharpness", fontweight="bold")
 
     # top-left: FIM_norm over training by condition
@@ -343,13 +343,13 @@ def run():
     print(f"\n  {'Metric':<22} {'rho':>7}  {'p':>10}  {'partial_R2':>12}")
     print(f"  {'-'*55}")
     print(f"  {'FIM_norm (final)':<22} {rho_fim_f:>7.3f}  {p_fim_f:>10.2e}"
-          f"  {'—':>12}")
+          f"  {'â€”':>12}")
     print(f"  {'Sharpness (final)':<22} {rho_sharp_f:>7.3f}  {p_sharp_f:>10.2e}"
-          f"  {'—':>12}")
+          f"  {'â€”':>12}")
     print(f"  {'FIM_norm@ep20':<22} {rho_fim_e:>7.3f}  {p_fim_e:>10.2e}"
-          f"  {'—':>12}")
+          f"  {'â€”':>12}")
     print(f"  {'Sharpness@ep20':<22} {rho_sharp_e:>7.3f}  {p_sharp_e:>10.2e}"
-          f"  {'—':>12}")
+          f"  {'â€”':>12}")
     print(f"\n  Partial R^2 (unique variance):")
     print(f"    FIM_norm  | sharpness (final): {pr2_fim_given_sharp_f:+.4f}")
     print(f"    Sharpness | FIM_norm  (final): {pr2_sharp_given_fim_f:+.4f}")

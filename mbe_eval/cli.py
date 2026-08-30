@@ -21,6 +21,7 @@ def audit_csv(
     target: str,
     controls: list[str],
     groupby: list[str] | None = None,
+    inference_unit_col: str | None = None,
     bootstrap: int = 0,
     seed: int = 0,
     include_pooled: bool = True,
@@ -36,6 +37,7 @@ def audit_csv(
         target=target,
         controls=controls,
         groupby=groupby or None,
+        inference_unit_col=inference_unit_col,
         bootstrap=bootstrap,
         seed=seed,
         include_pooled=include_pooled,
@@ -70,7 +72,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--metrics", required=True, help="Comma-separated candidate metric columns.")
     parser.add_argument("--target", required=True, help="Held-out target column.")
     parser.add_argument("--controls", required=True, help="Comma-separated baseline/control columns.")
-    parser.add_argument("--groupby", default="", help="Optional comma-separated grouping columns.")
+    parser.add_argument(
+        "--groupby",
+        default="",
+        help="Optional comma-separated stratification columns.",
+    )
+    parser.add_argument(
+        "--inference-unit",
+        default="",
+        help="Optional column defining independent clusters for bootstrap inference.",
+    )
     parser.add_argument("--bootstrap", type=int, default=0, help="Bootstrap resamples.")
     parser.add_argument("--seed", type=int, default=0, help="Bootstrap random seed.")
     parser.add_argument(
@@ -89,6 +100,7 @@ def main(argv: list[str] | None = None) -> int:
             target=args.target,
             controls=_split_csv_arg(args.controls),
             groupby=_split_csv_arg(args.groupby),
+            inference_unit_col=args.inference_unit or None,
             bootstrap=args.bootstrap,
             seed=args.seed,
             include_pooled=not args.no_pooled,

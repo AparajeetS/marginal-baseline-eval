@@ -43,6 +43,8 @@ def leave_one_task_out_global_choice(
         metric_col=metric_col,
         utility_col=utility_col,
     )
+    data = data.copy()
+    data[utility_col] = pd.to_numeric(data[utility_col], errors="raise")
     rows = []
     for task in sorted(data[task_col].unique(), key=str):
         eligible = set(data.loc[data[task_col] == task, metric_col])
@@ -89,6 +91,10 @@ def score_recommendations(
         task_col=task_col,
         metric_col=metric_col,
         utility_col=utility_col,
+    )
+    utilities = utilities.copy()
+    utilities[utility_col] = pd.to_numeric(
+        utilities[utility_col], errors="raise"
     )
     required = {task_col, recommendation_col}
     missing = required.difference(recommendations.columns)
@@ -143,6 +149,9 @@ def coverage_regret_curve(
     values = scored[list(required)].apply(pd.to_numeric, errors="coerce")
     if not np.isfinite(values.to_numpy()).all():
         raise ValueError("coverage-regret inputs must be finite")
+    scored = scored.copy()
+    for column in required:
+        scored[column] = values[column]
     ordered = scored.sort_values(confidence_col, ascending=False).reset_index(drop=True)
     n_tasks = len(ordered)
     if n_tasks == 0:

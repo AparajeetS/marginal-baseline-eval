@@ -1,5 +1,5 @@
 """
-CEI v2 — Bootstrap confidence intervals on Spearman rho.
+CEI v2 â€” Bootstrap confidence intervals on Spearman rho.
 
 For a paper, point estimates are not enough. This script computes 95% CIs
 on the key Spearman correlations via 10,000 bootstrap resamples.
@@ -12,7 +12,7 @@ Reports CI for:
 Output: fim_bootstrap_ci.txt (table for paper)
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys
 import numpy as np
 from pathlib import Path

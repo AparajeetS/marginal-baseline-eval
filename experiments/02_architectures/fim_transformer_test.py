@@ -1,5 +1,5 @@
 """
-CEI v2 — FIM_norm on Transformer with LayerNorm (PyTorch).
+CEI v2 â€” FIM_norm on Transformer with LayerNorm (PyTorch).
 
 Architecture: small ViT-style encoder on digits (8x8 images).
   - 8 patches of dim 8, linearly projected to d_model=64
@@ -8,13 +8,13 @@ Architecture: small ViT-style encoder on digits (8x8 images).
   - CLS token -> FC(64 -> 10)
 
 Key distinction from CNN test: uses LayerNorm (not BatchNorm).
-This fully tests architecture-agnosticity — FIM_norm should work
+This fully tests architecture-agnosticity â€” FIM_norm should work
 regardless of normalisation scheme because it operates in param space.
 
 Dual acid test: noise (n=400 fixed) + n_train (noise=0 fixed).
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math
 import numpy as np
 import torch
@@ -232,12 +232,12 @@ def run():
     CT = {40:"#e74c3c", 200:"#e67e22", 400:"#3498db", 800:"#2ecc71"}
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("FIM_norm on Transformer (LayerNorm) — Dual Acid Test\n"
+    fig.suptitle("FIM_norm on Transformer (LayerNorm) â€” Dual Acid Test\n"
                  "2-layer encoder, d_model=64, 8 patches", fontweight="bold")
 
     for ax, res, keys, cmap, title, rho, p in [
-        (axes[0,0], res_n, NOISE,  CN, "Noise probe — FIM_norm", rho_n, p_n),
-        (axes[0,1], res_t, NTRAIN, CT, "n_train probe — FIM_norm", rho_t, p_t),
+        (axes[0,0], res_n, NOISE,  CN, "Noise probe â€” FIM_norm", rho_n, p_n),
+        (axes[0,1], res_t, NTRAIN, CT, "n_train probe â€” FIM_norm", rho_t, p_t),
     ]:
         for k in keys:
             for i, seed in enumerate(SEEDS):
@@ -277,13 +277,13 @@ def run():
     print(f"\n  Noise probe (n=400 fixed):")
     for noise in NOISE:
         m = nm[noise]
-        print(f"  noise={noise:.0%}: FIM_norm={m[0]:.4f}±{m[1]:.4f}  te={m[2]:.3f}")
+        print(f"  noise={noise:.0%}: FIM_norm={m[0]:.4f}Â±{m[1]:.4f}  te={m[2]:.3f}")
     print(f"  rho={rho_n:.3f}  p={p_n:.2e}")
 
     print(f"\n  n_train probe (noise=0):")
     for n in NTRAIN:
         m = ntm[n]
-        print(f"  n={n:4d}: FIM_norm={m[0]:.4f}±{m[1]:.4f}  te={m[2]:.3f}")
+        print(f"  n={n:4d}: FIM_norm={m[0]:.4f}Â±{m[1]:.4f}  te={m[2]:.3f}")
     print(f"  rho={rho_t:.3f}  p={p_t:.2e}")
 
     consistent = (rho_n < 0) == (rho_t < 0)

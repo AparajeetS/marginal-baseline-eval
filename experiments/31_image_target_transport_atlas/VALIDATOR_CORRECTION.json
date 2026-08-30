@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "original_sha256": "3ba403b4a23320deb543d093fb7e12430f167e5694e3a4d3c0f093df9d10c705",
+  "corrected_sha256": "c9a09db7facefad646ecd4384a4204bfb846cc0e8c80c5e8bae12c5b2051144b",
+  "reason": "Remove non-verifiable custody claims and independently recompute structural integrity checks."
+}

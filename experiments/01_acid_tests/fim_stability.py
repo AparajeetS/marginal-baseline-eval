@@ -1,5 +1,5 @@
 """
-CEI v2 — FIM_norm sample-count stability test.
+CEI v2 â€” FIM_norm sample-count stability test.
 
 How many per-sample gradients do you actually need?
 Tests N_FIM in {5, 10, 20, 50, 100, 200} on 3 trained models.
@@ -8,7 +8,7 @@ If FIM_norm is stable at N=50, it's practical for real training pipelines.
 Output: fim_stability_results.png
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ def run():
             fi = np.random.choice(len(y_tr), nf, replace=False)
             y_use[fi] = np.random.randint(0, 10, nf)
         _, log = run_cond(X_tr, y_use, X_ev, y_ev)
-        # rebuild model from log — actually need final model; retrain
+        # rebuild model from log â€” actually need final model; retrain
         np.random.seed(SEED)
         model_final = MLP(l2=cfg["l2"])
         for _ in range(200):
@@ -87,14 +87,14 @@ def run():
             means.append(m); stds.append(s)
             cvs.append(s / m if m > 0 else 0)
             print(f"  {cfg['label']}  N={n_s_eff:3d}: "
-                  f"FIM_norm={m:.4f} ± {s:.4f}  CV={s/m:.3f}")
+                  f"FIM_norm={m:.4f} Â± {s:.4f}  CV={s/m:.3f}")
 
         ax_mean.errorbar(SAMPLE_COUNTS, means, yerr=stds, color=col,
                          marker="o", linewidth=2, capsize=4, label=cfg["label"])
         ax_cv.plot(SAMPLE_COUNTS, cvs, color=col, marker="s",
                    linewidth=2, label=cfg["label"])
 
-    ax_mean.set_title("FIM_norm mean ± std vs N_FIM")
+    ax_mean.set_title("FIM_norm mean Â± std vs N_FIM")
     ax_mean.set_xlabel("N_FIM (per-sample gradients)")
     ax_mean.set_ylabel("FIM_norm"); ax_mean.legend(); ax_mean.grid(alpha=0.3)
     ax_mean.set_xscale("log")

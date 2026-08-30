@@ -1,5 +1,5 @@
 """
-CEI v2 — Normalized FIM effective rank.
+CEI v2 â€” Normalized FIM effective rank.
 
 Key fix from fim_acid_test.py:
   FIM_er (absolute) is confounded by n_samples_used because
@@ -19,7 +19,7 @@ Hypothesis (now normalized):
 Output: fim_norm_results.png + fim_norm_summary.txt
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -211,7 +211,7 @@ def run():
     CT = {40:"#e74c3c", 200:"#e67e22", 400:"#3498db", 800:"#2ecc71"}
 
     fig, axes = plt.subplots(2, 3, figsize=(18, 10))
-    fig.suptitle("FIM Erank (normalized) — CEI v2 Structural Constraint\n"
+    fig.suptitle("FIM Erank (normalized) â€” CEI v2 Structural Constraint\n"
                  "FIM_norm = erank(empirical Fisher) / n_samples", fontweight="bold")
 
     # row 0: noise experiment
@@ -224,7 +224,7 @@ def run():
                     color=CN[noise], alpha=0.4 if i else 0.9,
                     linewidth=1.4 if i else 2.2,
                     label=f"noise={noise:.0%}" if not i else None)
-    ax.set_title(f"Noise probe — FIM_norm over training")
+    ax.set_title(f"Noise probe â€” FIM_norm over training")
     ax.set_xlabel("Epoch"); ax.set_ylabel("FIM_norm"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
 
     # col 1: scatter noise (normalized)
@@ -261,7 +261,7 @@ def run():
                     color=CT[n], alpha=0.4 if i else 0.9,
                     linewidth=1.4 if i else 2.2,
                     label=f"n={n}" if not i else None)
-    ax.set_title("n_train probe — FIM_norm over training")
+    ax.set_title("n_train probe â€” FIM_norm over training")
     ax.set_xlabel("Epoch"); ax.set_ylabel("FIM_norm"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
 
     ax = axes[1,1]
@@ -294,7 +294,7 @@ def run():
     # ---- summary ----
     print("\n====== NORMALIZED FIM ERANK SUMMARY ======")
     print(f"\n{'NOISE probe (n=400 fixed)':}")
-    print(f"  {'noise':>6}  {'FIM_norm':>10}  {'±':>6}  {'te':>7}")
+    print(f"  {'noise':>6}  {'FIM_norm':>10}  {'Â±':>6}  {'te':>7}")
     for noise in NOISE:
         m = nm_means[noise]
         print(f"  {noise:>5.0%}  {m['nm_m']:>10.4f}  {m['nm_s']:>6.4f}  {m['te_m']:>7.3f}")
@@ -302,7 +302,7 @@ def run():
     print(f"  rho (norm)     = {rho_n_nm:.3f}  p={p_n_nm:.2e}")
 
     print(f"\n{'n_train probe (noise=0 fixed)':}")
-    print(f"  {'n_tr':>6}  {'FIM_norm':>10}  {'±':>6}  {'te':>7}")
+    print(f"  {'n_tr':>6}  {'FIM_norm':>10}  {'Â±':>6}  {'te':>7}")
     for n in NTRAIN:
         m = nt_means[n]
         print(f"  {n:>6d}  {m['nm_m']:>10.4f}  {m['nm_s']:>6.4f}  {m['te_m']:>7.3f}")
@@ -321,10 +321,10 @@ def run():
         print(f"  => Direction consistent. n_train probe weak (small n, non-monotone abs values).")
         print(f"  => FIM_norm is the best v2 candidate so far.")
     else:
-        print(f"  => FAILS — direction inconsistent.")
+        print(f"  => FAILS â€” direction inconsistent.")
 
     with open(OUT / "fim_norm_summary.txt", "w") as f:
-        f.write("FIM NORMALIZED ERANK — FINAL SUMMARY\n")
+        f.write("FIM NORMALIZED ERANK â€” FINAL SUMMARY\n")
         f.write("=====================================\n\n")
         f.write(f"FIM_norm = erank(empirical Fisher) / n_samples_used\n\n")
         f.write(f"Noise probe:   rho={rho_n_nm:.3f}  p={p_n_nm:.2e}\n")

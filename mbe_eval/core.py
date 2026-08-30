@@ -24,6 +24,7 @@ def validate_audit_inputs(
     target: str,
     controls: Sequence[str],
     groupby: Sequence[str] | str | None = None,
+    inference_unit_col: str | None = None,
 ) -> None:
     """Validate audit columns before fitting any residualization model."""
 
@@ -35,7 +36,17 @@ def validate_audit_inputs(
         raise MBEInputError("at least one candidate metric is required")
 
     group_cols = [groupby] if isinstance(groupby, str) else list(groupby or [])
-    requested = list(dict.fromkeys([*metrics, target, *controls, *group_cols]))
+    requested = list(
+        dict.fromkeys(
+            [
+                *metrics,
+                target,
+                *controls,
+                *group_cols,
+                *([inference_unit_col] if inference_unit_col else []),
+            ]
+        )
+    )
     missing = [column for column in requested if column not in df.columns]
     if missing:
         available = ", ".join(map(str, df.columns[:12]))
@@ -186,14 +197,25 @@ def _bootstrap_ci(
     controls: Sequence[str],
     n_boot: int,
     seed: int,
+    inference_unit_col: str | None = None,
 ) -> dict[str, float]:
     rng = np.random.default_rng(seed)
     raw_vals: list[float] = []
     partial_vals: list[float] = []
     delta_vals: list[float] = []
     idx = np.arange(len(df))
+    units = (
+        df[inference_unit_col].drop_duplicates().to_numpy()
+        if inference_unit_col
+        else None
+    )
     for _ in range(n_boot):
-        sample = df.iloc[rng.choice(idx, size=len(idx), replace=True)]
+        if units is None:
+            sample = df.iloc[rng.choice(idx, size=len(idx), replace=True)]
+        else:
+            sampled_units = rng.choice(units, size=len(units), replace=True)
+            pieces = [df.loc[df[inference_unit_col].eq(unit)] for unit in sampled_units]
+            sample = pd.concat(pieces, ignore_index=True)
         raw, _, _ = spearman_corr(sample, metric, target)
         partial, _, _ = partial_rank_corr(sample, metric, target, controls)
         raw_vals.append(raw)
@@ -225,23 +247,50 @@ def audit_metric(
     seed: int = 0,
     effect_threshold: float = DEFAULT_EFFECT_THRESHOLD,
     washout_threshold: float = DEFAULT_WASHOUT_THRESHOLD,
+    inference_unit_col: str | None = None,
 ) -> dict[str, float | int | str]:
     """Audit one metric against one target under MBE controls."""
 
-    validate_audit_inputs(df, [metric], target, controls)
+    validate_audit_inputs(
+        df, [metric], target, controls, inference_unit_col=inference_unit_col
+    )
     if bootstrap < 0:
         raise MBEInputError("bootstrap must be zero or a positive integer")
     controls = [c for c in controls if c not in {metric, target}]
-    cols = list(dict.fromkeys([metric, target, *[c for c in controls if c in df.columns]]))
+    cols = list(
+        dict.fromkeys(
+            [
+                metric,
+                target,
+                *[c for c in controls if c in df.columns],
+                *([inference_unit_col] if inference_unit_col else []),
+            ]
+        )
+    )
     clean = df[cols].replace([np.inf, -np.inf], np.nan).dropna()
+    independence_units = (
+        int(clean[inference_unit_col].nunique()) if inference_unit_col else len(clean)
+    )
+    if inference_unit_col and independence_units < 2:
+        raise MBEInputError(
+            f"inference unit column {inference_unit_col!r} must contain at least two units"
+        )
     raw_r, raw_p, n_raw = spearman_corr(clean, metric, target)
     partial_r, partial_p, n_partial = partial_rank_corr(clean, metric, target, controls)
+    if inference_unit_col:
+        # The analytic correlation p-values assume exchangeable rows. Clustered
+        # uncertainty is reported through the declared-unit bootstrap instead.
+        raw_p = math.nan
+        partial_p = math.nan
     row: dict[str, float | int | str] = {
         "group": group,
         "metric": metric,
         "target": target,
         "controls": ",".join(controls),
         "n": min(n_raw, n_partial),
+        "independence_units": independence_units,
+        "inference_unit": inference_unit_col or "row",
+        "bootstrap_unit": inference_unit_col or "row",
         "raw_r": raw_r,
         "raw_p": raw_p,
         "partial_r": partial_r,
@@ -252,7 +301,17 @@ def audit_metric(
         "classification": classify_effect(raw_r, partial_r, effect_threshold, washout_threshold),
     }
     if bootstrap > 0 and len(clean) >= 8:
-        row.update(_bootstrap_ci(clean, metric, target, controls, bootstrap, seed))
+        row.update(
+            _bootstrap_ci(
+                clean,
+                metric,
+                target,
+                controls,
+                bootstrap,
+                seed,
+                inference_unit_col,
+            )
+        )
     return row
 
 
@@ -266,6 +325,7 @@ def audit_metrics(
     bootstrap: int = 0,
     seed: int = 0,
     include_pooled: bool = True,
+    inference_unit_col: str | None = None,
 ) -> pd.DataFrame:
     """Audit many metrics in a dataframe.
 
@@ -281,12 +341,23 @@ def audit_metrics(
         Marginal baselines/control variables, such as learning rate, weight
         decay, optimizer, architecture, task, or seed.
     groupby:
-        Optional grouping columns. For example, `groupby=["suite", "arch"]`
+        Optional stratification columns. For example, `groupby=["suite", "arch"]`
         reports pooled results plus one result per suite and per architecture.
+        This does not declare independent sampling units.
+    inference_unit_col:
+        Optional column defining independent clusters for bootstrap resampling.
+        Analytic row-level p-values are suppressed when this is supplied.
     bootstrap:
         Number of bootstrap resamples for confidence intervals. Use 0 to skip.
     """
-    validate_audit_inputs(df, metrics, target, controls, groupby)
+    validate_audit_inputs(
+        df,
+        metrics,
+        target,
+        controls,
+        groupby,
+        inference_unit_col=inference_unit_col,
+    )
     if bootstrap < 0:
         raise MBEInputError("bootstrap must be zero or a positive integer")
     if not include_pooled and not groupby:
@@ -305,6 +376,7 @@ def audit_metrics(
                     group="pooled",
                     bootstrap=bootstrap,
                     seed=seed + i,
+                    inference_unit_col=inference_unit_col,
                 )
             )
 
@@ -325,6 +397,7 @@ def audit_metrics(
                             group=label,
                             bootstrap=bootstrap,
                             seed=seed + 10_000 + i,
+                            inference_unit_col=inference_unit_col,
                         )
                     )
     return pd.DataFrame(rows)
@@ -368,6 +441,7 @@ class MBEEvaluator:
                     df[name] = baseline_vals[:, i]
 
         row = audit_metric(df, "Metric", "Target", controls)
+        classification = str(row["classification"])
         return MBEReport(
             metric_name=self.metric_name,
             baseline_name=self.baseline_name,
@@ -375,10 +449,9 @@ class MBEEvaluator:
             absolute_p=float(row["raw_p"]),
             partial_r=float(row["partial_r"]),
             partial_p=float(row["partial_p"]),
-            is_confounded=bool(float(row["partial_p"]) > alpha)
-            if not np.isnan(float(row["partial_p"]))
-            else True,
-            classification=str(row["classification"]),
+            is_confounded=classification
+            in {"washout", "sign-inversion", "reverse-inversion"},
+            classification=classification,
         )
 
 

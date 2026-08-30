@@ -76,20 +76,77 @@ def _studentized_mean(values: np.ndarray) -> tuple[float, float, float]:
     return mean, float(statistic), p_value
 
 
+def _clustered_standard_error(values: np.ndarray, blocks: np.ndarray) -> float:
+    """Return a finite-sample-corrected cluster-robust SE for a mean."""
+
+    values = np.asarray(values, dtype=float)
+    blocks = np.asarray(blocks)
+    unique_blocks, inverse = np.unique(blocks, return_inverse=True)
+    if len(unique_blocks) < 2:
+        return math.nan
+    centered = values - np.mean(values)
+    cluster_sums = np.bincount(inverse, weights=centered)
+    variance = (
+        len(unique_blocks)
+        / (len(unique_blocks) - 1)
+        * float(np.sum(np.square(cluster_sums)))
+        / (len(values) ** 2)
+    )
+    return float(math.sqrt(max(0.0, variance)))
+
+
+def _clustered_studentized_mean(
+    values: np.ndarray, blocks: np.ndarray
+) -> tuple[float, float, float]:
+    mean = float(np.mean(values))
+    standard_error = _clustered_standard_error(values, blocks)
+    block_count = len(np.unique(blocks))
+    if standard_error <= 0 or not np.isfinite(standard_error):
+        return mean, math.nan, math.nan
+    statistic = mean / standard_error
+    p_value = float(2.0 * student_t.sf(abs(statistic), df=block_count - 1))
+    return mean, float(statistic), p_value
+
+
 def _wild_studentized_p_value(
     values: np.ndarray,
     observed_t: float,
     draws: int,
     seed: int,
+    blocks: np.ndarray | None = None,
 ) -> float:
     if draws < 1 or not np.isfinite(observed_t):
         return math.nan
     centered = values - np.mean(values)
     rng = np.random.default_rng(seed)
-    signs = rng.choice(np.array([-1.0, 1.0]), size=(draws, len(values)))
+    if blocks is None:
+        signs = rng.choice(np.array([-1.0, 1.0]), size=(draws, len(values)))
+    else:
+        unique_blocks, inverse = np.unique(blocks, return_inverse=True)
+        if len(unique_blocks) < 2:
+            return math.nan
+        block_signs = rng.choice(
+            np.array([-1.0, 1.0]), size=(draws, len(unique_blocks))
+        )
+        signs = block_signs[:, inverse]
     bootstrap = signs * centered
     means = np.mean(bootstrap, axis=1)
-    standard_errors = np.std(bootstrap, axis=1, ddof=1) / math.sqrt(len(values))
+    if blocks is None:
+        standard_errors = np.std(bootstrap, axis=1, ddof=1) / math.sqrt(len(values))
+    else:
+        bootstrap_centered = bootstrap - means[:, None]
+        cluster_sums = np.column_stack(
+            [
+                bootstrap_centered[:, inverse == index].sum(axis=1)
+                for index in range(len(unique_blocks))
+            ]
+        )
+        standard_errors = np.sqrt(
+            len(unique_blocks)
+            / (len(unique_blocks) - 1)
+            * np.sum(np.square(cluster_sums), axis=1)
+            / (len(values) ** 2)
+        )
     valid = np.isfinite(standard_errors) & (standard_errors > 0)
     if not valid.any():
         return math.nan
@@ -119,7 +176,9 @@ def orthogonal_score_audit(
     Metric and target ranks are separately residualized against the controls
     with grouped cross-fitting. Inference uses the mean residual product at the
     independent-group level. The primary p-value is a studentized Rademacher
-    multiplier bootstrap over those groups.
+    multiplier bootstrap over those groups. When ``permutation_block_col`` is
+    supplied, standard errors use block clusters and each block receives one
+    multiplier per draw.
 
     This estimates conditional rank covariance, not causal effect or arbitrary
     conditional dependence. It deliberately remains separate from MBE's
@@ -170,6 +229,8 @@ def orthogonal_score_audit(
         ].nunique()
         if (block_counts > 1).any():
             raise ValueError("each inference group must belong to one permutation block")
+        if clean[permutation_block_col].nunique() < 2:
+            raise ValueError("permutation_block_col must contain at least two blocks")
 
     fold_ids = _fold_ids(clean, n_splits, seed, group_col)
     target_values = clean[target].to_numpy(dtype=float)
@@ -222,30 +283,49 @@ def orthogonal_score_audit(
             "target_residual": target_residual,
         }
     )
+    if permutation_block_col:
+        residual_frame["block"] = clean[permutation_block_col].astype(str)
     grouped = residual_frame.groupby("group", sort=True).mean(numeric_only=True)
     grouped["score"] = grouped["metric_residual"] * grouped["target_residual"]
     grouped["metric_energy"] = np.square(grouped["metric_residual"])
     grouped["target_error"] = np.square(grouped["target_residual"])
     group_scores = grouped["score"].to_numpy(dtype=float)
-    score_mean, score_t, student_p = _studentized_mean(group_scores)
+    block_labels = None
+    if permutation_block_col:
+        block_labels = (
+            residual_frame.groupby("group", sort=True)["block"].first().to_numpy()
+        )
+        score_mean, score_t, student_p = _clustered_studentized_mean(
+            group_scores, block_labels
+        )
+    else:
+        score_mean, score_t, student_p = _studentized_mean(group_scores)
     wild_p = _wild_studentized_p_value(
         group_scores,
         score_t,
         wild_draws,
         int(seed) + 4_000_003,
+        block_labels,
     )
 
     mean_metric_energy = float(grouped["metric_energy"].mean())
     slope = score_mean / mean_metric_energy if mean_metric_energy > 0 else math.nan
     influence = group_scores - slope * grouped["metric_energy"].to_numpy(dtype=float)
-    slope_se = (
-        float(np.std(influence, ddof=1))
-        / math.sqrt(len(grouped))
-        / mean_metric_energy
-        if mean_metric_energy > 0
-        else math.nan
+    if mean_metric_energy > 0:
+        influence_se = (
+            _clustered_standard_error(influence, block_labels)
+            if block_labels is not None
+            else float(np.std(influence, ddof=1)) / math.sqrt(len(grouped))
+        )
+        slope_se = influence_se / mean_metric_energy
+    else:
+        slope_se = math.nan
+    inference_df = (
+        len(np.unique(block_labels)) - 1
+        if block_labels is not None
+        else len(grouped) - 1
     )
-    critical = float(student_t.ppf(1.0 - alpha / 2.0, df=len(grouped) - 1))
+    critical = float(student_t.ppf(1.0 - alpha / 2.0, df=inference_df))
     slope_ci_low = slope - critical * slope_se
     slope_ci_high = slope + critical * slope_se
 
@@ -284,6 +364,7 @@ def orthogonal_score_audit(
         "classification": classification,
         "estimand": "cross-fitted conditional rank covariance",
         "inference_unit": group_col,
+        "inference_block": permutation_block_col or "none",
         "score_aggregation": "product-of-group-mean-residuals",
     }
 

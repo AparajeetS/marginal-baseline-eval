@@ -65,3 +65,22 @@ def test_single_task_global_choice_abstains() -> None:
     choice = leave_one_task_out_global_choice(one_task)
     assert choice["recommended_metric"].isna().all()
     assert np.isnan(choice["selector_score"].item())
+
+
+def test_numeric_string_utilities_are_converted_before_aggregation() -> None:
+    table = utility_table()
+    table["utility"] = table["utility"].map(str)
+    choices = leave_one_task_out_global_choice(table)
+    assert choices["recommended_metric"].tolist() == ["x", "x", "x"]
+
+
+def test_coverage_curve_sorts_numeric_string_confidence_numerically() -> None:
+    scored = pd.DataFrame(
+        {
+            "oracle_utility": ["1.0", "1.0"],
+            "selected_utility": ["0.9", "0.1"],
+            "selector_confidence": ["0.9", "0.10"],
+        }
+    )
+    curve = coverage_regret_curve(scored)
+    assert curve.loc[0, "confidence_threshold"] == pytest.approx(0.9)

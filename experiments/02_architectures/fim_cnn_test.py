@@ -1,9 +1,9 @@
 """
-CEI v2 — FIM_norm on CNN with BatchNorm (PyTorch).
+CEI v2 â€” FIM_norm on CNN with BatchNorm (PyTorch).
 
 This is the critical architecture test. CEI v1 completely failed on
 ResNet-18/CIFAR because BatchNorm artificially inflates activation erank.
-FIM_norm is computed in parameter space, not activation space — hypothesis:
+FIM_norm is computed in parameter space, not activation space â€” hypothesis:
 it should be BatchNorm-agnostic.
 
 Architecture: small CNN on digits (8x8 grayscale)
@@ -17,7 +17,7 @@ Same dual acid test:
 If direction is consistent and significant in both: PASSES.
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math
 import numpy as np
 import torch
@@ -251,12 +251,12 @@ def run():
     CT = {40:"#e74c3c", 200:"#e67e22", 400:"#3498db", 800:"#2ecc71"}
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("FIM_norm on CNN with BatchNorm — Dual Acid Test\n"
+    fig.suptitle("FIM_norm on CNN with BatchNorm â€” Dual Acid Test\n"
                  "(CEI v1 failed here; does FIM_norm survive?)", fontweight="bold")
 
     for ax, res, keys, col_map, title, rho, p in [
-        (axes[0,0], res_n, NOISE,  CN, "Noise probe — FIM_norm", rho_n, p_n),
-        (axes[0,1], res_t, NTRAIN, CT, "n_train probe — FIM_norm", rho_t, p_t),
+        (axes[0,0], res_n, NOISE,  CN, "Noise probe â€” FIM_norm", rho_n, p_n),
+        (axes[0,1], res_t, NTRAIN, CT, "n_train probe â€” FIM_norm", rho_t, p_t),
     ]:
         for k in keys:
             for i, seed in enumerate(SEEDS):
@@ -299,14 +299,14 @@ def run():
 
     print("\n====== CNN + BATCHNORM RESULTS ======")
     print(f"\n  Noise probe (n=400 fixed):")
-    print(f"  {'noise':>6}  {'FIM_norm':>10}  {'±':>6}  {'te':>7}")
+    print(f"  {'noise':>6}  {'FIM_norm':>10}  {'Â±':>6}  {'te':>7}")
     for noise in NOISE:
         m = nm[noise]
         print(f"  {noise:>5.0%}  {m[0]:>10.4f}  {m[1]:>6.4f}  {m[2]:>7.3f}")
     print(f"  rho={rho_n:.3f}  p={p_n:.2e}")
 
     print(f"\n  n_train probe (noise=0):")
-    print(f"  {'n_tr':>6}  {'FIM_norm':>10}  {'±':>6}  {'te':>7}")
+    print(f"  {'n_tr':>6}  {'FIM_norm':>10}  {'Â±':>6}  {'te':>7}")
     for n in NTRAIN:
         m = ntm[n]
         print(f"  {n:>6d}  {m[0]:>10.4f}  {m[1]:>6.4f}  {m[2]:>7.3f}")
@@ -321,7 +321,7 @@ def run():
     elif consistent:
         print(f"  => Direction consistent but not both significant. Partial pass.")
     else:
-        print(f"  => FAILS on CNN — direction inconsistent with BatchNorm.")
+        print(f"  => FAILS on CNN â€” direction inconsistent with BatchNorm.")
 
     with open(OUT / "fim_cnn_summary.txt", "w") as f:
         f.write("FIM_norm CNN + BatchNorm Acid Test\n")

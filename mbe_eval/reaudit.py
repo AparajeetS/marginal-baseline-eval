@@ -105,9 +105,10 @@ def _audit_scope(
     rows: list[dict[str, Any]] = []
     metrics = _metric_columns(manifest["metrics"])
     group_column = str(manifest.get("group_column") or "") or None
-    usable_group = group_column
-    if usable_group and frame[usable_group].nunique(dropna=True) < 2:
-        usable_group = None
+    independence_units = (
+        int(frame[group_column].nunique(dropna=True)) if group_column else len(frame)
+    )
+    estimable = group_column is None or independence_units >= 2
 
     for level_index, level in enumerate(manifest["baseline_ladder"]):
         controls = [str(control) for control in level["controls"]]
@@ -115,12 +116,44 @@ def _audit_scope(
         nuisance_model = str(level.get("nuisance_model", "polynomial_ridge"))
         for metric_index, metric in enumerate(metrics):
             legacy = audit_metric(frame, metric, str(manifest["target"]), controls)
+            if not estimable:
+                rows.append(
+                    {
+                        "study_id": manifest["study_id"],
+                        "scope": scope,
+                        "baseline_level": level["level"],
+                        "metric": metric,
+                        "target": manifest["target"],
+                        "controls": ",".join(controls),
+                        "nuisance_model": nuisance_model,
+                        "n": legacy["n"],
+                        "independence_units": independence_units,
+                        "estimation_status": (
+                            "not-estimable: fewer than two declared independence units"
+                        ),
+                        "raw_r": legacy["raw_r"],
+                        "partial_r": legacy["partial_r"],
+                        "legacy_classification": legacy["classification"],
+                        "crossfit_run_residual_r": np.nan,
+                        "crossfit_residual_r": np.nan,
+                        "crossfit_permutation_p": np.nan,
+                        "crossfit_residual_ci_low": np.nan,
+                        "crossfit_residual_ci_high": np.nan,
+                        "baseline_mse": np.nan,
+                        "augmented_mse": np.nan,
+                        "delta_mse": np.nan,
+                        "delta_mse_ci_low": np.nan,
+                        "delta_mse_ci_high": np.nan,
+                        "relative_mse_improvement": np.nan,
+                    }
+                )
+                continue
             crossfit = cross_fitted_audit(
                 frame,
                 metric,
                 str(manifest["target"]),
                 controls,
-                group_col=usable_group,
+                group_col=group_column,
                 degree=degree,
                 nuisance_model=nuisance_model,
                 permutations=permutations,
@@ -138,6 +171,7 @@ def _audit_scope(
                     "nuisance_model": nuisance_model,
                     "n": legacy["n"],
                     "independence_units": crossfit["independence_units"],
+                    "estimation_status": "estimated",
                     "raw_r": legacy["raw_r"],
                     "partial_r": legacy["partial_r"],
                     "legacy_classification": legacy["classification"],
@@ -201,9 +235,15 @@ def run_published_reaudit(
         adjusted = np.minimum.accumulate(ranked[::-1])[::-1]
         report.loc[group_index[order], "crossfit_permutation_q"] = np.minimum(adjusted, 1.0)
     report["increment_classification"] = [
-        classify_increment_evidence(q_value, delta_low)
-        for q_value, delta_low in zip(
-            report["crossfit_permutation_q"], report["delta_mse_ci_low"]
+        (
+            classify_increment_evidence(q_value, delta_low)
+            if status == "estimated"
+            else "not-estimable"
+        )
+        for status, q_value, delta_low in zip(
+            report["estimation_status"],
+            report["crossfit_permutation_q"],
+            report["delta_mse_ci_low"],
         )
     ]
     return report
@@ -216,6 +256,7 @@ def reaudit_markdown(report: pd.DataFrame, manifest: Mapping[str, Any]) -> str:
         "metric",
         "n",
         "independence_units",
+        "estimation_status",
         "raw_r",
         "partial_r",
         "crossfit_residual_r",
@@ -236,12 +277,12 @@ def reaudit_markdown(report: pd.DataFrame, manifest: Mapping[str, Any]) -> str:
         f"- Target: `{manifest['target']}`",
         "- Status: retrospective audit; this report does not replace the source paper.",
         "",
-        "| Scope | Baseline | Metric | Runs | Units | Raw rho | Partial rho | Cross-fit residual rho [95% CI] | BH q | Delta MSE [95% CI] | Increment evidence | Legacy class |",
-        "|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|---|",
+        "| Scope | Baseline | Metric | Runs | Units | Status | Raw rho | Partial rho | Cross-fit residual rho [95% CI] | BH q | Delta MSE [95% CI] | Increment evidence | Legacy class |",
+        "|---|---|---|---:|---:|---|---:|---:|---:|---:|---:|---|---|",
     ]
     for _, row in report[columns].iterrows():
         lines.append(
-            "| {scope} | {baseline_level} | `{metric}` | {n} | {independence_units} | {raw_r:.3f} | "
+            "| {scope} | {baseline_level} | `{metric}` | {n} | {independence_units} | {estimation_status} | {raw_r:.3f} | "
             "{partial_r:.3f} | {crossfit_residual_r:.3f} [{crossfit_residual_ci_low:.3f}, {crossfit_residual_ci_high:.3f}] | "
             "{crossfit_permutation_q:.3f} | {delta_mse:.4f} [{delta_mse_ci_low:.4f}, {delta_mse_ci_high:.4f}] | "
             "{increment_classification} | {legacy_classification} |".format(

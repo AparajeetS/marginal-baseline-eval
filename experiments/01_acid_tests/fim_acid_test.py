@@ -1,5 +1,5 @@
 """
-CEI v2 — Fisher Information Matrix effective rank.
+CEI v2 â€” Fisher Information Matrix effective rank.
 
 The FIM captures how many independent learning directions the network has.
 
@@ -8,23 +8,23 @@ The FIM captures how many independent learning directions the network has.
   FIM_erank = erank(F)
 
 Via the dual: erank(G G^T) == erank(G^T G) for shared nonzero spectrum,
-so we compute the N×N matrix G G^T (N=n_eval << d=18752 params) — cheap.
+so we compute the NÃ—N matrix G G^T (N=n_eval << d=18752 params) â€” cheap.
 
 Hypothesis:
-  Noisy labels  → gradients scatter in many independent directions → HIGH FIM_erank
-  Clean labels  → gradients point in coherent directions → LOW FIM_erank
+  Noisy labels  â†’ gradients scatter in many independent directions â†’ HIGH FIM_erank
+  Clean labels  â†’ gradients point in coherent directions â†’ LOW FIM_erank
   rho(FIM_erank, test_acc) should be NEGATIVE
 
 Acid test design: n_train=400, epochs=200, vary noise only.
 Also run n_train probe: n_train varies, noise=0.
 
-If direction is CONSISTENT across both experiments → metric is real.
-If direction FLIPS (like GC) → metric is still confounded.
+If direction is CONSISTENT across both experiments â†’ metric is real.
+If direction FLIPS (like GC) â†’ metric is still confounded.
 
 Output: fim_acid_results.png + fim_summary.txt
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, math
 import numpy as np
 import matplotlib.pyplot as plt
@@ -83,9 +83,9 @@ class MLP:
 
     def fim_erank(self, X_pool, y_pool, n_samples=N_FIM):
         """
-        Empirical Fisher erank via dual N×N Gram matrix.
+        Empirical Fisher erank via dual NÃ—N Gram matrix.
         G[i] = gradient vector for sample i  (shape: d)
-        F_dual = G @ G.T / N   shape: N×N
+        F_dual = G @ G.T / N   shape: NÃ—N
         erank(F_dual) == erank(F_full) for non-zero eigenvalues.
         """
         n  = len(X_pool)
@@ -225,7 +225,7 @@ def run():
 
     # ---- plot ----
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    fig.suptitle("FIM Effective Rank — Dual Acid Test\n"
+    fig.suptitle("FIM Effective Rank â€” Dual Acid Test\n"
                  "Left: noise probe (n=400 fixed) | Right: n_train probe (noise=0 fixed)",
                  fontweight="bold")
 
@@ -241,7 +241,7 @@ def run():
                     color=C_NOISE[noise], alpha=0.4 if i>0 else 0.9,
                     linewidth=1.4 if i>0 else 2.2,
                     label=f"noise={noise:.0%}" if i==0 else None)
-    ax.set_title(f"Noise probe — FIM erank\nrho={rho_n:.3f} p={p_n:.2e}")
+    ax.set_title(f"Noise probe â€” FIM erank\nrho={rho_n:.3f} p={p_n:.2e}")
     ax.set_xlabel("Epoch"); ax.set_ylabel("FIM erank"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
 
     # top-right: FIM erank over training (n_train probe)
@@ -253,7 +253,7 @@ def run():
                     color=C_NTRAIN[n], alpha=0.4 if i>0 else 0.9,
                     linewidth=1.4 if i>0 else 2.2,
                     label=f"n={n}" if i==0 else None)
-    ax.set_title(f"n_train probe — FIM erank\nrho={rho_t:.3f} p={p_t:.2e}")
+    ax.set_title(f"n_train probe â€” FIM erank\nrho={rho_t:.3f} p={p_t:.2e}")
     ax.set_xlabel("Epoch"); ax.set_ylabel("FIM erank"); ax.legend(fontsize=8); ax.grid(alpha=0.3)
 
     # bottom-left: scatter noise
@@ -286,15 +286,15 @@ def run():
 
     # ---- terminal summary ----
     print("\n====== FIM ERANK RESULTS ======")
-    print(f"\n[Noise acid test — n=400 fixed]")
-    print(f"  {'noise':>6}  {'FIM_er':>8}  {'±':>6}  {'te':>7}  {'±':>6}")
+    print(f"\n[Noise acid test â€” n=400 fixed]")
+    print(f"  {'noise':>6}  {'FIM_er':>8}  {'Â±':>6}  {'te':>7}  {'Â±':>6}")
     for noise in NOISE:
         m = noise_means[noise]
         print(f"  {noise:>5.0%}  {m[0]:>8.2f}  {m[1]:>6.2f}  {m[2]:>7.3f}  {m[3]:>6.3f}")
     print(f"  rho(FIM_er, test_acc) = {rho_n:.3f}  p={p_n:.2e}")
 
-    print(f"\n[n_train probe — noise=0 fixed]")
-    print(f"  {'n_tr':>6}  {'FIM_er':>8}  {'±':>6}  {'te':>7}  {'±':>6}")
+    print(f"\n[n_train probe â€” noise=0 fixed]")
+    print(f"  {'n_tr':>6}  {'FIM_er':>8}  {'Â±':>6}  {'te':>7}  {'Â±':>6}")
     for n in NTRAINS:
         m = ntrain_means[n]
         print(f"  {n:>6d}  {m[0]:>8.2f}  {m[1]:>6.2f}  {m[2]:>7.3f}  {m[3]:>6.3f}")
@@ -310,12 +310,12 @@ def run():
         print(f"  => METRIC PASSES DUAL ACID TEST")
         print(f"  => {dir_str}")
     elif same_dir:
-        print(f"  => Direction consistent but one p-value marginal — weak evidence")
+        print(f"  => Direction consistent but one p-value marginal â€” weak evidence")
     else:
-        print(f"  => Direction INCONSISTENT — FIM_er is still confounded")
+        print(f"  => Direction INCONSISTENT â€” FIM_er is still confounded")
 
     with open(OUT / "fim_summary.txt", "w") as f:
-        f.write("FIM EFFECTIVE RANK — DUAL ACID TEST\n")
+        f.write("FIM EFFECTIVE RANK â€” DUAL ACID TEST\n")
         f.write("=====================================\n\n")
         f.write(f"Noise probe rho={rho_n:.3f}  p={p_n:.2e}\n")
         f.write(f"n_train probe rho={rho_t:.3f}  p={p_t:.2e}\n")

@@ -16,6 +16,17 @@
       ]
     },
     {
+      "id": "nuisance_complexity_is_design_specific",
+      "status": "supported",
+      "scope": "Degrees 1-3 gained observed-design power but reached 100% false support in at least one generic proxy cell; degree 6 controlled those proxies while the interaction family remained underpowered at 36 configurations.",
+      "checks": [
+        {
+          "type": "file_exists",
+          "path": "experiments/08_protocol_calibration/out/CREDIBILITY_SUMMARY.md"
+        }
+      ]
+    },
+    {
       "id": "pgdl_training_loss_metadata_floor",
       "status": "supported",
       "scope": "Final training loss is increment-supported in zero of 24 frozen PGDL metadata-floor fits.",
@@ -61,7 +72,7 @@
     {
       "id": "refit_inference_stress_matrix",
       "status": "supported",
-      "scope": "In the frozen two-sample-size stress matrix, joint support was zero across null/proxy cells and complete across injected-signal cells; predictive-only false support was at most 5% in any cell.",
+      "scope": "Across 6,400 null/proxy rows, predictive false support was 0.25% and joint false support was 0.125%; all 1,600 injected-signal rows had predictive support.",
       "checks": [
         {
           "type": "csv_max",
@@ -87,10 +98,63 @@
       ]
     },
     {
+      "id": "refit_499_draw_stability",
+      "status": "supported",
+      "scope": "All 1,000 paired 499-draw predictive decisions agreed with the 999-draw reference in the frozen convergence study.",
+      "checks": [
+        {
+          "type": "file_exists",
+          "path": "experiments/18_refit_draw_convergence/RESULTS.md"
+        }
+      ]
+    },
+    {
+      "id": "conditional_comparator_frontier_24_48",
+      "status": "supported",
+      "scope": "Across 9,600 known-truth datasets and 153,600 method rows, no tested procedure combined strict worst-cell null control with useful worst-cell beta-0.50 power at 24 and 48 independent configurations. This is a finite-design frontier, not a universal ranking.",
+      "checks": [
+        {
+          "type": "file_exists",
+          "path": "experiments/23_conditional_comparator_benchmark/COMPARATOR_RESULTS.md"
+        }
+      ]
+    },
+    {
+      "id": "repeated_split_stability_24_48",
+      "status": "withdrawn",
+      "scope": "Across 10,080 fresh known-truth rows, no 3- or 5-split intersection candidate achieved both at most 5% worst null/proxy support and at least 50% weakest effect-0.50 support.",
+      "reason": "The prospectively evaluated stability candidates did not satisfy the joint calibration-power gate."
+    },
+    {
+      "id": "pgdl_transfer_gate_abstention",
+      "status": "supported",
+      "scope": "The prospectively frozen pooled-PGDL sequence failed its binding all-baseline gate; protected associations remain sealed.",
+      "checks": [
+        {
+          "type": "json_equals",
+          "path": "experiments/26_pgdl_transfer_calibration/out/FINAL_ELIGIBILITY.json",
+          "field": "eligible_to_freeze_pgdl_transfer_analysis",
+          "value": false
+        },
+        {
+          "type": "json_equals",
+          "path": "experiments/26_pgdl_transfer_calibration/out/FINAL_ELIGIBILITY.json",
+          "field": "generalization_target_columns_read",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "mandatory_two_family_consensus_power",
+      "status": "withdrawn",
+      "scope": "The frozen mandatory consensus is adequately powered at 36 configurations; observed large-effect power was only 1.0%-4.6% across degrees 1-6.",
+      "reason": "Observed-design power experiments falsified the adequate-power claim."
+    },
+    {
       "id": "clustered_residual_permutation_nominal",
-      "status": "provisional",
-      "scope": "Residual permutation controls nominal 5% error under clustered dependence.",
-      "reason": "The current clustered null rejected 7.0% of 500 repetitions, with a Wilson 95% interval of approximately 5.1-9.6%; residual permutation is diagnostic only."
+      "status": "withdrawn",
+      "scope": "Residual permutation controls nominal 5% error under clustered dependence; the expanded estimate was 6.95% with a 95% interval of 5.92%-8.15%.",
+      "reason": "The expanded calibration estimate excluded the nominal 5% rate."
     },
     {
       "id": "mbe_nominal_error_realistic_structures",
@@ -101,8 +165,8 @@
     {
       "id": "mbe_superior_to_existing_methods",
       "status": "blocked",
-      "scope": "MBE is superior to CMI, granulated Kendall, and robust sign error.",
-      "reason": "The methods answer different estimands; the shared comparison is calibration, not universal dominance."
+      "scope": "MBE is superior to CMI, granulated Kendall, robust sign error, GCM, WGCM, KCI, or other conditional procedures.",
+      "reason": "The current comparison exposes different calibration-power failures and estimands; it does not establish universal dominance."
     },
     {
       "id": "general_metric_router",

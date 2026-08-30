@@ -18,7 +18,7 @@ from mbe_eval import (
 
 
 def test_public_version_matches_release():
-    assert __version__ == "0.4.0"
+    assert __version__ == "0.5.0"
 
 
 def synthetic_frame(seed=0, n=300):
@@ -89,6 +89,52 @@ def test_backward_compatible_evaluator():
     assert report.baseline_name == "baseline"
     assert np.isfinite(report.absolute_r)
     assert np.isfinite(report.partial_r)
+    assert report.is_confounded is True
+
+
+def test_evaluator_does_not_call_every_null_result_confounded():
+    rng = np.random.default_rng(12)
+    evaluator = MBEEvaluator(metric_name="noise", baseline_name="baseline")
+    report = evaluator.evaluate(
+        rng.normal(size=300),
+        rng.normal(size=300),
+        rng.normal(size=300),
+    )
+    assert report.classification == "weak-or-mixed"
+    assert report.is_confounded is False
+
+
+def test_declared_inference_units_drive_cluster_bootstrap():
+    frame = synthetic_frame(n=80)
+    frame["config_id"] = np.repeat(np.arange(20), 4)
+    row = audit_metric(
+        frame,
+        metric="proxy_metric",
+        target="target",
+        controls=["baseline"],
+        inference_unit_col="config_id",
+        bootstrap=19,
+        seed=4,
+    )
+    assert row["independence_units"] == 20
+    assert row["bootstrap_unit"] == "config_id"
+    assert np.isnan(row["raw_p"])
+    assert np.isnan(row["partial_p"])
+    assert np.isfinite(row["partial_ci_low"])
+
+
+def test_declared_inference_unit_fails_closed_with_one_unit():
+    frame = synthetic_frame(n=40)
+    frame["config_id"] = "only-unit"
+    with pytest.raises(MBEInputError, match="at least two units"):
+        audit_metric(
+            frame,
+            metric="proxy_metric",
+            target="target",
+            controls=["baseline"],
+            inference_unit_col="config_id",
+            bootstrap=9,
+        )
 
 
 def test_audit_metric_ignores_metric_when_it_is_also_a_control():

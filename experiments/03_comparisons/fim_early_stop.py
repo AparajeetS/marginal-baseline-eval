@@ -1,5 +1,5 @@
 """
-CEI v2 — Early stopping utility test.
+CEI v2 â€” Early stopping utility test.
 
 Can FIM_norm guide early stopping better than validation loss?
 
@@ -7,14 +7,14 @@ Three stopping strategies, evaluated on 6 conditions x 5 seeds:
   1. VAL_LOSS:  stop when val_loss hasn't improved for patience=15 epochs
   2. FIM_FLAT:  stop when FIM_norm change < threshold for 3 consecutive checks
   3. FIM_THRESH: stop when FIM_norm < percentile threshold (set from train set)
-  4. FIXED_200: baseline — always run 200 epochs
+  4. FIXED_200: baseline â€” always run 200 epochs
 
 Metric: final test_acc on held-out clean test set.
 
 Output: fim_early_stop_results.png + fim_early_stop_table.csv
 """
 
-import path_setup  # noqa: F401 � configures sys.path for repo structure
+import path_setup  # noqa: F401 — configures sys.path for repo structure
 import sys, csv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -157,7 +157,7 @@ def run():
 
     # ---- plot ----
     fig, axes = plt.subplots(1, len(CONDITIONS), figsize=(5*len(CONDITIONS), 6))
-    fig.suptitle("Early Stopping Utility — FIM_norm vs Val Loss\n"
+    fig.suptitle("Early Stopping Utility â€” FIM_norm vs Val Loss\n"
                  "(5 seeds per condition)", fontweight="bold")
 
     for ax, (cname, cfg) in zip(axes, CONDITIONS.items()):

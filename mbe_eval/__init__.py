@@ -36,6 +36,11 @@ from .selection import (
     leave_one_task_out_global_choice,
     score_recommendations,
 )
+from .functional_influence import (
+    FunctionalInfluenceInputError,
+    bootstrap_functional_influence,
+    functional_influence_spectrum,
+)
 from importlib.metadata import PackageNotFoundError, version
 
 try:
@@ -84,6 +89,9 @@ __all__ = [
     "coverage_regret_curve",
     "leave_one_task_out_global_choice",
     "score_recommendations",
+    "FunctionalInfluenceInputError",
+    "bootstrap_functional_influence",
+    "functional_influence_spectrum",
     "simulate_mbe_evaluation",
     "validate_study_manifest",
     "write_markdown_report",

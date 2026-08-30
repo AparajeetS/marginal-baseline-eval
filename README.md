@@ -25,10 +25,10 @@ one metric is universally best, and incremental prediction is not causality.
 
 ## A Usable Audit Package
 
-The published `mbe-eval` package provides a CPU-ready CLI and Python API for
-run ledgers. It compares raw and baseline-adjusted associations, respects
-declared grouping structure, provides bootstrap diagnostics, and fails closed
-when required columns are absent.
+The `mbe-eval` package provides a CPU-ready CLI and Python API for run ledgers.
+It compares raw and baseline-adjusted associations, separates descriptive
+stratification from declared inference units, provides row or cluster bootstrap
+diagnostics, and fails closed when required columns are absent.
 
 ```bash
 pip install mbe-eval
@@ -44,7 +44,7 @@ while the broader MBE 2.0 estimator is still being calibrated.
 
 | Surface | Completed public artifact |
 |---|---|
-| Audit software | `mbe-eval` v0.4.0 package, CLI, Python API, examples, and notebook |
+| Audit software | `mbe-eval` v0.5.0 package, CLI, Python API, examples, and notebook |
 | Corrected prospective studies | 96-run image factorial, 144-run multi-corpus causal-LM atlas, and 180-run causal-text replication |
 | Transport infrastructure | Separate 360-model CIFAR-10/CIFAR-100/SVHN image atlas with all structural gates passed |
 | Known-truth infrastructure | 48,000-cell design screen, 153,600-row comparator benchmark, and 126,000-row oracle frontier |
@@ -158,6 +158,7 @@ mbe-eval-audit \
   --target test_accuracy \
   --controls learning_rate,weight_decay,optimizer,arch \
   --groupby task \
+  --inference-unit config_id \
   --bootstrap 200 \
   --seed 42 \
   --output audit_report.md \
@@ -172,12 +173,15 @@ Your ledger should have:
 | Held-out target | `test_accuracy` | Required |
 | Candidate metrics | `fim_norm`, `grad_norm` | One or more |
 | Baseline variables | `learning_rate`, `arch` | Declared by the audit |
-| Environment | `task`, `dataset`, `intervention` | Recommended |
-| Replication block | configuration or seed group | Required for grouped inference |
+| Environment/stratum | `task`, `dataset`, `intervention` | Optional `--groupby`; creates separate reports |
+| Independent unit | configuration or seed group | Use `--inference-unit` for cluster bootstrap |
 
-The CLI fails closed when a requested metric, target, control, or grouping
-column is missing. It writes a human-readable Markdown report and optional CSV
-or JSON output for experiment pipelines and AI agents.
+The CLI fails closed when a requested metric, target, control, stratum, or
+inference-unit column is missing. `--groupby` is descriptive stratification;
+it does not change the sampling unit. When `--inference-unit` is supplied,
+bootstrap resampling occurs at that unit and row-level analytic p-values are
+suppressed. The CLI writes a human-readable Markdown report and optional CSV or
+JSON output for experiment pipelines and AI agents.
 
 ## Python API
 
@@ -193,6 +197,7 @@ report = audit_metrics(
     target="test_accuracy",
     controls=["learning_rate", "weight_decay", "optimizer", "arch"],
     groupby=["task"],
+    inference_unit_col="config_id",
     bootstrap=200,
     seed=42,
 )

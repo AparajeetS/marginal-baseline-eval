@@ -64,3 +64,21 @@ def test_manifest_validation_rejects_duplicate_run_ids():
 
     with pytest.raises(ValueError, match="duplicates"):
         validate_study_manifest(_manifest(), df)
+
+
+def test_environment_scope_with_one_group_abstains_instead_of_using_rows():
+    frame = _study_frame(n=80)
+    frame["dataset"] = np.where(frame.index < 40, "image_a", "image_b")
+    frame["config_id"] = np.where(frame.index < 40, "cfg_a", "cfg_b")
+    report = run_published_reaudit(
+        frame,
+        _manifest(),
+        permutations=9,
+        bootstrap=9,
+        minimum_scope_rows=30,
+    )
+    scoped = report.loc[report["scope"].ne("pooled")]
+    assert scoped["independence_units"].eq(1).all()
+    assert scoped["estimation_status"].str.startswith("not-estimable").all()
+    assert scoped["increment_classification"].eq("not-estimable").all()
+    assert scoped["crossfit_permutation_p"].isna().all()
