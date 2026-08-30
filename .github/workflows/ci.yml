@@ -39,6 +39,8 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: python -m pip install --upgrade pip build twine
+      - name: Resolve frozen reproducibility environment
+        run: python -m pip install --dry-run -r requirements-frozen.txt
       - run: python -m build
       - run: python -m twine check dist/*
 

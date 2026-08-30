@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 affine==2.4.0
 certifi==2026.5.20
 charset-normalizer==3.4.7
@@ -21,7 +23,7 @@ numpy==2.4.3
 packaging==26.2
 pandas==3.0.1
 pandas-flavor==0.8.1
-pillow==12.2.0
+pillow==12.3.0
 pingouin==0.6.1
 Pygments==2.20.0
 pyparsing==3.3.2
@@ -31,14 +33,14 @@ rich==15.0.0
 scikit-learn==1.8.0
 scipy==1.17.1
 seaborn==0.13.2
-setuptools==70.2.0
+setuptools==84.0.0
 six==1.17.0
 statsmodels==0.14.6
 sympy==1.14.0
 tabulate==0.10.0
 threadpoolctl==3.6.0
-torch==2.12.0+cpu
-torchvision==0.27.0+cpu
+torch==2.13.0+cpu
+torchvision==0.28.0+cpu
 tqdm==4.67.3
 typing_extensions==4.15.0
 tzdata==2025.3
