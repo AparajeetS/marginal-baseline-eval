@@ -17,7 +17,7 @@ tests a candidate metric for a declared target, baseline information set, and
 environment, then reports scoped support or abstains. It is not a claim that
 one metric is universally best, and incremental prediction is not causality.
 
-[Install from PyPI](https://pypi.org/project/mbe-eval/) |
+[Install the reviewed v0.5.0 release](https://github.com/AparajeetS/marginal-baseline-eval/releases/tag/v0.5.0) |
 [Check current status](docs/PROJECT_STATUS.md) |
 [Review current evidence](SUPPORTING_EVIDENCE.md) |
 [Reproduce the work](REPRODUCIBILITY.md) |
@@ -31,7 +31,7 @@ stratification from declared inference units, provides row or cluster bootstrap
 diagnostics, and fails closed when required columns are absent.
 
 ```bash
-pip install mbe-eval
+pip install https://github.com/AparajeetS/marginal-baseline-eval/releases/download/v0.5.0/mbe_eval-0.5.0-py3-none-any.whl
 mbe-eval-demo --bootstrap 200
 ```
 
@@ -131,8 +131,12 @@ correlation:
 ## Install
 
 ```bash
-pip install mbe-eval
+pip install https://github.com/AparajeetS/marginal-baseline-eval/releases/download/v0.5.0/mbe_eval-0.5.0-py3-none-any.whl
 ```
+
+PyPI currently carries the preceding stable release. The command above pins
+the reviewed `v0.5.0` GitHub artifact until the corresponding PyPI upload is
+completed.
 
 Python 3.9 and newer are supported. Optional checkpoint-metric utilities use
 PyTorch:
