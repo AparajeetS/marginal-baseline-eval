@@ -11,7 +11,7 @@ fonttools==4.62.1
 fsspec==2026.4.0
 idna==3.16
 Jinja2==3.1.6
-joblib==1.5.3
+joblib==1.6.0
 kiwisolver==1.5.0
 markdown-it-py==4.2.0
 MarkupSafe==3.0.3
